@@ -1,11 +1,19 @@
-#' <Add Title>
+#' @title RtD3
 #'
-#' <Add Description>
+#' @description Create an Rt visualisation using D3
+#'
+#' @param message character, message
+#' @param data data.frame, data
+#' @param width integer, width in pixels
+#' @param height integer, height in pixels
+#' @param elementId string, id of element
 #'
 #' @import htmlwidgets
 #'
 #' @export
-RtD3 <- function(message, data, width = NULL, height = NULL, elementId = NULL) {
+RtD3 <- function(message = NULL, data = NULL, width = NULL, height = NULL, elementId = NULL) {
+
+  #geojsonsf::sf_geojson
 
   # forward options using x
   x = list(

@@ -2,10 +2,27 @@
 % Please edit documentation in R/RtD3.R
 \name{RtD3}
 \alias{RtD3}
-\title{<Add Title>}
+\title{RtD3}
 \usage{
-RtD3(message, data, width = NULL, height = NULL, elementId = NULL)
+RtD3(
+  message = NULL,
+  data = NULL,
+  width = NULL,
+  height = NULL,
+  elementId = NULL
+)
+}
+\arguments{
+\item{message}{character, message}
+
+\item{data}{data.frame, data}
+
+\item{width}{integer, width in pixels}
+
+\item{height}{integer, height in pixels}
+
+\item{elementId}{string, id of element}
 }
 \description{
-<Add Description>
+Create an Rt visualisation using D3
 }

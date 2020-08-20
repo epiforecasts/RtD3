@@ -14,10 +14,15 @@ HTMLWidgets.widget({
 
         // TODO: code to render the widget, e.g.
 
+        var vis = new rtVis();
 
-        console.log(el)
+        vis.setupPage(el)
+        vis.createMap()
+        vis.plotRt('R0')
 
-        d3.select(el).append('div').text(x.data[0]['a'])
+        //console.log(el)
+
+        //d3.select(el).append('div').text(x.data[0]['a'])
         //el.innerText = x.message;
 
       },
