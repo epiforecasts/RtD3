@@ -6,3 +6,5 @@ Rt visualisation in D3
 An R interface for the js library [rt_vis](https://github.com/hamishgibbs/rt_vis).
 
 *Please note: this package is in the early stages of development.*
+
+## Example usage
