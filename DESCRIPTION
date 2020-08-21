@@ -1,11 +1,11 @@
 Package: RtD3
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
+Authors@R:
+    person(given = "Hamish",
+           family = "Gibbs",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "lshhg2@lshtm.ac.uk",
            comment = c(ORCID = "YOUR-ORCID-ID"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
@@ -13,8 +13,9 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
-Imports: 
+Imports:
     jsonlite,
-    htmlwidgets
-Suggests: 
+    htmlwidgets,
+    geojsonsf
+Suggests:
     testthat

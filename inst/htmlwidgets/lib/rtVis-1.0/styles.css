@@ -1,5 +1,9 @@
 .phony {}
 
+* {
+  font-family: Arial !important;
+}
+
 .button-spacer {
   width: 5px;
 }
@@ -30,8 +34,9 @@
 
 .r0-title-container {
   width: 100%;
-  height: 20px;
-  padding-left: 50px;
+  height: 25px;
+  padding-left: 40px;
+  font-weight: bold;
 }
 
 .cases-infection-ts-container {
@@ -41,8 +46,9 @@
 
 .cases-infection-title-container {
   width: 100%;
-  height: 20px;
-  padding-left: 50px;
+  height: 25px;
+  padding-left: 40px;
+  font-weight: bold;
 }
 
 .cases-report-ts-container {
@@ -52,8 +58,9 @@
 
 .cases-report-title-container {
   width: 100%;
-  height: 20px;
-  padding-left: 50px;
+  height: 25px;
+  padding-left: 40px;
+  font-weight: bold;
 }
 
 .controls-container {

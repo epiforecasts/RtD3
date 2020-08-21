@@ -5,17 +5,41 @@
 \title{RtD3}
 \usage{
 RtD3(
-  message = NULL,
-  data = NULL,
-  width = NULL,
-  height = NULL,
+  geoData,
+  summaryData,
+  r0Data,
+  casesInfectionData,
+  casesReportData,
+  obsCasesData,
+  activeArea = NULL,
+  activeData = "R0",
+  activeTime = "all",
+  runDate = NULL,
+  width = 1000,
+  height = 1250,
   elementId = NULL
 )
 }
 \arguments{
-\item{message}{character, message}
+\item{geoData}{sf object, map data}
 
-\item{data}{data.frame, data}
+\item{summaryData}{data.frame, summary data for mapping}
+
+\item{r0Data}{data.frame, r0 estimates}
+
+\item{casesInfectionData}{data.frame, cases by date of infection estimates}
+
+\item{casesReportData}{data.frame, cases by date of report estimates}
+
+\item{obsCasesData}{data.frame, observed cases data}
+
+\item{activeArea}{character, the default area to plot (defaults to United Kingdom)}
+
+\item{activeData}{character, the default dataset to plot (defaults to 'R0')}
+
+\item{activeTime}{character, the default time window (defaults to 'all')}
+
+\item{runDate}{character, date of estimate run in the format ('YYYY-MM-DD')}
 
 \item{width}{integer, width in pixels}
 
