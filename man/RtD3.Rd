@@ -5,13 +5,13 @@
 \title{RtD3}
 \usage{
 RtD3(
-  geoData,
-  summaryData,
-  r0Data,
-  casesInfectionData,
-  casesReportData,
-  obsCasesData,
-  activeArea = NULL,
+  geoData = NULL,
+  summaryData = NULL,
+  rtData = NULL,
+  casesInfectionData = NULL,
+  casesReportData = NULL,
+  obsCasesData = NULL,
+  activeArea = "United Kingdom",
   activeData = "R0",
   activeTime = "all",
   runDate = NULL,
@@ -25,7 +25,7 @@ RtD3(
 
 \item{summaryData}{data.frame, summary data for mapping}
 
-\item{r0Data}{data.frame, r0 estimates}
+\item{rtData}{data.frame, rt estimates}
 
 \item{casesInfectionData}{data.frame, cases by date of infection estimates}
 

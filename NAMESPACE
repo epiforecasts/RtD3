@@ -3,4 +3,4 @@
 export(RtD3)
 export(RtD3Output)
 export(renderRtD3)
-import(htmlwidgets)
+importFrom(htmlwidgets,createWidget)

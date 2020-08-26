@@ -4,7 +4,7 @@
 #'
 #' @param geoData sf object, map data
 #' @param summaryData data.frame, summary data for mapping
-#' @param r0Data data.frame, r0 estimates
+#' @param rtData data.frame, rt estimates
 #' @param casesInfectionData data.frame, cases by date of infection estimates
 #' @param casesReportData data.frame, cases by date of report estimates
 #' @param obsCasesData data.frame, observed cases data
@@ -16,23 +16,52 @@
 #' @param height integer, height in pixels
 #' @param elementId string, id of element
 #'
-#' @import htmlwidgets
+#' @importFrom htmlwidgets createWidget
 #'
 #' @export
 
-RtD3 <- function(geoData, summaryData, r0Data, casesInfectionData, casesReportData, obsCasesData, activeArea = NULL, activeData = 'R0', activeTime = 'all', runDate = NULL, width = 1000, height = 1250, elementId = NULL) {
+RtD3 <- function(geoData = NULL,
+                 summaryData = NULL,
+                 rtData = NULL,
+                 casesInfectionData = NULL,
+                 casesReportData = NULL,
+                 obsCasesData = NULL,
+                 activeArea = 'United Kingdom',
+                 activeData = 'R0',
+                 activeTime = 'all',
+                 runDate = NULL,
+                 width = 1000,
+                 height = 1250,
+                 elementId = NULL) {
 
   #check on subnational estimates
   #check map names against data names
 
   arg_types <- sapply(ls(), function(x){return(class(get(x)))})
 
-  if (!'sf' %in% unlist(arg_types['geoData'])){stop('geoData must be an sf object')}
-  if (!'data.frame' %in% unlist(arg_types['summaryData'])){stop('summaryData must be an data.frame object')}
-  if (!'data.frame' %in% unlist(arg_types['r0Data'])){stop('r0Data must be an data.frame object')}
-  if (!'data.frame' %in% unlist(arg_types['casesInfectionData'])){stop('casesInfectionData must be an data.frame object')}
-  if (!'data.frame' %in% unlist(arg_types['casesReportData'])){stop('casesReportData must be an data.frame object')}
-  if (!'data.frame' %in% unlist(arg_types['obsCasesData'])){stop('obsCasesData must be an data.frame object')}
+  if(!is.null(geoData)){
+    if (!'sf' %in% unlist(arg_types['geoData'])){stop('geoData must be an sf object')}
+  }
+
+  if(!is.null(summaryData)){
+    if (!'data.frame' %in% unlist(arg_types['summaryData'])){stop('summaryData must be an data.frame object')}
+  }
+
+  if(!is.null(rtData)){
+    if (!'data.frame' %in% unlist(arg_types['rtData'])){stop('rtData must be an data.frame object')}
+  }
+
+  if(!is.null(casesInfectionData)){
+    if (!'data.frame' %in% unlist(arg_types['casesInfectionData'])){stop('casesInfectionData must be an data.frame object')}
+  }
+
+  if(!is.null(casesReportData)){
+    if (!'data.frame' %in% unlist(arg_types['casesReportData'])){stop('casesReportData must be an data.frame object')}
+  }
+
+  if(!is.null(obsCasesData)){
+    if (!'data.frame' %in% unlist(arg_types['obsCasesData'])){stop('obsCasesData must be an data.frame object')}
+  }
 
   #need to check that columns are in format accepted by rt vis for global datasets
   expected_columns <- list(
@@ -45,24 +74,48 @@ RtD3 <- function(geoData, summaryData, r0Data, casesInfectionData, casesReportDa
 
     if (deparse(substitute(data)) == 'geoData'){
       return(length(setdiff(expected_columns[['geoData']], colnames(data))) == 0)
-    } else if (deparse(substitute(data)) %in% c('r0Data', 'casesInfectionData', 'casesReportData')){
+    } else if (deparse(substitute(data)) %in% c('rtData', 'casesInfectionData', 'casesReportData')){
       return(length(setdiff(expected_columns[['rtData']], colnames(data))) == 0)
     } else if (deparse(substitute(data)) == 'obsCasesData'){
       return(length(setdiff(expected_columns[['obsCasesData']], colnames(data))) == 0)
     } else {
-      stop(paste0('Unknown dataset "', deparse(substitute(data)), '"  input for check_input_columns'))
+      stop('Unknown dataset "', deparse(substitute(data)), '"  input for check_input_columns')
     }
 
   }
 
-  if (!check_input_columns(geoData)){stop(paste0("geoData missing required columns. geoData must contain: ", paste(expected_columns[['geoData']], collapse = ' ')))}
-  if (!check_input_columns(r0Data)){stop(paste0("r0Data missing required columns. r0Data must contain: ", paste(expected_columns[['rtData']], collapse = ' ')))}
-  if (!check_input_columns(casesInfectionData)){stop(paste0("casesInfectionData missing required columns. casesInfectionData must contain: ", paste(expected_columns[['rtData']], collapse = ' ')))}
-  if (!check_input_columns(casesReportData)){stop(paste0("casesReportData missing required columns. casesReportData must contain: ", paste(expected_columns[['rtData']], collapse = ' ')))}
-  if (!check_input_columns(obsCasesData)){stop(paste0("obsCasesData missing required columns. obsCasesData must contain: ", paste(expected_columns[['obsCasesData']], collapse = ' ')))}
+  if (!is.null(geoData)){
+    if (!check_input_columns(geoData)){stop("geoData missing required columns. geoData must contain: ", paste(expected_columns[['geoData']], collapse = ' '))}
+  }
 
-  if(is.null(activeArea)){
-    activeArea <- as.character(geoData[sample.int(length(geoData$sovereignt), 1),]$sovereignt)
+  if (!is.null(rtData)){
+    if (!check_input_columns(rtData)){stop("rtData missing required columns. rtData must contain: ", paste(expected_columns[['rtData']], collapse = ' '))}
+  }
+
+  if (!is.null(casesInfectionData)){
+    if (!check_input_columns(casesInfectionData)){stop("casesInfectionData missing required columns. casesInfectionData must contain: ", paste(expected_columns[['rtData']], collapse = ' '))}
+  }
+
+  if (!is.null(casesReportData)){
+    if (!check_input_columns(casesReportData)){stop("casesReportData missing required columns. casesReportData must contain: ", paste(expected_columns[['rtData']], collapse = ' '))}
+  }
+
+  if (!is.null(obsCasesData)){
+    if (!check_input_columns(obsCasesData)){stop("obsCasesData missing required columns. obsCasesData must contain: ", paste(expected_columns[['obsCasesData']], collapse = ' '))}
+  }
+
+  if (!is.null(geoData)){
+    geoData <- geojsonsf::sf_geojson(geoData)
+  } else {
+    geoData <- geoData
+  }
+
+  jsonNull <- function(data){
+    if (!is.null(data)){
+      return(jsonlite::toJSON(data))
+    } else {
+      return(data)
+    }
   }
 
   # forward options using x
@@ -71,12 +124,12 @@ RtD3 <- function(geoData, summaryData, r0Data, casesInfectionData, casesReportDa
     activeData = activeData,
     activeTime = activeTime,
     runDate = runDate,
-    geoData = geojsonsf::sf_geojson(geoData),
-    summaryData = jsonlite::toJSON(summaryData),
-    r0Data = jsonlite::toJSON(r0Data),
-    casesInfectionData = jsonlite::toJSON(casesInfectionData),
-    casesReportData = jsonlite::toJSON(casesReportData),
-    obsCasesData = jsonlite::toJSON(obsCasesData)
+    geoData = geoData,
+    summaryData = jsonNull(summaryData),
+    rtData = jsonNull(rtData),
+    casesInfectionData = jsonNull(casesInfectionData),
+    casesReportData = jsonNull(casesReportData),
+    obsCasesData = jsonNull(obsCasesData)
   )
 
   # create widget
