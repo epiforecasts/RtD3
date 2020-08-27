@@ -8,12 +8,15 @@
 #' @param casesInfectionData data.frame, cases by date of infection estimates
 #' @param casesReportData data.frame, cases by date of report estimates
 #' @param obsCasesData data.frame, observed cases data
+#' @param rtData_Deaths data.frame, rt estimates (trained on deaths)
+#' @param casesInfectionData_Deaths data.frame, cases by date of infection estimates (trained on deaths)
+#' @param casesReportData_Deaths data.frame, cases by date of report estimates (trained on deaths)
+#' @param subregional_ref list, reference to subnational estimates in the format {'country_name':'url'}.
 #' @param activeArea character, the default area to plot (defaults to United Kingdom)
 #' @param activeData character, the default dataset to plot (defaults to 'R0')
 #' @param activeTime character, the default time window (defaults to 'all')
 #' @param runDate character, date of estimate run in the format ('YYYY-MM-DD')
 #' @param width integer, width in pixels
-#' @param height integer, height in pixels
 #' @param elementId string, id of element
 #'
 #' @importFrom htmlwidgets createWidget
@@ -26,12 +29,15 @@ RtD3 <- function(geoData = NULL,
                  casesInfectionData = NULL,
                  casesReportData = NULL,
                  obsCasesData = NULL,
+                 rtData_Deaths = NULL,
+                 casesInfectionData_Deaths = NULL,
+                 casesReportData_Deaths = NULL,
                  activeArea = 'United Kingdom',
                  activeData = 'R0',
                  activeTime = 'all',
                  runDate = NULL,
+                 subregional_ref = NULL,
                  width = 1000,
-                 height = 1250,
                  elementId = NULL) {
 
   #check on subnational estimates
@@ -104,6 +110,56 @@ RtD3 <- function(geoData = NULL,
     if (!check_input_columns(obsCasesData)){stop("obsCasesData missing required columns. obsCasesData must contain: ", paste(expected_columns[['obsCasesData']], collapse = ' '))}
   }
 
+  estimate_datasets <- list(rtData,
+                            casesInfectionData,
+                            casesReportData,
+                            rtData_Deaths,
+                            casesInfectionData_Deaths,
+                            casesReportData_Deaths)
+
+  estimate_datasets <- Filter(Negate(is.null), estimate_datasets)
+
+  #check geodata name intersection issues
+  if (!is.null(geoData)){
+
+    name_diff <- setdiff(unique(estimate_datasets[[1]]$country), unique(geoData$sovereignt))
+
+    if (length(name_diff) > 0 & length(name_diff) <= 5){
+      warning('The following names are present in the estimates but not in the GeoData: ', paste(name_diff, collapse = ', '), '.')
+    } else if (length(name_diff) > 5) {
+      warning('The following names are present in the estimates but not in the GeoData: ', paste(name_diff[1:5], collapse = ', '), ' ... and ', length(name_diff) - 5, ' more.')
+    }
+
+  }
+
+  #check obscases name intersection issues
+  if (!is.null(obsCasesData)){
+
+    name_diff <- setdiff(unique(estimate_datasets[[1]]$country), unique(obsCasesData$region))
+
+    if (length(name_diff) > 0 & length(name_diff) <= 5){
+      warning('The following names are present in the estimates but not in the obsCasesData: ', paste(name_diff, collapse = ', '), '.')
+    } else if (length(name_diff) > 5) {
+      warning('The following names are present in the estimates but not in the obsCasesData: ', paste(name_diff[1:5], collapse = ', '), ' ... and ', length(name_diff) - 5, ' more.')
+    }
+
+  }
+
+  #define height - which is fixed
+  height = 0
+
+  if(!is.null(geoData) & !is.null(summaryData)){
+    height = height + 500
+  }
+
+  if(length(estimate_datasets) < 3){
+    height = height + (225 * length(estimate_datasets))
+  } else {
+    height = height + (225 * 3)
+  }
+
+  height = height + 100
+
   if (!is.null(geoData)){
     geoData <- geojsonsf::sf_geojson(geoData)
   } else {
@@ -129,7 +185,11 @@ RtD3 <- function(geoData = NULL,
     rtData = jsonNull(rtData),
     casesInfectionData = jsonNull(casesInfectionData),
     casesReportData = jsonNull(casesReportData),
-    obsCasesData = jsonNull(obsCasesData)
+    obsCasesData = jsonNull(obsCasesData),
+    rtData_Deaths = jsonNull(rtData_Deaths),
+    casesInfectionData_Deaths = jsonNull(casesInfectionData_Deaths),
+    casesReportData_Deaths = jsonNull(casesReportData_Deaths),
+    subregional_ref = subregional_ref
   )
 
   # create widget

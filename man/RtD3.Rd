@@ -11,12 +11,15 @@ RtD3(
   casesInfectionData = NULL,
   casesReportData = NULL,
   obsCasesData = NULL,
+  rtData_Deaths = NULL,
+  casesInfectionData_Deaths = NULL,
+  casesReportData_Deaths = NULL,
   activeArea = "United Kingdom",
   activeData = "R0",
   activeTime = "all",
   runDate = NULL,
+  subregional_ref = NULL,
   width = 1000,
-  height = 1250,
   elementId = NULL
 )
 }
@@ -33,6 +36,12 @@ RtD3(
 
 \item{obsCasesData}{data.frame, observed cases data}
 
+\item{rtData_Deaths}{data.frame, rt estimates (trained on deaths)}
+
+\item{casesInfectionData_Deaths}{data.frame, cases by date of infection estimates (trained on deaths)}
+
+\item{casesReportData_Deaths}{data.frame, cases by date of report estimates (trained on deaths)}
+
 \item{activeArea}{character, the default area to plot (defaults to United Kingdom)}
 
 \item{activeData}{character, the default dataset to plot (defaults to 'R0')}
@@ -41,9 +50,9 @@ RtD3(
 
 \item{runDate}{character, date of estimate run in the format ('YYYY-MM-DD')}
 
-\item{width}{integer, width in pixels}
+\item{subregional_ref}{list, reference to subnational estimates in the format {'country_name':'url'}.}
 
-\item{height}{integer, height in pixels}
+\item{width}{integer, width in pixels}
 
 \item{elementId}{string, id of element}
 }
