@@ -4,8 +4,7 @@
 #'
 #' @param geoData sf object, map data
 #' @param summaryData data.frame, summary data for mapping
-#' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x}, ...}
-#' @param obsCasesData data.frame, observed cases data
+#' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}
 #' @param subregional_ref list, reference to subnational estimates in the format {'country_name':'url'}.
 #' @param activeArea character, the default area to plot (defaults to United Kingdom)
 #' @param activeData character, the default dataset to plot (defaults to 'R0')
@@ -21,7 +20,6 @@
 RtD3 <- function(geoData = NULL,
                  summaryData = NULL,
                  rtData = NULL,
-                 obsCasesData = NULL,
                  activeArea = 'United Kingdom',
                  activeData = 'R0',
                  activeTime = 'all',
@@ -47,10 +45,6 @@ RtD3 <- function(geoData = NULL,
     if (!'list' %in% unlist(arg_types['rtData'])){stop('rtData must be a list object')}
   }
 
-  if(!is.null(obsCasesData)){
-    if (!'data.frame' %in% unlist(arg_types['obsCasesData'])){stop('obsCasesData must be a data.frame object')}
-  }
-
   #need to check that columns are in format accepted by rt vis for global datasets
   expected_columns <- list(
     geoData = c('sovereignt', 'geometry'),
@@ -71,10 +65,16 @@ RtD3 <- function(geoData = NULL,
       n_not_null <- c()
 
       for (source in names(data)){
+
         n_not_null <- append(n_not_null, sum(sapply(data[[source]], function(x){return(!is.null(x))})))
 
         for (dataset in data[[source]]){
-          agreement <- append(agreement, length(setdiff(expected_columns[['rtData']], colnames(dataset))) == 0)
+
+          #datasets in Rt Data must either agree with rtData or obsCaseData
+          rt_agree <- length(setdiff(expected_columns[['rtData']], colnames(dataset))) == 0
+          obs_agree <- length(setdiff(expected_columns[['obsCasesData']], colnames(dataset))) == 0
+
+          agreement <- append(agreement, rt_agree | obs_agree)
         }
       }
 
@@ -95,11 +95,10 @@ RtD3 <- function(geoData = NULL,
   }
 
   if (!is.null(rtData)){
-    if (!check_input_columns(rtData)){stop("rtData missing required columns. All datasets must contain: ", paste(expected_columns[['rtData']], collapse = ' '))}
-  }
-
-  if (!is.null(obsCasesData)){
-    if (!check_input_columns(obsCasesData)){stop("obsCasesData missing required columns. obsCasesData must contain: ", paste(expected_columns[['obsCasesData']], collapse = ' '))}
+    if (!check_input_columns(rtData)){stop("rtData missing required columns. rtData, casesInfectionData, casesReportData, must contain: ",
+                                           paste(expected_columns[['rtData']], collapse = ' '),
+                                           ' obsCasesData must contain ',
+                                           paste(expected_columns[['obsCasesData']], collapse = ' '))}
   }
 
   #check geodata name intersection issues
@@ -111,19 +110,6 @@ RtD3 <- function(geoData = NULL,
       warning('The following names are present in the estimates but not in the GeoData: ', paste(name_diff, collapse = ', '), '.')
     } else if (length(name_diff) > 5) {
       warning('The following names are present in the estimates but not in the GeoData: ', paste(name_diff[1:5], collapse = ', '), ' ... and ', length(name_diff) - 5, ' more.')
-    }
-
-  }
-
-  #check obscases name intersection issues
-  if (!is.null(obsCasesData)){
-
-    name_diff <- setdiff(unique(rtData[[1]][[1]]$country), unique(obsCasesData$region))
-
-    if (length(name_diff) > 0 & length(name_diff) <= 5){
-      warning('The following names are present in the estimates but not in the obsCasesData: ', paste(name_diff, collapse = ', '), '.')
-    } else if (length(name_diff) > 5) {
-      warning('The following names are present in the estimates but not in the obsCasesData: ', paste(name_diff[1:5], collapse = ', '), ' ... and ', length(name_diff) - 5, ' more.')
     }
 
   }
@@ -166,7 +152,6 @@ RtD3 <- function(geoData = NULL,
     geoData = geoData,
     summaryData = jsonNull(summaryData),
     rtData = jsonNull(rtData),
-    obsCasesData = jsonNull(obsCasesData),
     subregional_ref = subregional_ref
   )
 
