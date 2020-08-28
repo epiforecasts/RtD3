@@ -202,9 +202,9 @@ define_height <- function(geoData, summaryData, rtData){
 
 }
 
-#' Shiny bindings for RtD3
+#' Shiny bindings for summaryWidget
 #'
-#' Output and render functions for using RtD3 within Shiny
+#' Output and render functions for using summaryWidget within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
@@ -216,16 +216,16 @@ define_height <- function(geoData, summaryData, rtData){
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
 #'
-#' @name RtD3-shiny
+#' @name summaryWidget-shiny
 #'
 #' @export
-RtD3Output <- function(outputId, width = '100%', height = '400px'){
+summaryWidgetOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'RtD3', width, height, package = 'RtD3')
 }
 
-#' @rdname RtD3-shiny
+#' @rdname summaryWidget-shiny
 #' @export
-renderRtD3 <- function(expr, env = parent.frame(), quoted = FALSE) {
+rendersummaryWidget <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, RtD3Output, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, summaryWidgetOutput, env, quoted = TRUE)
 }
