@@ -16,6 +16,8 @@ RoxygenNote: 7.1.0
 Imports:
     jsonlite,
     htmlwidgets,
-    geojsonsf
+    geojsonsf,
+    sf
 Suggests:
-    testthat
+    testthat,
+    covr
