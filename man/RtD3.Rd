@@ -8,12 +8,7 @@ RtD3(
   geoData = NULL,
   summaryData = NULL,
   rtData = NULL,
-  casesInfectionData = NULL,
-  casesReportData = NULL,
   obsCasesData = NULL,
-  rtData_Deaths = NULL,
-  casesInfectionData_Deaths = NULL,
-  casesReportData_Deaths = NULL,
   activeArea = "United Kingdom",
   activeData = "R0",
   activeTime = "all",
@@ -28,19 +23,9 @@ RtD3(
 
 \item{summaryData}{data.frame, summary data for mapping}
 
-\item{rtData}{data.frame, rt estimates}
-
-\item{casesInfectionData}{data.frame, cases by date of infection estimates}
-
-\item{casesReportData}{data.frame, cases by date of report estimates}
+\item{rtData}{data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x}, ...}}
 
 \item{obsCasesData}{data.frame, observed cases data}
-
-\item{rtData_Deaths}{data.frame, rt estimates (trained on deaths)}
-
-\item{casesInfectionData_Deaths}{data.frame, cases by date of infection estimates (trained on deaths)}
-
-\item{casesReportData_Deaths}{data.frame, cases by date of report estimates (trained on deaths)}
 
 \item{activeArea}{character, the default area to plot (defaults to United Kingdom)}
 

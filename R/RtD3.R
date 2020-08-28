@@ -4,13 +4,8 @@
 #'
 #' @param geoData sf object, map data
 #' @param summaryData data.frame, summary data for mapping
-#' @param rtData data.frame, rt estimates
-#' @param casesInfectionData data.frame, cases by date of infection estimates
-#' @param casesReportData data.frame, cases by date of report estimates
+#' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x}, ...}
 #' @param obsCasesData data.frame, observed cases data
-#' @param rtData_Deaths data.frame, rt estimates (trained on deaths)
-#' @param casesInfectionData_Deaths data.frame, cases by date of infection estimates (trained on deaths)
-#' @param casesReportData_Deaths data.frame, cases by date of report estimates (trained on deaths)
 #' @param subregional_ref list, reference to subnational estimates in the format {'country_name':'url'}.
 #' @param activeArea character, the default area to plot (defaults to United Kingdom)
 #' @param activeData character, the default dataset to plot (defaults to 'R0')
@@ -26,12 +21,7 @@
 RtD3 <- function(geoData = NULL,
                  summaryData = NULL,
                  rtData = NULL,
-                 casesInfectionData = NULL,
-                 casesReportData = NULL,
                  obsCasesData = NULL,
-                 rtData_Deaths = NULL,
-                 casesInfectionData_Deaths = NULL,
-                 casesReportData_Deaths = NULL,
                  activeArea = 'United Kingdom',
                  activeData = 'R0',
                  activeTime = 'all',
@@ -50,23 +40,15 @@ RtD3 <- function(geoData = NULL,
   }
 
   if(!is.null(summaryData)){
-    if (!'data.frame' %in% unlist(arg_types['summaryData'])){stop('summaryData must be an data.frame object')}
+    if (!'data.frame' %in% unlist(arg_types['summaryData'])){stop('summaryData must be a data.frame object')}
   }
 
   if(!is.null(rtData)){
-    if (!'data.frame' %in% unlist(arg_types['rtData'])){stop('rtData must be an data.frame object')}
-  }
-
-  if(!is.null(casesInfectionData)){
-    if (!'data.frame' %in% unlist(arg_types['casesInfectionData'])){stop('casesInfectionData must be an data.frame object')}
-  }
-
-  if(!is.null(casesReportData)){
-    if (!'data.frame' %in% unlist(arg_types['casesReportData'])){stop('casesReportData must be an data.frame object')}
+    if (!'list' %in% unlist(arg_types['rtData'])){stop('rtData must be a list object')}
   }
 
   if(!is.null(obsCasesData)){
-    if (!'data.frame' %in% unlist(arg_types['obsCasesData'])){stop('obsCasesData must be an data.frame object')}
+    if (!'data.frame' %in% unlist(arg_types['obsCasesData'])){stop('obsCasesData must be a data.frame object')}
   }
 
   #need to check that columns are in format accepted by rt vis for global datasets
@@ -79,11 +61,29 @@ RtD3 <- function(geoData = NULL,
   check_input_columns <- function(data){
 
     if (deparse(substitute(data)) == 'geoData'){
+
       return(length(setdiff(expected_columns[['geoData']], colnames(data))) == 0)
-    } else if (deparse(substitute(data)) %in% c('rtData', 'casesInfectionData', 'casesReportData')){
-      return(length(setdiff(expected_columns[['rtData']], colnames(data))) == 0)
+
+    } else if (deparse(substitute(data)) %in% c('rtData')){
+
+      agreement <- c()
+
+      n_not_null <- c()
+
+      for (source in names(data)){
+        n_not_null <- append(n_not_null, sum(sapply(data[[source]], function(x){return(!is.null(x))})))
+
+        for (dataset in data[[source]]){
+          agreement <- append(agreement, length(setdiff(expected_columns[['rtData']], colnames(dataset))) == 0)
+        }
+      }
+
+      return(sum(agreement) == sum(n_not_null))
+
     } else if (deparse(substitute(data)) == 'obsCasesData'){
+
       return(length(setdiff(expected_columns[['obsCasesData']], colnames(data))) == 0)
+
     } else {
       stop('Unknown dataset "', deparse(substitute(data)), '"  input for check_input_columns')
     }
@@ -95,34 +95,17 @@ RtD3 <- function(geoData = NULL,
   }
 
   if (!is.null(rtData)){
-    if (!check_input_columns(rtData)){stop("rtData missing required columns. rtData must contain: ", paste(expected_columns[['rtData']], collapse = ' '))}
-  }
-
-  if (!is.null(casesInfectionData)){
-    if (!check_input_columns(casesInfectionData)){stop("casesInfectionData missing required columns. casesInfectionData must contain: ", paste(expected_columns[['rtData']], collapse = ' '))}
-  }
-
-  if (!is.null(casesReportData)){
-    if (!check_input_columns(casesReportData)){stop("casesReportData missing required columns. casesReportData must contain: ", paste(expected_columns[['rtData']], collapse = ' '))}
+    if (!check_input_columns(rtData)){stop("rtData missing required columns. All datasets must contain: ", paste(expected_columns[['rtData']], collapse = ' '))}
   }
 
   if (!is.null(obsCasesData)){
     if (!check_input_columns(obsCasesData)){stop("obsCasesData missing required columns. obsCasesData must contain: ", paste(expected_columns[['obsCasesData']], collapse = ' '))}
   }
 
-  estimate_datasets <- list(rtData,
-                            casesInfectionData,
-                            casesReportData,
-                            rtData_Deaths,
-                            casesInfectionData_Deaths,
-                            casesReportData_Deaths)
-
-  estimate_datasets <- Filter(Negate(is.null), estimate_datasets)
-
   #check geodata name intersection issues
   if (!is.null(geoData)){
 
-    name_diff <- setdiff(unique(estimate_datasets[[1]]$country), unique(geoData$sovereignt))
+    name_diff <- setdiff(unique(rtData[[1]][[1]]$country), unique(geoData$sovereignt))
 
     if (length(name_diff) > 0 & length(name_diff) <= 5){
       warning('The following names are present in the estimates but not in the GeoData: ', paste(name_diff, collapse = ', '), '.')
@@ -135,7 +118,7 @@ RtD3 <- function(geoData = NULL,
   #check obscases name intersection issues
   if (!is.null(obsCasesData)){
 
-    name_diff <- setdiff(unique(estimate_datasets[[1]]$country), unique(obsCasesData$region))
+    name_diff <- setdiff(unique(rtData[[1]][[1]]$country), unique(obsCasesData$region))
 
     if (length(name_diff) > 0 & length(name_diff) <= 5){
       warning('The following names are present in the estimates but not in the obsCasesData: ', paste(name_diff, collapse = ', '), '.')
@@ -152,8 +135,8 @@ RtD3 <- function(geoData = NULL,
     height = height + 500
   }
 
-  if(length(estimate_datasets) < 3){
-    height = height + (225 * length(estimate_datasets))
+  if(length(rtData[[1]]) < 3){
+    height = height + (225 * length(rtData[[1]]))
   } else {
     height = height + (225 * 3)
   }
@@ -168,7 +151,7 @@ RtD3 <- function(geoData = NULL,
 
   jsonNull <- function(data){
     if (!is.null(data)){
-      return(jsonlite::toJSON(data))
+      return(jsonlite::toJSON(data, null = "null"))
     } else {
       return(data)
     }
@@ -183,12 +166,7 @@ RtD3 <- function(geoData = NULL,
     geoData = geoData,
     summaryData = jsonNull(summaryData),
     rtData = jsonNull(rtData),
-    casesInfectionData = jsonNull(casesInfectionData),
-    casesReportData = jsonNull(casesReportData),
     obsCasesData = jsonNull(obsCasesData),
-    rtData_Deaths = jsonNull(rtData_Deaths),
-    casesInfectionData_Deaths = jsonNull(casesInfectionData_Deaths),
-    casesReportData_Deaths = jsonNull(casesReportData_Deaths),
     subregional_ref = subregional_ref
   )
 
