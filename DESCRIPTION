@@ -17,7 +17,9 @@ Imports:
     jsonlite,
     htmlwidgets,
     geojsonsf,
-    sf
+    sf,
+    knitr
 Suggests:
     testthat,
     covr
+    

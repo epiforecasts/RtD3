@@ -13,7 +13,7 @@ summaryWidget(
   activeTime = "all",
   runDate = NULL,
   subregional_ref = NULL,
-  width = 1000,
+  width = 900,
   elementId = NULL
 )
 }

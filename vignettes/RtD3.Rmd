@@ -1,0 +1,70 @@
+---
+title: "Creating an RtD3 visualisation"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Creating an RtD3 visualisation}
+  %\usepackage[UTF-8]{RtD3}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+require(RtD3)
+```
+
+## Overview
+
+RtD3 creates interactive visualisations of rt estimates using JavaScript and D3. RtD3 provides an interface to these JavaScript visualisations from R. Plots can be added to the RStudio Viewer, included in R Markdown documents, or embedded in a Shiny app.
+
+This package is closely linked to the estimates produced by the [EpiNow2](https://epiforecasts.io/EpiNow2/) package, an open source resource for creating rt estimates.
+
+## Basic visualisation
+
+RtD3 is flexible, and will attempt to generate an interactive visualisation with whatever datasets it receives. Columns must be in a standard format (detailed in the documentation). 
+
+This example relies on estimates from [epiforecasts covid-rt-estimates](https://github.com/epiforecasts/covid-rt-estimates).
+
+```{r }
+
+base_url <- 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/'
+
+geoData <- rnaturalearth::ne_countries(returnclass = 'sf')
+
+summaryData <- readr::read_csv(paste0(base_url, 'cases/summary/summary_table.csv'), col_types = cols())
+
+rtData <- readr::read_csv(paste0(base_url, 'cases/summary/rt.csv'), col_types = cols())
+
+casesInfectionData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_infection.csv'), col_types = cols())
+
+casesReportData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_report.csv'), col_types = cols())
+
+obsCasesData <- readr::read_csv(paste0(base_url, 'cases/summary/reported_cases.csv'), col_types = cols())
+
+```
+
+Rt data is passed to the visualisation function in a JSON-like list of lists to allow for visualisation of different data training data sources. Rt data should be prepared in the format `{'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}`
+
+```{r}
+
+rtData = list('Cases' = list('rtData' = rtData, 
+                             'casesInfectionData' = casesInfectionData, 
+                             'casesReportData' = casesReportData, 
+                             'obsCasesData' = obsCasesData))
+
+```
+
+All required datasets are then passed to the visualisation function. Note: missing datasets in `rtData` should be `NULL`, not absent.
+
+
+``` {r echo=F}
+
+RtD3::summaryWidget(
+  geoData = geoData,
+  summaryData = summaryData,
+  rtData = rtData,
+)
+
+```
+
+Notice the warning that some names in the estimates are not present in the geoData. Estimates for these areas will still be accessible using the dropdown. The disagreement between geographic names can be addressed before calling `RtD3::summaryWidget`.

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://hamishgibbs.github.io/RtD3/index.html</loc>
+  </url>
+  <url>
+    <loc>http://hamishgibbs.github.io/RtD3/reference/summaryWidget-shiny.html</loc>
+  </url>
+  <url>
+    <loc>http://hamishgibbs.github.io/RtD3/reference/summaryWidget.html</loc>
+  </url>
+  <url>
+    <loc>http://hamishgibbs.github.io/RtD3/articles/RtD3.html</loc>
+  </url>
+  <url>
+    <loc>http://hamishgibbs.github.io/RtD3/articles/detailed_config.html</loc>
+  </url>
+  <url>
+    <loc>http://hamishgibbs.github.io/RtD3/articles/subnational.html</loc>
+  </url>
+</urlset>

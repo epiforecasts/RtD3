@@ -1,0 +1,102 @@
+---
+title: "Detailed Configuration"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Detailed Configuration}
+  %\usepackage[UTF-8]{RtD3}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+require(RtD3)
+```
+
+## Overview
+
+RtD3 has a number of features that are not required, but can improve the output of a visualisation. 
+
+These features include:
+
+* Toggling multiple data sources
+* Linking to more detailed estimates
+* Plotting flexible geographies
+
+## Detailed visualisation
+
+We will prepare the geoData by resolving the USA name conflict between the geoData and estimates.
+
+``` {r}
+geoData <- rnaturalearth::ne_countries(returnclass = 'sf')
+
+
+geoData <- geoData %>% 
+  mutate(sovereignt = ifelse(sovereignt == 'United States of America', 'United States', sovereignt))
+
+```
+
+We will also add a second data source (Cases and Deaths) to the rtData.
+
+``` {r}
+base_url <- 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/'
+
+summaryData <- readr::read_csv(paste0(base_url, 'cases/summary/summary_table.csv'), col_types = cols())
+
+rtData <- readr::read_csv(paste0(base_url, 'cases/summary/rt.csv'), col_types = cols())
+
+casesInfectionData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_infection.csv'), col_types = cols())
+
+casesReportData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_report.csv'), col_types = cols())
+
+obsCasesData <- readr::read_csv(paste0(base_url, 'cases/summary/reported_cases.csv'), col_types = cols())
+
+rtData_death <- readr::read_csv(paste0(base_url, 'deaths/summary/rt.csv'), col_types = cols())
+
+casesInfectionData_death <- readr::read_csv(paste0(base_url, 'deaths/summary/cases_by_infection.csv'), col_types = cols())
+
+casesReportData_death <- readr::read_csv(paste0(base_url, 'deaths/summary/cases_by_report.csv'), col_types = cols())
+
+obsCasesData_death <- readr::read_csv(paste0(base_url, 'deaths/summary/reported_cases.csv'), col_types = cols())
+```
+
+Here, rtData will have two items, "Cases" and "Deaths". These labels are flexible and are passed to the dataset selector dropdown.
+
+``` {r}
+rtData = list('Cases' = list('rtData' = rtData, 
+                             'casesInfectionData' = casesInfectionData, 
+                             'casesReportData' = casesReportData, 
+                             'obsCasesData' = obsCasesData),
+              'Deaths' = list('rtData' = rtData_death, 
+                             'casesInfectionData' = casesInfectionData_death, 
+                             'casesReportData' = casesReportData_death, 
+                             'obsCasesData' = obsCasesData_death))
+
+```
+
+We can also configre a list of URLs to link more detailed estimates.
+
+``` {r}
+subregional_ref <- list('Afghanistan' = 'https://epiforecasts.io/covid/posts/national/afghanistan/',
+     'Brazil' = 'https://epiforecasts.io/covid/posts/national/brazil/',
+     'Colombia' = 'https://epiforecasts.io/covid/posts/national/colombia/',
+     'India' = 'https://epiforecasts.io/covid/posts/national/india/',
+     'Italy' = 'https://epiforecasts.io/covid/posts/national/italy/',
+     'Germany' = 'https://epiforecasts.io/covid/posts/national/germany/',
+     'Russia' = 'https://epiforecasts.io/covid/posts/national/russia/',
+     'United Kingdom' = 'https://epiforecasts.io/covid/posts/national/united-kingdom/',
+     'United States of America' = 'https://epiforecasts.io/covid/posts/national/united-states/')
+```
+
+The data and config are then passed to `RtD3::summaryWidget`.
+
+``` {r echo=F}
+
+RtD3::summaryWidget(
+  geoData = geoData,
+  summaryData = summaryData,
+  rtData = rtData,
+  subregional_ref = subregional_ref
+)
+
+```

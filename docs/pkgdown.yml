@@ -1,0 +1,12 @@
+pandoc: 2.3.1
+pkgdown: 1.5.1
+pkgdown_sha: ~
+articles:
+  RtD3: RtD3.html
+  detailed_config: detailed_config.html
+  subnational: subnational.html
+last_built: 2020-08-29T00:44Z
+urls:
+  reference: http://hamishgibbs.github.io/RtD3/reference
+  article: http://hamishgibbs.github.io/RtD3/articles
+

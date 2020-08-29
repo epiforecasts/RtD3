@@ -1,0 +1,69 @@
+---
+title: "Subnational Visualisations"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Subnational Visualisations}
+  %\usepackage[UTF-8]{RtD3}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+require(RtD3)
+```
+
+## Overview
+
+RtD3 supports visualisations for subnational estimates using the same interface. Data must have the same structure and columns as global data. 
+
+## India
+
+Plotting subnational estimates requires that column names are identical to the columns required from gloabl estimates. 
+
+```{r }
+
+base_url <- 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/subnational/india/'
+
+geoData <- rnaturalearth::ne_states('India', returnclass = 'sf') %>% 
+  rename(sovereignt = name_en)
+
+summaryData <- readr::read_csv(paste0(base_url, 'cases/summary/summary_table.csv'), col_types = cols()) %>% 
+  rename(Country = Region)
+
+rtData <- readr::read_csv(paste0(base_url, 'cases/summary/rt.csv'), col_types = cols()) %>% 
+  rename(country = region)
+
+casesInfectionData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_infection.csv'), col_types = cols()) %>% 
+  rename(country = region)
+
+casesReportData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_report.csv'), col_types = cols()) %>% 
+  rename(country = region)
+
+obsCasesData <- readr::read_csv(paste0(base_url, 'cases/summary/reported_cases.csv'), col_types = cols())
+
+```
+
+The same as in the introductory example, rt data is passed in a JSON-like object.
+
+```{r}
+
+rtData = list('Cases' = list('rtData' = rtData, 
+                             'casesInfectionData' = casesInfectionData, 
+                             'casesReportData' = casesReportData, 
+                             'obsCasesData' = obsCasesData))
+
+```
+
+This data is then passed to `RtD3::summaryWidget`.
+
+``` {r echo=F}
+
+RtD3::summaryWidget(
+  geoData = geoData,
+  summaryData = summaryData,
+  rtData = rtData,
+  activeArea = 'Sikkim'
+)
+
+```
