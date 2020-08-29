@@ -9,7 +9,7 @@ summaryWidget(
   summaryData = NULL,
   rtData = NULL,
   activeArea = "United Kingdom",
-  activeData = "R0",
+  activeData = "R",
   activeTime = "all",
   runDate = NULL,
   subregional_ref = NULL,
