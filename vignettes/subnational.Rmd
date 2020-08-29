@@ -1,9 +1,9 @@
 ---
-title: "Subnational Visualisations"
+title: "Subnational Visualizations"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{Subnational Visualisations}
+  %\VignetteIndexEntry{Subnational Visualizations}
   %\usepackage[UTF-8]{RtD3}
 ---
 
@@ -15,11 +15,11 @@ require(RtD3)
 
 ## Overview
 
-RtD3 supports visualisations for subnational estimates using the same interface. Data must have the same structure and columns as global data. 
+RtD3 supports visualizations for subnational estimates using the same interface. Data must have the same structure and columns as global data. 
 
 ## India
 
-Plotting subnational estimates requires that column names are identical to the columns required from gloabl estimates. 
+Plotting subnational estimates requires that column names are identical to the columns required from global estimates. 
 
 ```{r }
 

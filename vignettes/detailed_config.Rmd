@@ -15,7 +15,7 @@ require(RtD3)
 
 ## Overview
 
-RtD3 has a number of features that are not required, but can improve the output of a visualisation. 
+RtD3 has a number of features that are not required, but can improve the output of a visualization. 
 
 These features include:
 
@@ -23,7 +23,7 @@ These features include:
 * Linking to more detailed estimates
 * Plotting flexible geographies
 
-## Detailed visualisation
+## Detailed visualization
 
 We will prepare the geoData by resolving the USA name conflict between the geoData and estimates.
 
@@ -74,7 +74,7 @@ rtData = list('Cases' = list('rtData' = rtData,
 
 ```
 
-We can also configre a list of URLs to link more detailed estimates.
+We can also configure a list of URLs to link more detailed estimates.
 
 ``` {r}
 subregional_ref <- list('Afghanistan' = 'https://epiforecasts.io/covid/posts/national/afghanistan/',

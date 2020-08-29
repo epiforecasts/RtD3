@@ -1,9 +1,9 @@
 ---
-title: "Creating an RtD3 visualisation"
+title: "Creating an RtD3 visualization"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{Creating an RtD3 visualisation}
+  %\VignetteIndexEntry{Creating an RtD3 visualization}
   %\usepackage[UTF-8]{RtD3}
 ---
 
@@ -15,13 +15,13 @@ require(RtD3)
 
 ## Overview
 
-RtD3 creates interactive visualisations of rt estimates using JavaScript and D3. RtD3 provides an interface to these JavaScript visualisations from R. Plots can be added to the RStudio Viewer, included in R Markdown documents, or embedded in a Shiny app.
+RtD3 creates interactive visualizations of rt estimates using JavaScript and D3. RtD3 provides an interface to these JavaScript visualizations from R. Plots can be added to the RStudio Viewer, included in R Markdown documents, or embedded in a Shiny app.
 
 This package is closely linked to the estimates produced by the [EpiNow2](https://epiforecasts.io/EpiNow2/) package, an open source resource for creating rt estimates.
 
-## Basic visualisation
+## Basic visualization
 
-RtD3 is flexible, and will attempt to generate an interactive visualisation with whatever datasets it receives. Columns must be in a standard format (detailed in the documentation). 
+RtD3 is flexible, and will attempt to generate an interactive visualization with whatever data sets it receives. Columns must be in a standard format (detailed in the documentation). 
 
 This example relies on estimates from [epiforecasts covid-rt-estimates](https://github.com/epiforecasts/covid-rt-estimates).
 
@@ -43,7 +43,7 @@ obsCasesData <- readr::read_csv(paste0(base_url, 'cases/summary/reported_cases.c
 
 ```
 
-Rt data is passed to the visualisation function in a JSON-like list of lists to allow for visualisation of different data training data sources. Rt data should be prepared in the format `{'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}`
+Rt data is passed to the visualization function in a JSON-like list of lists to allow for visualization of different data training data sources. Rt data should be prepared in the format `{'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}`
 
 ```{r}
 
@@ -54,7 +54,7 @@ rtData = list('Cases' = list('rtData' = rtData,
 
 ```
 
-All required datasets are then passed to the visualisation function. Note: missing datasets in `rtData` should be `NULL`, not absent.
+All required datasets are then passed to the visualization function. Note: missing datasets in `rtData` should be `NULL`, not absent.
 
 
 ``` {r echo=F}
