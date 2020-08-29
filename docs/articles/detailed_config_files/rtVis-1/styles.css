@@ -187,29 +187,7 @@
   background-color: #C3C3C3;
 }
 ;.phony {}
-
-.legend-button-container {
-  position: absolute;
-  width: 250px;
-  height: 185px;
-
-}
-
-.legend-button {
-  background-color: #e7e7e7;
-  color: black;
-  border: none;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  text-align: center;
-  border-radius: 8px;
-}
-
-.legend-button:hover {
-  background-color: #C3C3C3;
-}
+  
 ;.phony {}
 
 .poly_90_e {
