@@ -142,15 +142,15 @@ testthat::test_that('check_obsCasesData_columns works as expected', {
 
 testthat::test_that('check_rtData_structure works as expected', {
   
-  expected_names <- c("rtData", "casesInfectionData", "casesReportData")
+  expected_names <- c("rtData", "casesInfectionData", "casesReportData", "obsCasesData")
   
-  rt <- list('a'=list('rtData' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a'),
-             'b'=list('rtData' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a'))
+  rt <- list('a'=list('rtData' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a', "obsCasesData" = 'a'),
+             'b'=list('rtData' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a', "obsCasesData" = 'a'))
   
   testthat::expect_true(check_rtData_structure(rt, expected_names))
   
-  rt <- list('a'=list('a' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a'),
-             'b'=list('rtData' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a'))
+  rt <- list('a'=list('a' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a', "obsCasesData" = 'a'),
+             'b'=list('rtData' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a', "obsCasesData" = 'a'))
   
   testthat::expect_false(check_rtData_structure(rt, expected_names))
   
@@ -172,6 +172,19 @@ testthat::test_that('summaryWidget errors as expected', {
   testthat::expect_error(summaryWidget(correct_geoData, incorrect_summaryData, correct_rtData))
   
   testthat::expect_error(summaryWidget(correct_geoData, correct_summaryData, incorrect_rtData))
+    
+  rt <- list('a'=list('a' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a', "obsCasesData" = 'a'),
+             'b'=list('rtData' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a', "obsCasesData" = 'a'))
+  
+  testthat::expect_error(summaryWidget(correct_geoData, correct_summaryData, rt))
+  
+  rt <- list('a'=list('rtData' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a', "obsCasesData" = 'a'),
+             'b'=list('rtData' = 'a', 'casesInfectionData' = 'a', 'casesReportData' = 'a', "obsCasesData" = 'a'))
+  
+  gd <- sf::st_sf(a=3, geometry = sf::st_sfc(sf::st_point(1:2)))
+  
+  testthat::expect_error(summaryWidget(gd, correct_summaryData, rt))
+  
   
 })
 
