@@ -7,7 +7,6 @@
 #' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}
 #' @param subregional_ref list, reference to subnational estimates in the format {'country_name':'url', ...}.
 #' @param activeArea character, the default area to plot (defaults to United Kingdom)
-#' @param activeData character, the default dataset to plot (defaults to 'R0')
 #' @param activeTime character, the default time window (defaults to 'all')
 #' @param runDate character, date of estimate run in the format ('YYYY-MM-DD')
 #' @param width integer, width in pixels
@@ -21,7 +20,6 @@ summaryWidget <- function(geoData = NULL,
                  summaryData = NULL,
                  rtData = NULL,
                  activeArea = 'United Kingdom',
-                 activeData = 'R0',
                  activeTime = 'all',
                  runDate = NULL,
                  subregional_ref = NULL,
@@ -74,7 +72,6 @@ summaryWidget <- function(geoData = NULL,
   # forward options using x
   x = list(
     activeArea = activeArea,
-    activeData = activeData,
     activeTime = activeTime,
     runDate = runDate,
     geoData = geojsonNull(geoData),
