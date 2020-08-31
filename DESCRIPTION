@@ -1,5 +1,5 @@
 Package: RtD3
-Title: What the Package Does (One Line, Title Case)
+Title: Rt Visualization in D3
 Version: 0.0.0.9000
 Authors@R:
     person(given = "Hamish",
@@ -7,12 +7,12 @@ Authors@R:
            role = c("aut", "cre"),
            email = "lshhg2@lshtm.ac.uk",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: An R interface for the JavaScript library rt_vis(<https://github.com/hamishgibbs/rt_vis>).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Imports:
     jsonlite,
     htmlwidgets,
@@ -22,4 +22,3 @@ Imports:
 Suggests:
     testthat,
     covr
-    
