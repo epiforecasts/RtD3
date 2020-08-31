@@ -169,8 +169,11 @@ either input via a list object or from a file path/url.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Read in each summary folder</span>
-<span class='no'>rtData</span> <span class='kw'>&lt;-</span> <span class='fu'>readInEpiNow2</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary"</span>,
-                        <span class='kw'>region_var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)
+
+<span class='no'>base_path</span> <span class='kw'>&lt;-</span> <span class='st'>"https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/"</span>
+<span class='no'>rtData</span> <span class='kw'>&lt;-</span> <span class='fu'>readInEpiNow2</span>(
+  <span class='kw'>path</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>base_path</span>, <span class='st'>"master/national/cases/summary"</span>),
+  <span class='kw'>region_var</span> <span class='kw'>=</span> <span class='st'>"country"</span>)
 
 <span class='no'>rtData</span></div><div class='output co'>#&gt; $summary
 #&gt;          Country New confirmed cases by infection date

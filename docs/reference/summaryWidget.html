@@ -151,7 +151,8 @@
   <span class='kw'>runDate</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>subregional_ref</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>900</span>,
-  <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
+  <span class='kw'>elementId</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>dryRun</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -192,6 +193,11 @@
     <tr>
       <th>elementId</th>
       <td><p>string, id of element</p></td>
+    </tr>
+    <tr>
+      <th>dryRun</th>
+      <td><p>Logical, defaults to FALSE. Should the function be tested without the widget being created.
+Useful for checking the integrity of input data.</p></td>
     </tr>
     </table>
 
