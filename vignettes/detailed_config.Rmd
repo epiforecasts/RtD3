@@ -33,7 +33,6 @@ geoData <- rnaturalearth::ne_countries(returnclass = 'sf')
 
 geoData <- geoData %>% 
   mutate(sovereignt = ifelse(sovereignt == 'United States of America', 'United States', sovereignt))
-
 ```
 
 We will also add a second data source (Cases and Deaths) to the rtData.
@@ -71,7 +70,6 @@ rtData = list('Cases' = list('rtData' = rtData,
                              'casesInfectionData' = casesInfectionData_death, 
                              'casesReportData' = casesReportData_death, 
                              'obsCasesData' = obsCasesData_death))
-
 ```
 
 We can also configure a list of URLs to link more detailed estimates.
@@ -90,13 +88,11 @@ subregional_ref <- list('Afghanistan' = 'https://epiforecasts.io/covid/posts/nat
 
 The data and config are then passed to `RtD3::summaryWidget`.
 
-``` {r echo=F}
-
+``` {r}
 RtD3::summaryWidget(
   geoData = geoData,
   summaryData = summaryData,
   rtData = rtData,
   subregional_ref = subregional_ref
 )
-
 ```

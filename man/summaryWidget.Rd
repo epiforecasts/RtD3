@@ -8,7 +8,7 @@ summaryWidget(
   geoData = NULL,
   summaryData = NULL,
   rtData = NULL,
-  activeArea = "United Kingdom",
+  activeArea = NULL,
   activeTime = "all",
   runDate = NULL,
   subregional_ref = NULL,
@@ -23,7 +23,7 @@ summaryWidget(
 
 \item{rtData}{data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}}
 
-\item{activeArea}{character, the default area to plot (defaults to United Kingdom)}
+\item{activeArea}{character, the default area to plot.}
 
 \item{activeTime}{character, the default time window (defaults to 'all')}
 
