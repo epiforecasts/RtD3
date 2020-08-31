@@ -8,10 +8,10 @@ citEntry(entry = "Article",
   volume       = "-",
   number       = "-",
   pages        = "-",
-  doi          = "https://github.com/hamishgibbs/RtD3",
+  doi          = "https://hamishgibbs.github.io/RtD3/",
 
   textVersion  =
   paste("Hamish Gibbs (2020).",
         "RtD3: Rt Visualization in D3, ",
-        "URL: https://github.com/hamishgibbs/RtD3")
+        "URL:  https://hamishgibbs.github.io/RtD3/")
 )
