@@ -43,8 +43,10 @@ We will also add a second data source to the rtData. Here, rtData will have two 
 base_url <- 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/'
 
 # Read in each summary folder
-rtData <- list("Cases" = RtD3::readInEpiNow2(path = paste0(base_url, "cases/summary")),
-               "Deaths" = RtD3::readInEpiNow2(path = paste0(base_url, "deaths/summary")))
+rtData <- list("Cases" = RtD3::readInEpiNow2(path = paste0(base_url, "cases/summary"),
+                                             region_var = "country"),
+               "Deaths" = RtD3::readInEpiNow2(path = paste0(base_url, "deaths/summary"),
+                                              region_var = "country"))
 
 # Extract summary data from cases
 summaryData <- rtData$Cases$summary

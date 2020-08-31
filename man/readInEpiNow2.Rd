@@ -4,12 +4,14 @@
 \alias{readInEpiNow2}
 \title{Read in Results from EpiNow2}
 \usage{
-readInEpiNow2(input_list, path)
+readInEpiNow2(input_list, path, region_var = "region")
 }
 \arguments{
 \item{input_list}{A list of results as returned by \code{EpiNow2::regional_summary}}
 
 \item{path}{A character string indicating the path (either file or URL) to the summary results}
+
+\item{region_var}{A character string that identifies the region name used.}
 }
 \value{
 A named list in the format required by \code{summaryWidget} along with a summary table.
@@ -19,11 +21,9 @@ Reads in results from \code{EpiNow2} and converts them into the \code{RtD3} form
 either input via a list object or from a file path/url.
 }
 \examples{
-# Define the base URL/file path for the estimates
-base_url <- 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/'
-
 # Read in each summary folder
-rtData <- readInEpiNow2(path = paste0(base_url, "cases/summary"))
+rtData <- readInEpiNow2(path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
+                        region_var = "country")
 
 rtData
 }
