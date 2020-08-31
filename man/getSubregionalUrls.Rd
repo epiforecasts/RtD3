@@ -21,6 +21,6 @@ Get Subregional Estimate Urls
 \examples{
 
 getSubregionalUrls(path = "https://epiforecasts.io/covid/posts/national/",
-                  areas = c('Afghanistan', 'Brazil', 'Colombia', 'India'))
+                  areas = c('Afghanistan', 'Brazil', 'Colombia', 'United States'))
 
 }

@@ -10,10 +10,11 @@
 #' @examples
 #'
 #'getSubregionalUrls(path = "https://epiforecasts.io/covid/posts/national/",
-#'                   areas = c('Afghanistan', 'Brazil', 'Colombia', 'India'))
+#'                   areas = c('Afghanistan', 'Brazil', 'Colombia', 'United States'))
 #'
 getSubregionalUrls <- function(path, areas) {
 
+  areas <- sub(" ", "-", areas)
   subregional_ref <-  paste0(path, tolower(areas), "/")
   names(subregional_ref) <- areas
 
