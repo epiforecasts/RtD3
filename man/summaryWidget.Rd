@@ -13,7 +13,8 @@ summaryWidget(
   runDate = NULL,
   subregional_ref = NULL,
   width = 900,
-  elementId = NULL
+  elementId = NULL,
+  dryRun = FALSE
 )
 }
 \arguments{
@@ -34,6 +35,9 @@ summaryWidget(
 \item{width}{integer, width in pixels}
 
 \item{elementId}{string, id of element}
+
+\item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.
+Useful for checking the integrity of input data.}
 }
 \description{
 Create an Rt visualisation using D3

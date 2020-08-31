@@ -11,7 +11,8 @@
 #' @param runDate character, date of estimate run in the format ('YYYY-MM-DD')
 #' @param width integer, width in pixels
 #' @param elementId string, id of element
-#'
+#' @param dryRun Logical, defaults to FALSE. Should the function be tested without the widget being created.
+#' Useful for checking the integrity of input data.
 #' @importFrom htmlwidgets createWidget
 #'
 #' @export
@@ -24,7 +25,8 @@ summaryWidget <- function(geoData = NULL,
                  runDate = NULL,
                  subregional_ref = NULL,
                  width = 900,
-                 elementId = NULL) {
+                 elementId = NULL,
+                 dryRun = FALSE) {
 
   arg_types <- sapply(ls(), function(x){return(class(get(x)))})
 
@@ -80,15 +82,20 @@ summaryWidget <- function(geoData = NULL,
     subregional_ref = subregional_ref
   )
 
-  # create widget
-  htmlwidgets::createWidget(
-    name = 'RtD3',
-    x,
-    width = width,
-    height = height,
-    package = 'RtD3',
-    elementId = elementId
-  )
+  if (!dryRun) {
+    # create widget
+    htmlwidgets::createWidget(
+      name = 'RtD3',
+      x,
+      width = width,
+      height = height,
+      package = 'RtD3',
+      elementId = elementId
+    )
+  }else{
+    return(TRUE)
+  }
+
 
 }
 
