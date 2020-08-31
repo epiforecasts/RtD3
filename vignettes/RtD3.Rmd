@@ -26,45 +26,31 @@ RtD3 is flexible, and will attempt to generate an interactive visualization with
 This example relies on estimates from [epiforecasts covid-rt-estimates](https://github.com/epiforecasts/covid-rt-estimates).
 
 ```{r }
-
 base_url <- 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/'
 
 geoData <- rnaturalearth::ne_countries(returnclass = 'sf')
 
-summaryData <- readr::read_csv(paste0(base_url, 'cases/summary/summary_table.csv'), col_types = cols())
+rtData <- list("Cases" = RtD3::readInEpiNow2(
+  path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
+  region_var = "country"
+  ))
 
-rtData <- readr::read_csv(paste0(base_url, 'cases/summary/rt.csv'), col_types = cols())
+# Extract summary data from cases
+summaryData <- rtData$Cases$summary
 
-casesInfectionData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_infection.csv'), col_types = cols())
-
-casesReportData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_report.csv'), col_types = cols())
-
-obsCasesData <- readr::read_csv(paste0(base_url, 'cases/summary/reported_cases.csv'), col_types = cols())
-
+## Drop remaining summary data
+rtData <- lapply(rtData, function(.){.[-1]})
 ```
 
-Rt data is passed to the visualization function in a JSON-like list of lists to allow for visualization of different data training data sources. Rt data should be prepared in the format `{'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}`
-
-```{r}
-
-rtData = list('Cases' = list('rtData' = rtData, 
-                             'casesInfectionData' = casesInfectionData, 
-                             'casesReportData' = casesReportData, 
-                             'obsCasesData' = obsCasesData))
-
-```
-
-All required datasets are then passed to the visualization function. Note: missing datasets in `rtData` should be `NULL`, not absent.
+Rt data is passed to the visualization function in a JSON-like list of lists to allow for visualization of different data training data sources. Rt data should be prepared in the format `{'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}`. All required datasets are then passed to the visualization function. Note: missing datasets in `rtData` should be `NULL`, not absent.
 
 
-``` {r echo=F}
-
+``` {r}
 RtD3::summaryWidget(
   geoData = geoData,
   summaryData = summaryData,
   rtData = rtData,
 )
-
 ```
 
 Notice the warning that some names in the estimates are not present in the geoData. Estimates for these areas will still be accessible using the dropdown. The disagreement between geographic names can be addressed before calling `RtD3::summaryWidget`.
