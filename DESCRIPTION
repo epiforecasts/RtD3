@@ -18,7 +18,8 @@ Imports:
     htmlwidgets,
     geojsonsf,
     sf,
-    knitr
+    knitr,
+    data.table
 Suggests:
     testthat,
     covr

@@ -35,55 +35,31 @@ geoData <- geoData %>%
   mutate(sovereignt = ifelse(sovereignt == 'United States of America', 'United States', sovereignt))
 ```
 
-We will also add a second data source (Cases and Deaths) to the rtData.
+We will also add a second data source to the rtData. Here, rtData will have two items, "Cases" and "Deaths". These labels are flexible and are passed to the dataset selector dropdown. Data can be extracted from `EpiNow2` easily using the `RtD3::readInEpinow2` function or as a list from other sources. 
+
 
 ``` {r}
+# Define the base URL/file path for the estimates
 base_url <- 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/'
 
-summaryData <- readr::read_csv(paste0(base_url, 'cases/summary/summary_table.csv'), col_types = cols())
+# Read in each summary folder
+rtData <- list("Cases" = RtD3::readInEpiNow2(path = paste0(base_url, "cases/summary")),
+               "Deaths" = RtD3::readInEpiNow2(path = paste0(base_url, "deaths/summary")))
 
-rtData <- readr::read_csv(paste0(base_url, 'cases/summary/rt.csv'), col_types = cols())
+# Extract summary data from cases
+summaryData <- rtData$Cases$summary
 
-casesInfectionData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_infection.csv'), col_types = cols())
-
-casesReportData <- readr::read_csv(paste0(base_url, 'cases/summary/cases_by_report.csv'), col_types = cols())
-
-obsCasesData <- readr::read_csv(paste0(base_url, 'cases/summary/reported_cases.csv'), col_types = cols())
-
-rtData_death <- readr::read_csv(paste0(base_url, 'deaths/summary/rt.csv'), col_types = cols())
-
-casesInfectionData_death <- readr::read_csv(paste0(base_url, 'deaths/summary/cases_by_infection.csv'), col_types = cols())
-
-casesReportData_death <- readr::read_csv(paste0(base_url, 'deaths/summary/cases_by_report.csv'), col_types = cols())
-
-obsCasesData_death <- readr::read_csv(paste0(base_url, 'deaths/summary/reported_cases.csv'), col_types = cols())
+## Drop remaining summary data
+rtData <- lapply(rtData, function(.){.[-1]})
 ```
 
-Here, rtData will have two items, "Cases" and "Deaths". These labels are flexible and are passed to the dataset selector dropdown.
+We can also configure a list of URLs to link more detailed estimates (using the `RtD3::getSubnationalUrls` helper function).
 
 ``` {r}
-rtData = list('Cases' = list('rtData' = rtData, 
-                             'casesInfectionData' = casesInfectionData, 
-                             'casesReportData' = casesReportData, 
-                             'obsCasesData' = obsCasesData),
-              'Deaths' = list('rtData' = rtData_death, 
-                             'casesInfectionData' = casesInfectionData_death, 
-                             'casesReportData' = casesReportData_death, 
-                             'obsCasesData' = obsCasesData_death))
-```
-
-We can also configure a list of URLs to link more detailed estimates.
-
-``` {r}
-subregional_ref <- list('Afghanistan' = 'https://epiforecasts.io/covid/posts/national/afghanistan/',
-     'Brazil' = 'https://epiforecasts.io/covid/posts/national/brazil/',
-     'Colombia' = 'https://epiforecasts.io/covid/posts/national/colombia/',
-     'India' = 'https://epiforecasts.io/covid/posts/national/india/',
-     'Italy' = 'https://epiforecasts.io/covid/posts/national/italy/',
-     'Germany' = 'https://epiforecasts.io/covid/posts/national/germany/',
-     'Russia' = 'https://epiforecasts.io/covid/posts/national/russia/',
-     'United Kingdom' = 'https://epiforecasts.io/covid/posts/national/united-kingdom/',
-     'United States of America' = 'https://epiforecasts.io/covid/posts/national/united-states/')
+subnational_ref <- RtD3::getSubnationalUrls(path = "https://epiforecasts.io/covid/posts/national/",
+                                            areas = c('Afghanistan', 'Brazil', 'Colombia', 'India', 
+                                                      'Italy', 'Germany', 'Russia', 'United Kingdom',
+                                                      'United States'))
 ```
 
 The data and config are then passed to `RtD3::summaryWidget`.
