@@ -10,8 +10,9 @@
 #' @importFrom data.table fread setnames
 #' @examples
 #' # Read in each summary folder
-#' rtData <- readInEpiNow2(path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
-#'                         region_var = "country")
+#' rtData <- readInEpiNow2(
+#'   path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
+#'   region_var = "country")
 #'
 #' rtData
 readInEpiNow2 <- function(input_list, path, region_var = "region") {
