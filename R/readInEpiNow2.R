@@ -7,7 +7,7 @@
 #' @param region_var A character string that identifies the region name used.
 #' @return A named list in the format required by `summaryWidget` along with a summary table.
 #' @export
-#' @importFrom data.table fread
+#' @importFrom data.table fread setnames
 #' @examples
 #' # Read in each summary folder
 #' rtData <- readInEpiNow2(path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
