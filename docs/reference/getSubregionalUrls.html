@@ -84,6 +84,27 @@
 <li>
   <a href="../news/index.html">News</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/RtD3.html">Creating an RtD3 visualization</a>
+    </li>
+    <li>
+      <a href="../articles/data_structure.html">Data structure</a>
+    </li>
+    <li>
+      <a href="../articles/detailed_config.html">Detailed configuration</a>
+    </li>
+    <li>
+      <a href="../articles/subnational.html">Subnational Visualizations</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="../reference/index.html">
     <span class="fa fa-file-code-o"></span>
@@ -142,7 +163,17 @@ geoData with capitalisation and without capitalisation in the path).</p></td>
     <p>A named list of subnational urls.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"></pre>
+    <pre class="examples"><div class='input'>
+<span class='fu'>getSubregionalUrls</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"https://epiforecasts.io/covid/posts/national/"</span>,
+                  <span class='kw'>areas</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>'Afghanistan'</span>, <span class='st'>'Brazil'</span>, <span class='st'>'Colombia'</span>, <span class='st'>'India'</span>))</div><div class='output co'>#&gt;                                                 Afghanistan 
+#&gt; "https://epiforecasts.io/covid/posts/national/afghanistan/" 
+#&gt;                                                      Brazil 
+#&gt;      "https://epiforecasts.io/covid/posts/national/brazil/" 
+#&gt;                                                    Colombia 
+#&gt;    "https://epiforecasts.io/covid/posts/national/colombia/" 
+#&gt;                                                       India 
+#&gt;       "https://epiforecasts.io/covid/posts/national/india/" </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
