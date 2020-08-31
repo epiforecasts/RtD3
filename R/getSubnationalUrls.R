@@ -14,7 +14,7 @@
 #'
 getSubnationalUrls <- function(path, areas) {
 
-  subregional_ref <-  paste0(subnational_base_url,tolower(areas), "/")
+  subregional_ref <-  paste0(path, tolower(areas), "/")
   names(subregional_ref) <- areas
 
   return(subregional_ref)
