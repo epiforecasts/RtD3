@@ -1,5 +1,3 @@
-
-
 context("readInEpiNow2")
 
 test_that("Test that readInEpiNow2 runs without error in dry run mode when used with summaryWidget", {
@@ -16,9 +14,10 @@ test_that("Test that readInEpiNow2 runs without error in dry run mode when used 
   out$Cases <- out$Cases[-1]
 
   testthat::expect_true(suppressWarnings(summaryWidget(geoData = geoData,
-                                      summaryData = summaryData,
-                                      rtData = out,
-                                      dryRun = TRUE)))
+                                                       summaryData = summaryData,
+                                                       rtData = out,
+                                                       dryRun = TRUE)))
 
 })
+
 
