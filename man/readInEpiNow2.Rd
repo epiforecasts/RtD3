@@ -22,8 +22,10 @@ either input via a list object or from a file path/url.
 }
 \examples{
 # Read in each summary folder
+
+base_path <- "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/"
 rtData <- readInEpiNow2(
-  path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
+  path = paste0(base_path, "master/national/cases/summary"),
   region_var = "country")
 
 rtData

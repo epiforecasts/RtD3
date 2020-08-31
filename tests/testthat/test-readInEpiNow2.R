@@ -7,16 +7,12 @@ test_that("Test that readInEpiNow2 runs without error in dry run mode when used 
     path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
     region_var = "country"))
 
-
-  summaryData <- rtData$Cases$summary
-  geoData <- rnaturalearth::ne_countries(returnclass = 'sf')
-
+  summaryData <- out$Cases$summary
   out$Cases <- out$Cases[-1]
 
-  testthat::expect_true(suppressWarnings(summaryWidget(geoData = geoData,
-                                                       summaryData = summaryData,
-                                                       rtData = out,
-                                                       dryRun = TRUE)))
+  testthat::expect_true(summaryWidget(summaryData = summaryData,
+                                      rtData = out,
+                                      dryRun = TRUE))
 
 })
 
