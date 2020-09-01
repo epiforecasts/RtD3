@@ -6,7 +6,6 @@
 \usage{
 summaryWidget(
   geoData = NULL,
-  summaryData = NULL,
   rtData = NULL,
   activeArea = NULL,
   activeTime = "all",
@@ -19,8 +18,6 @@ summaryWidget(
 }
 \arguments{
 \item{geoData}{sf object, map data}
-
-\item{summaryData}{data.frame, summary data for mapping}
 
 \item{rtData}{data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}}
 

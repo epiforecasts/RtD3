@@ -29,7 +29,7 @@ readInEpiNow2 <- function(input_list, path, region_var = "region") {
 
 
   if (!missing(input_list)) {
-    out <- list('summary' = input_list$summarised_results$table,
+    out <- list('summaryData' = input_list$summarised_results$table,
                 'rtData' = input_list$summarised_measures$rt,
                 'casesInfectionData' = input_list$summarised_measures$cases_by_infection,
                 'casesReportData' =  input_list$summarised_measures$cases_by_report,
@@ -40,7 +40,7 @@ readInEpiNow2 <- function(input_list, path, region_var = "region") {
 
     path <- paste0(path, "/")
 
-    out <- list('summary' = data.table::fread(paste0(path, 'summary_table.csv')),
+    out <- list('summaryData' = data.table::fread(paste0(path, 'summary_table.csv')),
                 'rtData' = data.table::fread(paste0(path, 'rt.csv')),
                 'casesInfectionData' = data.table::fread(paste0(path, 'cases_by_infection.csv')),
                 'casesReportData' = data.table::fread(paste0(path, 'cases_by_report.csv')),
@@ -55,10 +55,10 @@ readInEpiNow2 <- function(input_list, path, region_var = "region") {
     sapply(strsplit(s, split = " "), cap, USE.NAMES = !is.null(names(s)))
   }
 
-  out$summary <- data.table::setnames(out$summary, capwords(region_var), "Country")
+  out$summaryData <- data.table::setnames(out$summaryData, capwords(region_var), "Region")
 
   rename_col <- function(df) {
-    df <- data.table::setnames(df, region_var, "country")
+    df <- data.table::setnames(df, region_var, "region")
   }
 
   out$rtData <- rename_col(out$rtData)
