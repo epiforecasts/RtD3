@@ -40,5 +40,5 @@ summaryWidget(geoData = geoData, rtData = rtData)
 
 ## Development
 
-Comments and contributions to this package are welcome. To record a problem with the package, please [create an issue](https://github.com/hamishgibbs/RtD3/issues/new) on [Github](https://github.com/hamishgibbs/RtD3). 
+Comments and contributions to this package are welcome. To record a problem with the package, please [create an issue](https://github.com/epiforecasts/RtD3/issues/new) on [Github](https://github.com/epiforecasts/RtD3). 
 
