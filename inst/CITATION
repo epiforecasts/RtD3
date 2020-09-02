@@ -2,16 +2,16 @@ citHeader("To cite RtD3 in publications use:")
 
 citEntry(entry = "Article",
   title        = "RtD3: Rt Visualization in D3",
-  author       = personList(as.person("Hamish Gibbs")),
-  journal      = "-",
+  author       = personList(as.person("Hamish Gibbs"), as.person("Sam Abbott"), as.person("Sebastian Funk")),
+  journal      = "Zenodo",
   year         = "2020",
   volume       = "-",
   number       = "-",
   pages        = "-",
-  doi          = "https://epiforecasts.io/RtD3/",
+  doi          = "10.5281/zenodo.4011841",
 
   textVersion  =
   paste("Hamish Gibbs (2020).",
         "RtD3: Rt Visualization in D3, ",
-        "URL:  https://epiforecasts.io/RtD3/")
+        "DOI:  10.5281/zenodo.4011841")
 )
