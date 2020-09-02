@@ -3,28 +3,28 @@
 #' @description Create an Rt visualisation using D3
 #'
 #' @param geoData sf object, map data
-#' @param summaryData data.frame, summary data for mapping
 #' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}
 #' @param subregional_ref list, reference to subnational estimates in the format {'country_name':'url', ...}.
-#' @param activeArea character, the default area to plot (defaults to United Kingdom)
+#' @param activeArea character, the default area to plot.
 #' @param activeTime character, the default time window (defaults to 'all')
 #' @param runDate character, date of estimate run in the format ('YYYY-MM-DD')
 #' @param width integer, width in pixels
 #' @param elementId string, id of element
-#'
+#' @param dryRun Logical, defaults to FALSE. Should the function be tested without the widget being created.
+#' Useful for checking the integrity of input data.
 #' @importFrom htmlwidgets createWidget
 #'
 #' @export
 
 summaryWidget <- function(geoData = NULL,
-                 summaryData = NULL,
                  rtData = NULL,
-                 activeArea = 'United Kingdom',
+                 activeArea = NULL,
                  activeTime = 'all',
                  runDate = NULL,
                  subregional_ref = NULL,
                  width = 900,
-                 elementId = NULL) {
+                 elementId = NULL,
+                 dryRun = FALSE) {
 
   arg_types <- sapply(ls(), function(x){return(class(get(x)))})
 
@@ -32,22 +32,22 @@ summaryWidget <- function(geoData = NULL,
     if (!'sf' %in% unlist(arg_types['geoData'])){stop('geoData must be an sf object')}
   }
 
-  if(!is.null(summaryData)){
-    if (!'data.frame' %in% unlist(arg_types['summaryData'])){stop('summaryData must be a data.frame object')}
-  }
+  #if(!is.null(summaryData)){
+  #  if (!'data.frame' %in% unlist(arg_types['summaryData'])){stop('summaryData must be a data.frame object')}
+  #}
 
   if(!is.null(rtData)){
     if (!'list' %in% unlist(arg_types['rtData'])){stop('rtData must be a list object')}
   }
 
   #check rt data structure
-  rt_expected_names <- c("rtData", "casesInfectionData", "casesReportData", "obsCasesData")
+  rt_expected_names <- c("summaryData", "rtData", "casesInfectionData", "casesReportData", "obsCasesData")
 
   if(!check_rtData_structure(rtData, rt_expected_names)){stop("Each level of rtData must include ", paste(rt_expected_names, collapse = ' '), ". Missing items should be NULL.")}
 
   #columns in this list must be present in the appropriate datasets
   expected_columns <- list(geoData = c('sovereignt', 'geometry'),
-    rtData = c('country','date','type','median','lower_90','upper_90','lower_50','upper_50'),
+    rtData = c('region','date','type','median','lower_90','upper_90','lower_50','upper_50'),
     obsCasesData = c('region','date','confirm')
   )
 
@@ -67,7 +67,7 @@ summaryWidget <- function(geoData = NULL,
   }
 
   #define height, which is fixed based on dataset availability
-  height <- define_height(geoData = geoData, summaryData = summaryData, rtData = rtData)
+  height <- define_height(geoData = geoData, rtData = rtData)
 
   # forward options using x
   x = list(
@@ -75,20 +75,24 @@ summaryWidget <- function(geoData = NULL,
     activeTime = activeTime,
     runDate = runDate,
     geoData = geojsonNull(geoData),
-    summaryData = jsonNull(summaryData),
     rtData = jsonNull(rtData),
     subregional_ref = subregional_ref
   )
 
-  # create widget
-  htmlwidgets::createWidget(
-    name = 'RtD3',
-    x,
-    width = width,
-    height = height,
-    package = 'RtD3',
-    elementId = elementId
-  )
+  if (!dryRun) {
+    # create widget
+    htmlwidgets::createWidget(
+      name = 'RtD3',
+      x,
+      width = width,
+      height = height,
+      package = 'RtD3',
+      elementId = elementId
+    )
+  }else{
+    return(TRUE)
+  }
+
 
 }
 
@@ -145,9 +149,9 @@ check_rtData_columns <- function(rtData, expected_columns){
 
 check_geoData_names <- function(geoData, rtData){
 
-  rtSample <- rtData[[1]][[which(unlist(sapply(rtData[[1]], function(x){return(!is.null(x))})[1:3]))[1]]]
+  rtSample <- rtData[[1]][[which(unlist(sapply(rtData[[1]], function(x){return(!is.null(x))})[2:4]))[1] + 1]]
 
-  name_diff <- setdiff(rtSample$country, geoData$sovereignt)
+  name_diff <- setdiff(rtSample$region, geoData$sovereignt)
 
   name_warning_geoData(name_diff)
 
@@ -179,16 +183,16 @@ jsonNull <- function(data){
   }
 }
 
-define_height <- function(geoData, summaryData, rtData){
+define_height <- function(geoData, rtData){
 
   height = 0
 
-  if(!is.null(geoData) & !is.null(summaryData)){
+  if(!is.null(geoData) & !is.null(unlist(rtData[[1]]['summaryData']))){
     height = height + 500
   }
 
-  if(sum(sapply(rtData[[1]], function(x){return(!is.null(x))})[1:3]) < 3){
-    height = height + (225 * sum(sapply(rtData[[1]], function(x){return(!is.null(x))})[1:3]))
+  if(sum(sapply(rtData[[1]], function(x){return(!is.null(x))})[2:4]) < 3){
+    height = height + (225 * sum(sapply(rtData[[1]], function(x){return(!is.null(x))})[2:4]))
   } else {
     height = height + (225 * 3)
   }

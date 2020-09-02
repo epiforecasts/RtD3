@@ -6,24 +6,22 @@
 \usage{
 summaryWidget(
   geoData = NULL,
-  summaryData = NULL,
   rtData = NULL,
-  activeArea = "United Kingdom",
+  activeArea = NULL,
   activeTime = "all",
   runDate = NULL,
   subregional_ref = NULL,
   width = 900,
-  elementId = NULL
+  elementId = NULL,
+  dryRun = FALSE
 )
 }
 \arguments{
 \item{geoData}{sf object, map data}
 
-\item{summaryData}{data.frame, summary data for mapping}
-
 \item{rtData}{data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}}
 
-\item{activeArea}{character, the default area to plot (defaults to United Kingdom)}
+\item{activeArea}{character, the default area to plot.}
 
 \item{activeTime}{character, the default time window (defaults to 'all')}
 
@@ -34,6 +32,9 @@ summaryWidget(
 \item{width}{integer, width in pixels}
 
 \item{elementId}{string, id of element}
+
+\item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.
+Useful for checking the integrity of input data.}
 }
 \description{
 Create an Rt visualisation using D3

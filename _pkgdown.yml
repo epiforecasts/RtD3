@@ -1,2 +1,33 @@
 destination: docs
 url: http://hamishgibbs.github.io/RtD3
+template:
+  params:
+    bootswatch: lumen
+
+development:
+  mode: release
+
+navbar:
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: News
+      href: news/index.html
+    - text: Articles
+      menu:
+      - text: Creating an RtD3 visualization
+        href: articles/RtD3.html
+      - text: Data structure
+        href: articles/data_structure.html
+      - text: Detailed configuration
+        href: articles/detailed_config.html
+      - text: Subnational Visualizations
+        href: articles/subnational.html
+    - icon: fa-file-code-o
+      text: "Functions"
+      href: reference/index.html
+  right:
+    - icon: fa-github
+      href: https://github.com/hamishgibbs/RtD3
+

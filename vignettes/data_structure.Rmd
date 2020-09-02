@@ -3,7 +3,7 @@ title: "Data Structure"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEngine{knitr::knitr}
-  %\VignetteIndexEntry{Creating an RtD3 visualization}
+  %\VignetteIndexEntry{Data Structure}
   %\usepackage[UTF-8]{RtD3}
 ---
 
