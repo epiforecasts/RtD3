@@ -14,8 +14,9 @@
 #'
 getSubregionalUrls <- function(path, areas) {
 
-  areas <- sub(" ", "-", areas)
-  subregional_ref <-  paste0(path, tolower(areas), "/")
+  tweaked_areas <- sub(" ", "-", areas)
+  tweaked_areas <- tolower(tweaked_areas)
+  subregional_ref <-  paste0(path, tweaked_areas, "/")
   names(subregional_ref) <- areas
 
   return(subregional_ref)
