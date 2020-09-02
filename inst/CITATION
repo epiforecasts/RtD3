@@ -8,10 +8,10 @@ citEntry(entry = "Article",
   volume       = "-",
   number       = "-",
   pages        = "-",
-  doi          = "https://doi.org/10.5281/zenodo.4011841",
+  doi          = "10.5281/zenodo.4011841",
 
   textVersion  =
   paste("Hamish Gibbs (2020).",
         "RtD3: Rt Visualization in D3, ",
-        "URL:  https://doi.org/10.5281/zenodo.4011841")
+        "DOI:  10.5281/zenodo.4011841")
 )
