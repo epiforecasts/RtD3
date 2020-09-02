@@ -1,5 +1,5 @@
 destination: docs
-url: http://hamishgibbs.github.io/RtD3
+url: http:/epiforecasts.io/RtD3
 template:
   params:
     bootswatch: lumen
@@ -29,5 +29,5 @@ navbar:
       href: reference/index.html
   right:
     - icon: fa-github
-      href: https://github.com/hamishgibbs/RtD3
+      href: https://github.com/epiforecasts/RtD3
 
