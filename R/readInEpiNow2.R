@@ -40,11 +40,11 @@ readInEpiNow2 <- function(input_list, path, region_var = "region") {
 
     path <- paste0(path, "/")
 
-    out <- list('summaryData' = data.table::fread(paste0(path, 'summary_table.csv')),
-                'rtData' = data.table::fread(paste0(path, 'rt.csv')),
-                'casesInfectionData' = data.table::fread(paste0(path, 'cases_by_infection.csv')),
-                'casesReportData' = data.table::fread(paste0(path, 'cases_by_report.csv')),
-                'obsCasesData' = data.table::fread(paste0(path, 'reported_cases.csv')))
+    out <- list('summaryData' = data.table::fread(paste0(path, 'summary_table.csv'), integer64 = 'numeric'),
+                'rtData' = data.table::fread(paste0(path, 'rt.csv'), integer64 = 'numeric'),
+                'casesInfectionData' = data.table::fread(paste0(path, 'cases_by_infection.csv'), integer64 = 'numeric'),
+                'casesReportData' = data.table::fread(paste0(path, 'cases_by_report.csv'), integer64 = 'numeric'),
+                'obsCasesData' = data.table::fread(paste0(path, 'reported_cases.csv'), integer64 = 'numeric'))
   }
 
   ## Capitalise words using base r
