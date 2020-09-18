@@ -62,7 +62,6 @@ summaryWidget <- function(geoData = NULL,
     return(TRUE)
   }
 
-
 }
 
 geojsonNull <- function(data){
