@@ -33,7 +33,7 @@ mapWidget <- function(geoData = NULL,
 
     rtData_null$summaryData <- rtData[[source]]$summaryData
 
-    rtData_replacement[[source]] <- rtData_null$summaryData
+    rtData_replacement[[source]] <- rtData_null
   }
 
   print(rtData_replacement)
