@@ -1,6 +1,6 @@
 #' @title tsWidget
 #'
-#' @description Create an Rt visualisation using D3
+#' @description Create a time series widget of Rt data
 #'
 #' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}
 #' @param activeArea character, the default area to plot.

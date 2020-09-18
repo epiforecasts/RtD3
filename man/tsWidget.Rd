@@ -31,5 +31,5 @@ tsWidget(
 Useful for checking the integrity of input data.}
 }
 \description{
-Create an Rt visualisation using D3
+Create a time series widget of Rt data
 }

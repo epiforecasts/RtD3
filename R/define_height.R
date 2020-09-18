@@ -1,4 +1,8 @@
-define_height <- function(geoData, rtData){
+define_height <- function(geoData, rtData, map_only = F){
+  
+  if(map_only){
+    return(100)
+  }
   
   height = 0
   
