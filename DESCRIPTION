@@ -7,7 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "lshhg2@lshtm.ac.uk",
            comment = c(ORCID = "0000-0003-4413-453X"))
-Description: An R interface for the JavaScript library rt_vis(<https://github.com/hamishgibbs/rt_vis>).
+Description: An R interface for creating interactive visualisations of Rt estimates.
+  Relies on D3.js to create interactive dashboards or individual visualisations. Developed
+  in collaboration with the EpiNow2 package.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
