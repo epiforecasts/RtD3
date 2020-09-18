@@ -26,6 +26,9 @@ tsWidget <- function(rtData = NULL,
 
   invisible(check_input_data(arg_types = arg_types, geoData = NULL, rtData = rtData))
 
+  #define height, which is fixed based on dataset availability
+  height <- define_height(geoData = NULL, rtData = rtData)
+
   x = list(
     activeArea = activeArea,
     activeTime = activeTime,
