@@ -2,6 +2,7 @@
 
 export(check_input_data)
 export(getSubregionalUrls)
+export(mapWidget)
 export(readInEpiNow2)
 export(rendersummaryWidget)
 export(summaryWidget)
