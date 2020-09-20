@@ -7,6 +7,7 @@
 #' @param width integer, width in pixels
 #' @param elementId string, id of element
 #' @param dryRun Logical, defaults to FALSE. Should the function be tested without the widget being created.
+#' @param downloadUrl string, optional URL to download datasets
 #' Useful for checking the integrity of input data.
 #' @importFrom htmlwidgets createWidget
 #'
@@ -16,7 +17,8 @@ mapWidget <- function(geoData = NULL,
                      rtData = NULL,
                      width = 900,
                      elementId = NULL,
-                     dryRun = FALSE) {
+                     dryRun = FALSE,
+                     downloadUrl = NULL) {
 
   arg_types <- sapply(ls(), function(x){return(class(get(x)))})
 
@@ -45,7 +47,8 @@ mapWidget <- function(geoData = NULL,
     geoData = geojsonNull(geoData),
     rtData = jsonNull(rtData_replacement),
     subregional_ref = NULL,
-    fullWidth = width
+    fullWidth = width,
+    downloadUrl = downloadUrl
   )
 
   if (!dryRun) {
