@@ -35,7 +35,8 @@ tsWidget <- function(rtData = NULL,
     runDate = runDate,
     geoData = NULL,
     rtData = jsonNull(rtData),
-    subregional_ref = NULL
+    subregional_ref = NULL,
+    fullWidth = width
   )
 
   if (!dryRun) {

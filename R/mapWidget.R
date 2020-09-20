@@ -44,7 +44,8 @@ mapWidget <- function(geoData = NULL,
     runDate = NULL,
     geoData = geojsonNull(geoData),
     rtData = jsonNull(rtData_replacement),
-    subregional_ref = NULL
+    subregional_ref = NULL,
+    fullWidth = width
   )
 
   if (!dryRun) {

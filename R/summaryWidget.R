@@ -45,7 +45,8 @@ summaryWidget <- function(geoData = NULL,
     runDate = runDate,
     geoData = geojsonNull(geoData),
     rtData = jsonNull(rtData),
-    subregional_ref = subregional_ref
+    subregional_ref = subregional_ref,
+    fullWidth = width
   )
 
   if (!dryRun) {
