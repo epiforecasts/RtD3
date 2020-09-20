@@ -38,8 +38,6 @@ mapWidget <- function(geoData = NULL,
     rtData_replacement[[source]] <- rtData_null
   }
 
-  print(rtData_replacement)
-
   x = list(
     activeArea = NULL,
     activeTime = NULL,
