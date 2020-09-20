@@ -14,11 +14,9 @@ HTMLWidgets.widget({
 
         // TODO: code to render the widget, e.g.
 
-        var vis = new rtVis(x);
+        var vis = new rtVis(x, 100, 100);
 
-        vis.setupPage(el)
-        vis.createMap()
-        vis.plotRt('R0')
+        vis.summaryWidget()
 
         //console.log(el)
 
