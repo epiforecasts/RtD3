@@ -12,16 +12,9 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        // TODO: code to render the widget, e.g.
-
         var vis = new rtVis(x, 100, 100);
 
-        vis.summaryWidget()
-
-        //console.log(el)
-
-        //d3.select(el).append('div').text(x.data[0]['a'])
-        //el.innerText = x.message;
+        vis.summaryWidget(el)
 
       },
 
