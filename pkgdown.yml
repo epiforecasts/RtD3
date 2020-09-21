@@ -1,0 +1,13 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1.9000
+pkgdown_sha: e1e46f2e13c7efdb17bc4eae40bc3779c2b0b517
+articles:
+  RtD3: RtD3.html
+  data_structure: data_structure.html
+  detailed_config: detailed_config.html
+  subnational: subnational.html
+last_built: 2020-09-21T16:45Z
+urls:
+  reference: http:/epiforecasts.io/RtD3/reference
+  article: http:/epiforecasts.io/RtD3/articles
+
