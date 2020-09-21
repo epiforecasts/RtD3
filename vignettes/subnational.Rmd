@@ -9,8 +9,8 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-require(tidyverse)
-require(RtD3)
+library(dplyr)
+library(RtD3)
 ```
 
 ## Overview
@@ -29,12 +29,6 @@ geoData <- rnaturalearth::ne_states('India', returnclass = 'sf') %>%
 rtData <- list("Cases" = 
 RtD3::readInEpiNow2(path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/subnational/india/cases/summary",
                     region_var = "region"))
-
-# Extract summary data from cases
-summaryData <- rtData$Cases$summary
-
-## Drop remaining summary data
-rtData <- lapply(rtData, function(.){.[-1]})
 ```
 
 
@@ -44,7 +38,6 @@ This data is then passed to `RtD3::summaryWidget`.
 
 RtD3::summaryWidget(
   geoData = geoData,
-  summaryData = summaryData,
   rtData = rtData,
   activeArea = 'Sikkim'
 )

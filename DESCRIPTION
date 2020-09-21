@@ -17,9 +17,11 @@ Imports:
     jsonlite,
     htmlwidgets,
     geojsonsf,
-    sf,
-    knitr,
     data.table
 Suggests:
     testthat,
-    covr
+    knitr,
+    covr,
+    dplyr,
+    sf,
+    rnaturalearth
