@@ -47,12 +47,6 @@ rtData <- list("Cases" = RtD3::readInEpiNow2(path = paste0(base_url, "cases/summ
                                              region_var = "country"),
                "Deaths" = RtD3::readInEpiNow2(path = paste0(base_url, "deaths/summary"),
                                               region_var = "country"))
-
-# Extract summary data from cases
-summaryData <- rtData$Cases$summary
-
-## Drop remaining summary data
-rtData <- lapply(rtData, function(.){.[-1]})
 ```
 
 We can also configure a list of URLs to link more detailed estimates (using the `RtD3::getSubregionalUrls` helper function).
@@ -69,8 +63,8 @@ The data and config are then passed to `RtD3::summaryWidget`.
 ``` {r}
 RtD3::summaryWidget(
   geoData = geoData,
-  summaryData = summaryData,
   rtData = rtData,
-  subregional_ref = subnational_ref
+  subregional_ref = subnational_ref,
+  downloadUrl = 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates'
 )
 ```
