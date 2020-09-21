@@ -5,6 +5,7 @@
 #' @param input_list A list of results as returned by `EpiNow2::regional_summary`
 #' @param path A character string indicating the path (either file or URL) to the summary results
 #' @param region_var A character string that identifies the region name used.
+#' @param regions A character string indicating the regions of interest to returns. Defaults to all regions.
 #' @return A named list in the format required by `summaryWidget` along with a summary table.
 #' @export
 #' @importFrom data.table fread setnames
@@ -17,7 +18,20 @@
 #'   region_var = "country")
 #'
 #' rtData
-readInEpiNow2 <- function(input_list, path, region_var = "region") {
+#'
+#'
+#'
+#' france <- readInEpiNow2(
+#'   path = paste0(base_path, "master/national/cases/summary"),
+#'   region_var = "country",
+#'   regions = "France")
+#'
+#' france
+readInEpiNow2 <- function(input_list, path, region_var = "region", regions) {
+
+  if (missing(regions)) {
+    regions <- NULL
+  }
 
   if (missing(input_list) & missing(path)) {
     stop("Either a list or a file path/url must be supplied")
@@ -26,7 +40,6 @@ readInEpiNow2 <- function(input_list, path, region_var = "region") {
   if (!missing(input_list) & !missing(path)) {
     message("Both a list and a filepath has been supplied. Defaulting to the list.")
   }
-
 
   if (!missing(input_list)) {
     out <- list('summaryData' = input_list$summarised_results$table,
@@ -55,7 +68,7 @@ readInEpiNow2 <- function(input_list, path, region_var = "region") {
     sapply(strsplit(s, split = " "), cap, USE.NAMES = !is.null(names(s)))
   }
 
-  out$summaryData <- data.table::setnames(out$summaryData, capwords(region_var), "Region")
+  out$summaryData <- data.table::setnames(out$summaryData, capwords(region_var), "region")
 
   rename_col <- function(df) {
     df <- data.table::setnames(df, region_var, "region")
@@ -64,6 +77,13 @@ readInEpiNow2 <- function(input_list, path, region_var = "region") {
   out$rtData <- rename_col(out$rtData)
   out$casesInfectionData <- rename_col(out$casesInfectionData)
   out$casesReportData <- rename_col(out$casesReportData)
+
+  if (!is.null(regions)) {
+    out <- lapply(out, function(df) {
+      df <- df[region %in% regions]
+      return(df)
+    })
+  }
 
   return(out)
 }
