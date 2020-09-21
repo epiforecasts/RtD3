@@ -31,9 +31,9 @@ rtData can have an arbitrary number of entries, allowing for the visualization o
   
 All `data.frame` values in rtData must contain the columns:  
   
-`"country","date","type","median","lower_90","upper_90","lower_50","upper_50"`  
+`"country","date","type","median","lower_90","upper_90","lower_50","upper_50", "lower_20", "upper_20"` 
 
-All entries in the rtData list must contain the values:  
+All entries in the rtData list must contain the values (either `data.frame` values or `NULL` values):  
    
 `"rtData", "casesInfectionData", "casesReportData", "obsCasesData"`  
   
@@ -46,11 +46,13 @@ An example of the overall structure of an rtData list from two data sources ("Ca
 
 ``` {r eval = F}
 
-rtData = list('Cases' = list('rtData' = rtData, 
+rtData = list('Cases' = list('summaryData' = summaryData,
+                             'rtData' = rtData, 
                              'casesInfectionData' = casesInfectionData, 
                              'casesReportData' = casesReportData, 
                              'obsCasesData' = obsCasesData),
-              'Deaths' = list('rtData' = rtData_death, 
+              'Deaths' = list('summaryData' = summaryData_death,
+                             'rtData' = rtData_death, 
                              'casesInfectionData' = casesInfectionData_death, 
                              'casesReportData' = casesReportData_death, 
                              'obsCasesData' = obsCasesData_death))
@@ -61,7 +63,9 @@ An example of the overall structure of an rtData list with some `NULL` values:
 
 ``` {r eval = F}
 
-rtData = list('Cases' = list('rtData' = rtData, 
+rtData = list('Cases' = list(
+                             'summaryData' = summaryData,
+                             'rtData' = rtData, 
                              'casesInfectionData' = NULL, 
                              'casesReportData' = casesReportData, 
                              'obsCasesData' = NULL))

@@ -9,8 +9,8 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-require(tidyverse)
-require(RtD3)
+library(rnaturalearth)
+library(RtD3)
 ```
 
 ## Overview
