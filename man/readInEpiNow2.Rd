@@ -4,7 +4,7 @@
 \alias{readInEpiNow2}
 \title{Read in Results from EpiNow2}
 \usage{
-readInEpiNow2(input_list, path, region_var = "region")
+readInEpiNow2(input_list, path, region_var = "region", regions)
 }
 \arguments{
 \item{input_list}{A list of results as returned by \code{EpiNow2::regional_summary}}
@@ -12,6 +12,8 @@ readInEpiNow2(input_list, path, region_var = "region")
 \item{path}{A character string indicating the path (either file or URL) to the summary results}
 
 \item{region_var}{A character string that identifies the region name used.}
+
+\item{regions}{A character string indicating the regions of interest to returns. Defaults to all regions.}
 }
 \value{
 A named list in the format required by \code{summaryWidget} along with a summary table.
@@ -29,4 +31,13 @@ rtData <- readInEpiNow2(
   region_var = "country")
 
 rtData
+
+
+
+france <- readInEpiNow2(
+  path = paste0(base_path, "master/national/cases/summary"),
+  region_var = "country",
+  regions = "France")
+
+france
 }

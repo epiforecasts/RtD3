@@ -12,4 +12,17 @@ testthat::test_that("Test that readInEpiNow2 runs without error in dry run mode 
 
 })
 
+testthat::test_that("Test that readInEpiNow2 runs without error in dry run mode when used with summaryWidget and filtering for a region", {
+  testthat::skip_on_cran()
+
+  out <- list("Cases" = readInEpiNow2(
+    path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
+    region_var = "country",
+    regions = "France"))
+
+  testthat::expect_true(summaryWidget(rtData = out,
+                                      dryRun = TRUE))
+
+})
+
 
