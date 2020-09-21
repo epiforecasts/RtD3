@@ -19,7 +19,8 @@ Imports:
     jsonlite,
     htmlwidgets,
     geojsonsf,
-    data.table
+    data.table,
+    purrr
 Suggests:
     testthat,
     knitr,
