@@ -9,7 +9,8 @@ mapWidget(
   rtData = NULL,
   width = 900,
   elementId = NULL,
-  dryRun = FALSE
+  dryRun = FALSE,
+  downloadUrl = NULL
 )
 }
 \arguments{
@@ -21,7 +22,9 @@ mapWidget(
 
 \item{elementId}{string, id of element}
 
-\item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.
+\item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.}
+
+\item{downloadUrl}{string, optional URL to download datasets
 Useful for checking the integrity of input data.}
 }
 \description{
