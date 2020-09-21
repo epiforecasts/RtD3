@@ -34,12 +34,6 @@ rtData <- list("Cases" = RtD3::readInEpiNow2(
   path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
   region_var = "country"
   ))
-
-# Extract summary data from cases
-summaryData <- rtData$Cases$summary
-
-## Drop remaining summary data
-rtData <- lapply(rtData, function(.){.[-1]})
 ```
 
 Rt data is passed to the visualization function in a JSON-like list of lists to allow for visualization of different data training data sources. Rt data should be prepared in the format `{'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}`. All required datasets are then passed to the visualization function. Note: missing datasets in `rtData` should be `NULL`, not absent.
@@ -48,7 +42,6 @@ Rt data is passed to the visualization function in a JSON-like list of lists to 
 ``` {r}
 RtD3::summaryWidget(
   geoData = geoData,
-  summaryData = summaryData,
   rtData = rtData,
 )
 ```
