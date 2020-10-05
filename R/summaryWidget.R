@@ -57,7 +57,7 @@ summaryWidget <- function(geoData = NULL,
     subregional_ref = subregional_ref,
     fullWidth = width,
     downloadUrl = downloadUrl,
-    ts_color_ref = ts_colors
+    ts_color_ref = ts_color_ref
   )
 
   if (!dryRun) {
