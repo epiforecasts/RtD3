@@ -142,16 +142,17 @@
     <p>Create a time series widget of Rt data</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tsWidget</span>(
-  rtData = <span class='kw'>NULL</span>,
-  activeArea = <span class='kw'>NULL</span>,
-  activeTime = <span class='st'>"all"</span>,
-  runDate = <span class='kw'>NULL</span>,
-  width = <span class='fl'>900</span>,
-  elementId = <span class='kw'>NULL</span>,
-  dryRun = <span class='fl'>FALSE</span>,
-  downloadUrl = <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>tsWidget</span><span class='op'>(</span>
+  rtData <span class='op'>=</span> <span class='cn'>NULL</span>,
+  activeArea <span class='op'>=</span> <span class='cn'>NULL</span>,
+  activeTime <span class='op'>=</span> <span class='st'>"all"</span>,
+  runDate <span class='op'>=</span> <span class='cn'>NULL</span>,
+  width <span class='op'>=</span> <span class='fl'>900</span>,
+  elementId <span class='op'>=</span> <span class='cn'>NULL</span>,
+  dryRun <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  downloadUrl <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ts_color_ref <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,7 +187,11 @@
     </tr>
     <tr>
       <th>downloadUrl</th>
-      <td><p>string, optional URL to download datasets
+      <td><p>string, optional URL to download datasets</p></td>
+    </tr>
+    <tr>
+      <th>ts_color_ref</th>
+      <td><p>list, default reference for time series plots. See default_ts_colors for format.
 Useful for checking the integrity of input data.</p></td>
     </tr>
     </table>

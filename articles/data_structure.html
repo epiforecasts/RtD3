@@ -131,26 +131,24 @@
 <p><code>"rtData"</code> - R estimates<br><code>"casesInfectionData"</code> - Cases by date of infection estimates<br><code>"casesReportData"</code> - Cases by date of report estimates<br><code>"obsCasesData"</code> - Observed case data</p>
 <p>An example of the overall structure of an rtData list from two data sources (“Cases” and “Deaths”):</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw">rtData</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">'Cases'</span> = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">'summaryData'</span> = <span class="kw">summaryData</span>,
-                             <span class="st">'rtData'</span> = <span class="kw">rtData</span>, 
-                             <span class="st">'casesInfectionData'</span> = <span class="kw">casesInfectionData</span>, 
-                             <span class="st">'casesReportData'</span> = <span class="kw">casesReportData</span>, 
-                             <span class="st">'obsCasesData'</span> = <span class="kw">obsCasesData</span>),
-              <span class="st">'Deaths'</span> = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">'summaryData'</span> = <span class="kw">summaryData_death</span>,
-                             <span class="st">'rtData'</span> = <span class="kw">rtData_death</span>, 
-                             <span class="st">'casesInfectionData'</span> = <span class="kw">casesInfectionData_death</span>, 
-                             <span class="st">'casesReportData'</span> = <span class="kw">casesReportData_death</span>, 
-                             <span class="st">'obsCasesData'</span> = <span class="kw">obsCasesData_death</span>))
-</pre></div>
+<span class="va">rtData</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'Cases'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'summaryData'</span> <span class="op">=</span> <span class="va">summaryData</span>,
+                             <span class="st">'rtData'</span> <span class="op">=</span> <span class="va">rtData</span>, 
+                             <span class="st">'casesInfectionData'</span> <span class="op">=</span> <span class="va">casesInfectionData</span>, 
+                             <span class="st">'casesReportData'</span> <span class="op">=</span> <span class="va">casesReportData</span>, 
+                             <span class="st">'obsCasesData'</span> <span class="op">=</span> <span class="va">obsCasesData</span><span class="op">)</span>,
+              <span class="st">'Deaths'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'summaryData'</span> <span class="op">=</span> <span class="va">summaryData_death</span>,
+                             <span class="st">'rtData'</span> <span class="op">=</span> <span class="va">rtData_death</span>, 
+                             <span class="st">'casesInfectionData'</span> <span class="op">=</span> <span class="va">casesInfectionData_death</span>, 
+                             <span class="st">'casesReportData'</span> <span class="op">=</span> <span class="va">casesReportData_death</span>, 
+                             <span class="st">'obsCasesData'</span> <span class="op">=</span> <span class="va">obsCasesData_death</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p>An example of the overall structure of an rtData list with some <code>NULL</code> values:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">rtData</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="st">'Cases'</span> = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(
-                             <span class="st">'summaryData'</span> = <span class="kw">summaryData</span>,
-                             <span class="st">'rtData'</span> = <span class="kw">rtData</span>, 
-                             <span class="st">'casesInfectionData'</span> = <span class="kw">NULL</span>, 
-                             <span class="st">'casesReportData'</span> = <span class="kw">casesReportData</span>, 
-                             <span class="st">'obsCasesData'</span> = <span class="kw">NULL</span>))
-</pre></div>
+<span class="va">rtData</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'Cases'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+                             <span class="st">'summaryData'</span> <span class="op">=</span> <span class="va">summaryData</span>,
+                             <span class="st">'rtData'</span> <span class="op">=</span> <span class="va">rtData</span>, 
+                             <span class="st">'casesInfectionData'</span> <span class="op">=</span> <span class="cn">NULL</span>, 
+                             <span class="st">'casesReportData'</span> <span class="op">=</span> <span class="va">casesReportData</span>, 
+                             <span class="st">'obsCasesData'</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">)</span></pre></div>
 </div>
   </div>
 
