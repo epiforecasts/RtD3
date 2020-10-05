@@ -13,15 +13,16 @@
   height: 500px;
 }
 
-.header-container {
-  width: 100%;
+.dropdown-container {
+  width: 200px;
   height: 40px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .download-container {
-  padding-top: 5px;
+  width: 200px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
 }
 
 .country-title-container {
@@ -68,9 +69,10 @@
   font-weight: bold;
 }
 
+
 .controls-container {
   width: 100%;
-  height: 50px;
+  height: 60px;
   display: flex;
   padding-top: 10px;
 }
@@ -82,9 +84,13 @@
 
 .controls-container-legend {
   width: 50%;
-  height: 20px;
-  display: flex;
   padding-left: 30px;
+}
+
+.controls-container-legend-items {
+  height: 20px;
+  padding-left: 10px;
+  display: flex;
   justify-content: space-around;
 }
 
@@ -110,22 +116,9 @@
   font-size: 14px;
 }
 
-.ts-legend-e {
-  background-color: #6fc2a9;
-}
-
-.ts-legend-eb {
-  background-color: #e79a60;
-}
-
-.ts-legend-f {
-  background-color: #a8a5d0;
-}
-
 .controls-container-time {
   width: 50%;
   height: 50px;
-  display: flex;
 }
 
 .controls-container button {
@@ -140,10 +133,6 @@
   background-color: #C3C3C3;
 }
 
-.controls-container-time {
-  justify-content: flex-end;
-  padding-right: 30px
-}
 
 .download-container a {
   background-color: #e7e7e7;
@@ -162,14 +151,8 @@
   background-color: #C3C3C3;
 }
 
-.source-container {
-  width: 100%;
-  height: 25px;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .source-select {
+  position: absolute;
   border-radius: 8px;
   font-size: 14px;
   background-color: #e7e7e7;
@@ -177,7 +160,7 @@
   padding-right: 5px;
   padding-left: 10px;
   padding-bottom: 5px;
-  padding-top: 3px;
+  padding-top: 5px;
 }
 
 .source-select:hover {
@@ -197,51 +180,6 @@
 }
 ;.phony {}
 ;.phony {}
-
-.poly_90_e {
-  fill: #d1ebe3;
-  opacity: 0.55;
-}
-
-.poly_90_eb {
-  fill: #f7dfcc;
-  opacity: 0.55;
-}
-
-.poly_90_f {
-  fill: #e3e2ef;
-  opacity: 0.55;
-}
-
-.poly_50_e {
-  fill: #9bd4c2;
-  opacity: 0.55;
-}
-
-.poly_50_eb {
-  fill: #edb98f;
-  opacity: 0.55;
-}
-
-.poly_50_f {
-  fill: #c2c0dd;
-  opacity: 0.55;
-}
-
-.poly_20_e {
-  fill: #75c4ab;
-  opacity: 0.55;
-}
-
-.poly_20_eb {
-  fill: #e69e65;
-  opacity: 0.55;
-}
-
-.poly_20_f {
-  fill: #aba8d0;
-  opacity: 0.55;
-}
 
 .cases_bar {
   fill: #DFDFDF;

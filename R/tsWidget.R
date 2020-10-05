@@ -10,6 +10,7 @@
 #' @param elementId string, id of element
 #' @param dryRun Logical, defaults to FALSE. Should the function be tested without the widget being created.
 #' @param downloadUrl string, optional URL to download datasets
+#' @param ts_color_ref list, default reference for time series plots. See default_ts_colors for format.
 #' Useful for checking the integrity of input data.
 #' @importFrom htmlwidgets createWidget
 #'
@@ -22,7 +23,8 @@ tsWidget <- function(rtData = NULL,
                           width = 900,
                           elementId = NULL,
                           dryRun = FALSE,
-                          downloadUrl = NULL) {
+                          downloadUrl = NULL,
+                          ts_color_ref = NULL) {
 
   arg_types <- sapply(ls(), function(x){return(class(get(x)))})
 
@@ -30,6 +32,11 @@ tsWidget <- function(rtData = NULL,
 
   #define height, which is fixed based on dataset availability
   height <- define_height(geoData = NULL, rtData = rtData)
+
+  #if ts color ref is null, use default colors
+  if (is.null(ts_color_ref)){
+    ts_color_ref <- default_ts_colors()
+  }
 
   x = list(
     activeArea = activeArea,
@@ -39,7 +46,8 @@ tsWidget <- function(rtData = NULL,
     rtData = jsonNull(rtData),
     subregional_ref = NULL,
     fullWidth = width,
-    downloadUrl = downloadUrl
+    downloadUrl = downloadUrl,
+    ts_color_ref = ts_color_ref
   )
 
   if (!dryRun) {
