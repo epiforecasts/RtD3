@@ -14,7 +14,8 @@ summaryWidget(
   width = 900,
   elementId = NULL,
   dryRun = FALSE,
-  downloadUrl = NULL
+  downloadUrl = NULL,
+  ts_color_ref = NULL
 )
 }
 \arguments{
@@ -36,7 +37,9 @@ summaryWidget(
 
 \item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.}
 
-\item{downloadUrl}{string, optional URL to download datasets
+\item{downloadUrl}{string, optional URL to download datasets}
+
+\item{ts_color_ref}{list, default reference for time series plots. See default_ts_colors for format.
 Useful for checking the integrity of input data.}
 }
 \description{
