@@ -178,137 +178,136 @@ either input via a list object or from a file path/url.</p>
 <span class='va'>rtData</span> <span class='op'>&lt;-</span> <span class='fu'>readInEpiNow2</span><span class='op'>(</span>
   path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>base_path</span>, <span class='st'>"master/national/cases/summary"</span><span class='op'>)</span>,
   region_var <span class='op'>=</span> <span class='st'>"country"</span><span class='op'>)</span>
-
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Some columns are type 'integer64' but package bit64 is not installed. Those columns will print as strange looking floating point data. There is no need to reload the data. Simply install.packages('bit64') to obtain the integer64 print method and print the data again.</span></div><div class='input'>
 <span class='va'>rtData</span>
 </div><div class='output co'>#&gt; $summaryData
 #&gt;              region New confirmed cases by infection date
-#&gt;   1:    Afghanistan                          19 (0 -- 42)
-#&gt;   2:        Albania                       118 (75 -- 162)
-#&gt;   3:        Algeria                       111 (67 -- 161)
-#&gt;   4:        Andorra                         46 (3 -- 116)
-#&gt;   5:         Angola                       145 (57 -- 269)
+#&gt;   1:    Afghanistan                          35 (6 -- 95)
+#&gt;   2:        Albania                       155 (98 -- 223)
+#&gt;   3:        Algeria                        98 (67 -- 134)
+#&gt;   4:        Andorra                         69 (9 -- 174)
+#&gt;   5:         Angola                       164 (56 -- 332)
 #&gt;  ---                                                     
-#&gt; 192:        Vietnam                         26 (0 -- 293)
+#&gt; 192:        Vietnam                            1 (0 -- 5)
 #&gt; 193: Western Sahara                          1 (0 -- 289)
-#&gt; 194:          Yemen                            0 (0 -- 1)
-#&gt; 195:         Zambia                          35 (1 -- 95)
-#&gt; 196:       Zimbabwe                           6 (0 -- 21)
+#&gt; 194:          Yemen                            1 (0 -- 3)
+#&gt; 195:         Zambia                         48 (6 -- 126)
+#&gt; 196:       Zimbabwe                           4 (0 -- 13)
 #&gt;      Expected change in daily cases Effective reproduction no.
-#&gt;   1:              Likely decreasing        0.91 (0.55 -- 1.11)
-#&gt;   2:                         Unsure        0.97 (0.84 -- 1.06)
-#&gt;   3:              Likely decreasing        0.88 (0.74 -- 1.03)
-#&gt;   4:              Likely increasing        1.14 (0.85 -- 1.42)
-#&gt;   5:              Likely increasing        1.08 (0.93 -- 1.27)
+#&gt;   1:                         Unsure             1 (0.8 -- 1.3)
+#&gt;   2:                         Unsure             1 (0.9 -- 1.2)
+#&gt;   3:              Likely decreasing             0.9 (0.8 -- 1)
+#&gt;   4:              Likely increasing           1.2 (0.9 -- 1.4)
+#&gt;   5:              Likely increasing           1.1 (0.9 -- 1.3)
 #&gt;  ---                                                          
-#&gt; 192:              Likely increasing        2.27 (0.43 -- 5.21)
+#&gt; 192:                         Unsure             0.7 (0 -- 1.4)
 #&gt; 193:                         Unsure             0.6 (0 -- 1.4)
-#&gt; 194:                     Decreasing        0.69 (0.32 -- 0.96)
-#&gt; 195:              Likely decreasing        0.84 (0.46 -- 1.14)
-#&gt; 196:              Likely decreasing         0.73 (0.3 -- 1.19)
-#&gt;              Rate of growth Doubling/halving time (days)
-#&gt;   1:  -0.03 (-0.13 -- 0.03)         -27.1 (21.2 -- -5.3)
-#&gt;   2:  -0.01 (-0.05 -- 0.02)        -78.1 (40.2 -- -15.1)
-#&gt;   3:  -0.03 (-0.08 -- 0.01)           -21 (72.2 -- -9.2)
-#&gt;   4:   0.04 (-0.04 -- 0.11)          18.9 (6.2 -- -16.5)
-#&gt;   5:   0.02 (-0.02 -- 0.07)            31.8 (9.6 -- -34)
-#&gt;  ---                                                    
-#&gt; 192:    0.31 (-0.14 -- 0.9)            2.3 (0.8 -- -5.1)
-#&gt; 193:   -0.1 (-0.36 -- 0.14)           -6.7 (4.8 -- -1.9)
-#&gt; 194: -0.09 (-0.21 -- -0.01)         -7.8 (-69.4 -- -3.3)
-#&gt; 195:  -0.04 (-0.14 -- 0.06)         -15.5 (12.4 -- -4.9)
-#&gt; 196:  -0.08 (-0.22 -- 0.06)          -8.9 (12.3 -- -3.2)
+#&gt; 194:              Likely decreasing           0.9 (0.7 -- 1.2)
+#&gt; 195:                         Unsure           0.9 (0.6 -- 1.3)
+#&gt; 196:              Likely decreasing           0.8 (0.4 -- 1.2)
+#&gt;             Rate of growth Doubling/halving time (days)
+#&gt;   1: -0.01 (-0.06 -- 0.08)        -117.6 (8.2 -- -11.2)
+#&gt;   2:  0.01 (-0.03 -- 0.05)        107.5 (14.2 -- -24.2)
+#&gt;   3:    -0.03 (-0.06 -- 0)       -23.9 (570.7 -- -11.6)
+#&gt;   4:  0.04 (-0.03 -- 0.12)          17.1 (5.9 -- -20.3)
+#&gt;   5:  0.02 (-0.02 -- 0.07)          31.7 (9.6 -- -27.7)
+#&gt;  ---                                                   
+#&gt; 192:  -0.1 (-0.32 -- 0.12)             -7 (5.6 -- -2.2)
+#&gt; 193:  -0.1 (-0.36 -- 0.14)           -6.7 (4.8 -- -1.9)
+#&gt; 194: -0.03 (-0.09 -- 0.05)         -24.9 (13.1 -- -7.8)
+#&gt; 195:  -0.02 (-0.1 -- 0.08)          -32.1 (8.2 -- -6.8)
+#&gt; 196: -0.07 (-0.18 -- 0.05)             -10 (14.3 -- -4)
 #&gt; 
 #&gt; $rtData
 #&gt;             region       date     type median mean   sd lower_20 upper_20
-#&gt;     1: Afghanistan 2020-07-23 estimate   0.91 0.90 0.06     0.90     0.92
-#&gt;     2: Afghanistan 2020-07-24 estimate   0.91 0.90 0.06     0.90     0.92
-#&gt;     3: Afghanistan 2020-07-25 estimate   0.91 0.90 0.06     0.91     0.92
-#&gt;     4: Afghanistan 2020-07-26 estimate   0.91 0.90 0.06     0.91     0.93
-#&gt;     5: Afghanistan 2020-07-27 estimate   0.91 0.90 0.06     0.91     0.92
+#&gt;     1: Afghanistan 2020-07-30 estimate   0.92 0.91 0.05     0.92     0.93
+#&gt;     2: Afghanistan 2020-07-31 estimate   0.92 0.91 0.05     0.92     0.94
+#&gt;     3: Afghanistan 2020-08-01 estimate   0.92 0.92 0.05     0.92     0.93
+#&gt;     4: Afghanistan 2020-08-02 estimate   0.92 0.92 0.06     0.92     0.93
+#&gt;     5: Afghanistan 2020-08-03 estimate   0.92 0.92 0.06     0.92     0.93
 #&gt;    ---                                                                   
-#&gt; 16189:    Zimbabwe 2020-10-10 forecast   0.73 0.78 0.35     0.64     0.76
-#&gt; 16190:    Zimbabwe 2020-10-11 forecast   0.73 0.78 0.35     0.64     0.76
-#&gt; 16191:    Zimbabwe 2020-10-12 forecast   0.73 0.78 0.35     0.64     0.76
-#&gt; 16192:    Zimbabwe 2020-10-13 forecast   0.73 0.78 0.35     0.64     0.76
-#&gt; 16193:    Zimbabwe 2020-10-14 forecast   0.73 0.78 0.35     0.64     0.76
+#&gt; 16264:    Zimbabwe 2020-10-18 forecast   0.76 0.80 0.27     0.70     0.78
+#&gt; 16265:    Zimbabwe 2020-10-19 forecast   0.76 0.80 0.27     0.70     0.78
+#&gt; 16266:    Zimbabwe 2020-10-20 forecast   0.76 0.80 0.27     0.70     0.78
+#&gt; 16267:    Zimbabwe 2020-10-21 forecast   0.76 0.80 0.27     0.70     0.78
+#&gt; 16268:    Zimbabwe 2020-10-22 forecast   0.76 0.80 0.27     0.70     0.78
 #&gt;        lower_50 upper_50 lower_90 upper_90
-#&gt;     1:     0.89     0.94     0.81     0.99
-#&gt;     2:     0.89     0.94     0.81     0.99
-#&gt;     3:     0.89     0.94     0.82     1.00
-#&gt;     4:     0.89     0.94     0.82     1.00
-#&gt;     5:     0.89     0.94     0.82     1.00
+#&gt;     1:     0.90     0.95     0.84     0.98
+#&gt;     2:     0.90     0.94     0.83     0.98
+#&gt;     3:     0.90     0.95     0.83     0.99
+#&gt;     4:     0.90     0.95     0.83     0.99
+#&gt;     5:     0.90     0.95     0.83     1.00
 #&gt;    ---                                    
-#&gt; 16189:     0.54     0.86     0.30     1.19
-#&gt; 16190:     0.54     0.86     0.30     1.19
-#&gt; 16191:     0.54     0.86     0.30     1.19
-#&gt; 16192:     0.54     0.86     0.30     1.19
-#&gt; 16193:     0.54     0.86     0.30     1.19
+#&gt; 16264:     0.62     0.85     0.40     1.15
+#&gt; 16265:     0.62     0.85     0.40     1.15
+#&gt; 16266:     0.62     0.85     0.40     1.15
+#&gt; 16267:     0.62     0.85     0.40     1.15
+#&gt; 16268:     0.62     0.85     0.40     1.15
 #&gt; 
-#&gt; $casesInfectionData
-#&gt;             region       date     type median  mean      sd lower_20 upper_20
-#&gt;     1: Afghanistan 2020-07-23 estimate     90    91      21       86       94
-#&gt;     2: Afghanistan 2020-07-24 estimate     88    89      20       83       91
-#&gt;     3: Afghanistan 2020-07-25 estimate     86    86      20       81       88
-#&gt;     4: Afghanistan 2020-07-26 estimate     84    84      20       79       87
-#&gt;     5: Afghanistan 2020-07-27 estimate     82    82      19       77       85
-#&gt;    ---                                                                       
-#&gt; 16189:    Zimbabwe 2020-10-10 forecast      3  1241   56156        0        1
-#&gt; 16190:    Zimbabwe 2020-10-11 forecast      3  2597  121853        0        1
-#&gt; 16191:    Zimbabwe 2020-10-12 forecast      2  5476  264560        0        0
-#&gt; 16192:    Zimbabwe 2020-10-13 forecast      2 11607  574665        0        0
-#&gt; 16193:    Zimbabwe 2020-10-14 forecast      2 24700 1248746        0        0
-#&gt;        lower_50 upper_50 lower_90 upper_90
-#&gt;     1:       81      104       57      120
-#&gt;     2:       77       99       55      117
-#&gt;     3:       76       98       52      113
-#&gt;     4:       72       94       50      110
-#&gt;     5:       71       93       49      109
-#&gt;    ---                                    
-#&gt; 16189:        0        3        0       26
-#&gt; 16190:        0        3        0       27
-#&gt; 16191:        0        2        0       28
-#&gt; 16192:        0        2        0       28
-#&gt; 16193:        0        2        0       29
+#&gt; $casesInfectionData</div><div class='output co'>#&gt; <span class='warning'>Warning: Some columns are type 'integer64' but package bit64 is not installed. Those columns will print as strange looking floating point data. There is no need to reload the data. Simply install.packages('bit64') to obtain the integer64 print method and print the data again.</span></div><div class='output co'>#&gt;             region       date     type median mean     sd lower_20 upper_20
+#&gt;     1: Afghanistan 2020-07-30 estimate     77   77     16       77       83
+#&gt;     2: Afghanistan 2020-07-31 estimate     75   75     16       75       82
+#&gt;     3: Afghanistan 2020-08-01 estimate     73   73     16       74       80
+#&gt;     4: Afghanistan 2020-08-02 estimate     72   72     15       71       78
+#&gt;     5: Afghanistan 2020-08-03 estimate     70   70     15       71       77
+#&gt;    ---                                                                     
+#&gt; 16264:    Zimbabwe 2020-10-18 forecast      2  151   7695        0        1
+#&gt; 16265:    Zimbabwe 2020-10-19 forecast      2  277  15020        0        1
+#&gt; 16266:    Zimbabwe 2020-10-20 forecast      2  519  29325        0        1
+#&gt; 16267:    Zimbabwe 2020-10-21 forecast      2  984  57262        0        1
+#&gt; 16268:    Zimbabwe 2020-10-22 forecast      2 1883 111825        0        0
+#&gt;        lower_50 upper_50 lower_90      upper_90
+#&gt;     1:       69       88       50 4.940656e-322
+#&gt;     2:       66       84       48 4.792437e-322
+#&gt;     3:       64       82       46 4.644217e-322
+#&gt;     4:       62       80       46 4.644217e-322
+#&gt;     5:       60       79       44 4.495997e-322
+#&gt;    ---                                         
+#&gt; 16264:        0        2        0 7.905050e-323
+#&gt; 16265:        0        2        0 7.905050e-323
+#&gt; 16266:        0        2        0 8.399116e-323
+#&gt; 16267:        0        2        0 8.399116e-323
+#&gt; 16268:        0        2        0 8.399116e-323
 #&gt; 
 #&gt; $casesReportData
-#&gt;             region       date     type median mean    sd lower_20 upper_20
-#&gt;     1: Afghanistan 2020-07-23 estimate     59  118   166        0       11
-#&gt;     2: Afghanistan 2020-07-24 estimate     44   92   135        0        8
-#&gt;     3: Afghanistan 2020-07-25 estimate     58  122   180        0       11
-#&gt;     4: Afghanistan 2020-07-26 estimate     57  112   158        0        9
-#&gt;     5: Afghanistan 2020-07-27 estimate     34   70   103        0        6
-#&gt;    ---                                                                    
-#&gt; 16189:    Zimbabwe 2020-10-10 forecast      4   53  2128        0        1
-#&gt; 16190:    Zimbabwe 2020-10-11 forecast      4   74  2911        0        1
-#&gt; 16191:    Zimbabwe 2020-10-12 forecast      3  143  5560        0        1
-#&gt; 16192:    Zimbabwe 2020-10-13 forecast      5  191  5396        0        1
-#&gt; 16193:    Zimbabwe 2020-10-14 forecast      3  596 27332        0        1
+#&gt;             region       date     type median mean   sd lower_20 upper_20
+#&gt;     1: Afghanistan 2020-07-30 estimate     54  106  144        0       11
+#&gt;     2: Afghanistan 2020-07-31 estimate     33   64   91        0        6
+#&gt;     3: Afghanistan 2020-08-01 estimate     40   79  111        0        8
+#&gt;     4: Afghanistan 2020-08-02 estimate     47   89  124        0       10
+#&gt;     5: Afghanistan 2020-08-03 estimate     34   68  100        0        6
+#&gt;    ---                                                                   
+#&gt; 16264:    Zimbabwe 2020-10-18 forecast      4   17  514        0        1
+#&gt; 16265:    Zimbabwe 2020-10-19 forecast      2    8   55        0        0
+#&gt; 16266:    Zimbabwe 2020-10-20 forecast      4   43 1879        0        1
+#&gt; 16267:    Zimbabwe 2020-10-21 forecast      3   20  472        0        1
+#&gt; 16268:    Zimbabwe 2020-10-22 forecast      2   60 2598        0        0
 #&gt;        lower_50 upper_50 lower_90 upper_90
-#&gt;     1:        0       59        0      307
-#&gt;     2:        0       44        0      242
-#&gt;     3:        0       58        0      307
-#&gt;     4:        0       57        0      287
-#&gt;     5:        0       34        0      180
+#&gt;     1:        0       54        0      265
+#&gt;     2:        0       33        0      163
+#&gt;     3:        0       40        0      199
+#&gt;     4:        0       47        0      225
+#&gt;     5:        0       34        0      171
 #&gt;    ---                                    
-#&gt; 16189:        0        4        0       23
-#&gt; 16190:        0        4        0       23
-#&gt; 16191:        0        3        0       19
-#&gt; 16192:        0        5        0       31
-#&gt; 16193:        0        3        0       24
+#&gt; 16264:        0        4        0       17
+#&gt; 16265:        0        2        0       12
+#&gt; 16266:        0        4        0       20
+#&gt; 16267:        0        3        0       16
+#&gt; 16268:        0        2        0       14
 #&gt; 
 #&gt; $obsCasesData
 #&gt;                region       date confirm
-#&gt;     1:    Afghanistan 2020-07-09      59
-#&gt;     2:        Albania 2020-07-09      68
-#&gt;     3:        Algeria 2020-07-09     469
-#&gt;     4:        Andorra 2020-07-09       0
-#&gt;     5:         Angola 2020-07-09      33
+#&gt;     1:    Afghanistan 2020-07-16     254
+#&gt;     2:        Albania 2020-07-16      85
+#&gt;     3:        Algeria 2020-07-16     554
+#&gt;     4:        Andorra 2020-07-16       1
+#&gt;     5:         Angola 2020-07-16      51
 #&gt;    ---                                  
-#&gt; 17761:        Vietnam 2020-10-01       0
-#&gt; 17762: Western Sahara 2020-10-01       0
-#&gt; 17763:          Yemen 2020-10-01       0
-#&gt; 17764:         Zambia 2020-10-01      44
-#&gt; 17765:       Zimbabwe 2020-10-01       1
+#&gt; 17761:        Vietnam 2020-10-08       1
+#&gt; 17762: Western Sahara 2020-10-08       0
+#&gt; 17763:          Yemen 2020-10-08       8
+#&gt; 17764:         Zambia 2020-10-08      54
+#&gt; 17765:       Zimbabwe 2020-10-08       4
 #&gt; </div><div class='input'>
 
 
@@ -316,629 +315,628 @@ either input via a list object or from a file path/url.</p>
   path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>base_path</span>, <span class='st'>"master/national/cases/summary"</span><span class='op'>)</span>,
   region_var <span class='op'>=</span> <span class='st'>"country"</span>,
   regions <span class='op'>=</span> <span class='st'>"France"</span><span class='op'>)</span>
-
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Some columns are type 'integer64' but package bit64 is not installed. Those columns will print as strange looking floating point data. There is no need to reload the data. Simply install.packages('bit64') to obtain the integer64 print method and print the data again.</span></div><div class='input'>
 <span class='va'>france</span>
 </div><div class='output co'>#&gt; $summaryData
 #&gt;    region New confirmed cases by infection date Expected change in daily cases
-#&gt; 1: France                 29741 (3431 -- 63134)              Likely increasing
+#&gt; 1: France                 25278 (3547 -- 52922)              Likely increasing
 #&gt;    Effective reproduction no.       Rate of growth Doubling/halving time (days)
-#&gt; 1:        1.16 (0.86 -- 1.35) 0.04 (-0.04 -- 0.09)          15.6 (7.5 -- -18.1)
+#&gt; 1:           1.1 (0.8 -- 1.4) 0.03 (-0.06 -- 0.09)          20.3 (7.7 -- -11.7)
 #&gt; 
 #&gt; $rtData
 #&gt;     region       date                           type median mean   sd lower_20
-#&gt;  1: France 2020-07-23                       estimate   1.20 1.20 0.06     1.18
-#&gt;  2: France 2020-07-24                       estimate   1.20 1.21 0.06     1.19
-#&gt;  3: France 2020-07-25                       estimate   1.20 1.21 0.06     1.19
-#&gt;  4: France 2020-07-26                       estimate   1.20 1.21 0.06     1.19
-#&gt;  5: France 2020-07-27                       estimate   1.20 1.21 0.06     1.19
-#&gt;  6: France 2020-07-28                       estimate   1.21 1.21 0.06     1.19
-#&gt;  7: France 2020-07-29                       estimate   1.21 1.21 0.06     1.19
-#&gt;  8: France 2020-07-30                       estimate   1.21 1.21 0.06     1.19
-#&gt;  9: France 2020-07-31                       estimate   1.21 1.22 0.07     1.19
-#&gt; 10: France 2020-08-01                       estimate   1.21 1.22 0.07     1.18
-#&gt; 11: France 2020-08-02                       estimate   1.21 1.22 0.07     1.18
-#&gt; 12: France 2020-08-03                       estimate   1.21 1.22 0.07     1.19
-#&gt; 13: France 2020-08-04                       estimate   1.21 1.22 0.07     1.19
-#&gt; 14: France 2020-08-05                       estimate   1.21 1.22 0.07     1.19
-#&gt; 15: France 2020-08-06                       estimate   1.21 1.22 0.07     1.19
-#&gt; 16: France 2020-08-07                       estimate   1.21 1.22 0.07     1.19
-#&gt; 17: France 2020-08-08                       estimate   1.21 1.22 0.07     1.19
-#&gt; 18: France 2020-08-09                       estimate   1.21 1.22 0.07     1.19
-#&gt; 19: France 2020-08-10                       estimate   1.21 1.22 0.07     1.19
-#&gt; 20: France 2020-08-11                       estimate   1.21 1.22 0.07     1.19
-#&gt; 21: France 2020-08-12                       estimate   1.20 1.22 0.07     1.18
-#&gt; 22: France 2020-08-13                       estimate   1.20 1.22 0.07     1.18
-#&gt; 23: France 2020-08-14                       estimate   1.20 1.22 0.07     1.18
-#&gt; 24: France 2020-08-15                       estimate   1.20 1.21 0.07     1.19
-#&gt; 25: France 2020-08-16                       estimate   1.20 1.21 0.07     1.18
-#&gt; 26: France 2020-08-17                       estimate   1.20 1.21 0.07     1.19
-#&gt; 27: France 2020-08-18                       estimate   1.20 1.21 0.07     1.18
-#&gt; 28: France 2020-08-19                       estimate   1.20 1.20 0.07     1.18
-#&gt; 29: France 2020-08-20                       estimate   1.19 1.20 0.07     1.18
-#&gt; 30: France 2020-08-21                       estimate   1.19 1.20 0.07     1.18
-#&gt; 31: France 2020-08-22                       estimate   1.19 1.19 0.06     1.18
-#&gt; 32: France 2020-08-23                       estimate   1.19 1.19 0.06     1.18
-#&gt; 33: France 2020-08-24                       estimate   1.19 1.19 0.06     1.18
-#&gt; 34: France 2020-08-25                       estimate   1.19 1.19 0.06     1.18
-#&gt; 35: France 2020-08-26                       estimate   1.19 1.18 0.06     1.18
-#&gt; 36: France 2020-08-27                       estimate   1.18 1.18 0.06     1.18
-#&gt; 37: France 2020-08-28                       estimate   1.18 1.18 0.06     1.18
-#&gt; 38: France 2020-08-29                       estimate   1.18 1.17 0.06     1.18
-#&gt; 39: France 2020-08-30                       estimate   1.18 1.17 0.06     1.18
-#&gt; 40: France 2020-08-31                       estimate   1.18 1.17 0.06     1.17
-#&gt; 41: France 2020-09-01                       estimate   1.17 1.17 0.06     1.17
-#&gt; 42: France 2020-09-02                       estimate   1.17 1.16 0.06     1.17
-#&gt; 43: France 2020-09-03                       estimate   1.17 1.16 0.07     1.17
-#&gt; 44: France 2020-09-04                       estimate   1.17 1.16 0.07     1.17
-#&gt; 45: France 2020-09-05                       estimate   1.17 1.16 0.07     1.18
-#&gt; 46: France 2020-09-06                       estimate   1.17 1.16 0.07     1.18
-#&gt; 47: France 2020-09-07                       estimate   1.17 1.15 0.07     1.17
-#&gt; 48: France 2020-09-08                       estimate   1.17 1.15 0.07     1.17
-#&gt; 49: France 2020-09-09                       estimate   1.16 1.15 0.07     1.17
-#&gt; 50: France 2020-09-10                       estimate   1.16 1.15 0.08     1.17
-#&gt; 51: France 2020-09-11                       estimate   1.16 1.15 0.08     1.17
-#&gt; 52: France 2020-09-12                       estimate   1.16 1.15 0.08     1.17
-#&gt; 53: France 2020-09-13                       estimate   1.16 1.15 0.08     1.18
-#&gt; 54: France 2020-09-14                       estimate   1.16 1.15 0.09     1.18
-#&gt; 55: France 2020-09-15                       estimate   1.16 1.14 0.09     1.17
-#&gt; 56: France 2020-09-16                       estimate   1.16 1.14 0.09     1.17
-#&gt; 57: France 2020-09-17                       estimate   1.16 1.14 0.10     1.17
-#&gt; 58: France 2020-09-18                       estimate   1.16 1.14 0.10     1.17
-#&gt; 59: France 2020-09-19                       estimate   1.16 1.14 0.10     1.17
-#&gt; 60: France 2020-09-20                       estimate   1.16 1.14 0.11     1.17
-#&gt; 61: France 2020-09-21 estimate based on partial data   1.16 1.14 0.11     1.18
-#&gt; 62: France 2020-09-22 estimate based on partial data   1.16 1.14 0.12     1.18
-#&gt; 63: France 2020-09-23 estimate based on partial data   1.16 1.14 0.12     1.17
-#&gt; 64: France 2020-09-24 estimate based on partial data   1.16 1.14 0.13     1.17
-#&gt; 65: France 2020-09-25 estimate based on partial data   1.16 1.14 0.13     1.17
-#&gt; 66: France 2020-09-26 estimate based on partial data   1.16 1.14 0.14     1.17
-#&gt; 67: France 2020-09-27 estimate based on partial data   1.16 1.14 0.14     1.17
-#&gt; 68: France 2020-09-28 estimate based on partial data   1.16 1.14 0.15     1.17
-#&gt; 69: France 2020-09-29 estimate based on partial data   1.16 1.14 0.15     1.17
-#&gt; 70: France 2020-09-30 estimate based on partial data   1.16 1.14 0.16     1.17
-#&gt; 71: France 2020-10-01 estimate based on partial data   1.16 1.14 0.16     1.16
-#&gt; 72: France 2020-10-02                       forecast   1.16 1.14 0.16     1.16
-#&gt; 73: France 2020-10-03                       forecast   1.16 1.14 0.16     1.16
-#&gt; 74: France 2020-10-04                       forecast   1.16 1.14 0.16     1.16
-#&gt; 75: France 2020-10-05                       forecast   1.16 1.14 0.16     1.16
-#&gt; 76: France 2020-10-06                       forecast   1.16 1.14 0.16     1.16
-#&gt; 77: France 2020-10-07                       forecast   1.16 1.14 0.16     1.16
-#&gt; 78: France 2020-10-08                       forecast   1.16 1.14 0.16     1.16
-#&gt; 79: France 2020-10-09                       forecast   1.16 1.14 0.16     1.16
-#&gt; 80: France 2020-10-10                       forecast   1.16 1.14 0.16     1.16
-#&gt; 81: France 2020-10-11                       forecast   1.16 1.14 0.16     1.16
-#&gt; 82: France 2020-10-12                       forecast   1.16 1.14 0.16     1.16
-#&gt; 83: France 2020-10-13                       forecast   1.16 1.14 0.16     1.16
-#&gt; 84: France 2020-10-14                       forecast   1.16 1.14 0.16     1.16
-#&gt; 85: France 2020-10-15                       forecast   1.16 1.14 0.16     1.16
+#&gt;  1: France 2020-07-30                       estimate   1.20 1.20 0.06     1.18
+#&gt;  2: France 2020-07-31                       estimate   1.20 1.20 0.06     1.18
+#&gt;  3: France 2020-08-01                       estimate   1.20 1.20 0.06     1.19
+#&gt;  4: France 2020-08-02                       estimate   1.20 1.20 0.06     1.18
+#&gt;  5: France 2020-08-03                       estimate   1.20 1.20 0.07     1.18
+#&gt;  6: France 2020-08-04                       estimate   1.20 1.20 0.07     1.18
+#&gt;  7: France 2020-08-05                       estimate   1.20 1.20 0.07     1.18
+#&gt;  8: France 2020-08-06                       estimate   1.20 1.20 0.07     1.18
+#&gt;  9: France 2020-08-07                       estimate   1.20 1.20 0.07     1.18
+#&gt; 10: France 2020-08-08                       estimate   1.20 1.20 0.07     1.18
+#&gt; 11: France 2020-08-09                       estimate   1.20 1.21 0.07     1.18
+#&gt; 12: France 2020-08-10                       estimate   1.20 1.21 0.07     1.18
+#&gt; 13: France 2020-08-11                       estimate   1.20 1.21 0.07     1.18
+#&gt; 14: France 2020-08-12                       estimate   1.20 1.21 0.08     1.17
+#&gt; 15: France 2020-08-13                       estimate   1.20 1.21 0.08     1.17
+#&gt; 16: France 2020-08-14                       estimate   1.19 1.21 0.08     1.17
+#&gt; 17: France 2020-08-15                       estimate   1.19 1.21 0.08     1.17
+#&gt; 18: France 2020-08-16                       estimate   1.19 1.21 0.09     1.17
+#&gt; 19: France 2020-08-17                       estimate   1.19 1.21 0.09     1.17
+#&gt; 20: France 2020-08-18                       estimate   1.19 1.21 0.09     1.17
+#&gt; 21: France 2020-08-19                       estimate   1.19 1.20 0.08     1.17
+#&gt; 22: France 2020-08-20                       estimate   1.19 1.20 0.08     1.17
+#&gt; 23: France 2020-08-21                       estimate   1.18 1.20 0.07     1.16
+#&gt; 24: France 2020-08-22                       estimate   1.18 1.19 0.07     1.16
+#&gt; 25: France 2020-08-23                       estimate   1.18 1.19 0.07     1.16
+#&gt; 26: France 2020-08-24                       estimate   1.18 1.18 0.06     1.16
+#&gt; 27: France 2020-08-25                       estimate   1.17 1.18 0.06     1.17
+#&gt; 28: France 2020-08-26                       estimate   1.17 1.17 0.07     1.17
+#&gt; 29: France 2020-08-27                       estimate   1.17 1.17 0.07     1.16
+#&gt; 30: France 2020-08-28                       estimate   1.17 1.16 0.08     1.16
+#&gt; 31: France 2020-08-29                       estimate   1.16 1.16 0.08     1.16
+#&gt; 32: France 2020-08-30                       estimate   1.16 1.16 0.09     1.16
+#&gt; 33: France 2020-08-31                       estimate   1.16 1.15 0.09     1.16
+#&gt; 34: France 2020-09-01                       estimate   1.16 1.15 0.09     1.15
+#&gt; 35: France 2020-09-02                       estimate   1.15 1.14 0.09     1.16
+#&gt; 36: France 2020-09-03                       estimate   1.15 1.14 0.09     1.16
+#&gt; 37: France 2020-09-04                       estimate   1.15 1.14 0.08     1.16
+#&gt; 38: France 2020-09-05                       estimate   1.15 1.14 0.08     1.16
+#&gt; 39: France 2020-09-06                       estimate   1.14 1.13 0.07     1.16
+#&gt; 40: France 2020-09-07                       estimate   1.14 1.13 0.07     1.14
+#&gt; 41: France 2020-09-08                       estimate   1.14 1.13 0.07     1.14
+#&gt; 42: France 2020-09-09                       estimate   1.13 1.13 0.06     1.15
+#&gt; 43: France 2020-09-10                       estimate   1.13 1.13 0.06     1.14
+#&gt; 44: France 2020-09-11                       estimate   1.13 1.13 0.07     1.14
+#&gt; 45: France 2020-09-12                       estimate   1.13 1.13 0.08     1.14
+#&gt; 46: France 2020-09-13                       estimate   1.13 1.12 0.08     1.14
+#&gt; 47: France 2020-09-14                       estimate   1.13 1.12 0.09     1.14
+#&gt; 48: France 2020-09-15                       estimate   1.13 1.12 0.09     1.14
+#&gt; 49: France 2020-09-16                       estimate   1.12 1.12 0.10     1.14
+#&gt; 50: France 2020-09-17                       estimate   1.12 1.12 0.10     1.14
+#&gt; 51: France 2020-09-18                       estimate   1.12 1.11 0.09     1.13
+#&gt; 52: France 2020-09-19                       estimate   1.12 1.11 0.09     1.13
+#&gt; 53: France 2020-09-20                       estimate   1.12 1.10 0.09     1.13
+#&gt; 54: France 2020-09-21                       estimate   1.12 1.10 0.09     1.12
+#&gt; 55: France 2020-09-22                       estimate   1.11 1.10 0.10     1.13
+#&gt; 56: France 2020-09-23                       estimate   1.11 1.09 0.10     1.14
+#&gt; 57: France 2020-09-24                       estimate   1.11 1.09 0.11     1.15
+#&gt; 58: France 2020-09-25                       estimate   1.11 1.09 0.11     1.15
+#&gt; 59: France 2020-09-26                       estimate   1.11 1.09 0.12     1.15
+#&gt; 60: France 2020-09-27                       estimate   1.11 1.09 0.12     1.15
+#&gt; 61: France 2020-09-28 estimate based on partial data   1.11 1.09 0.13     1.14
+#&gt; 62: France 2020-09-29 estimate based on partial data   1.11 1.09 0.13     1.14
+#&gt; 63: France 2020-09-30 estimate based on partial data   1.11 1.09 0.14     1.15
+#&gt; 64: France 2020-10-01 estimate based on partial data   1.11 1.09 0.14     1.14
+#&gt; 65: France 2020-10-02 estimate based on partial data   1.11 1.09 0.14     1.15
+#&gt; 66: France 2020-10-03 estimate based on partial data   1.11 1.10 0.14     1.14
+#&gt; 67: France 2020-10-04 estimate based on partial data   1.12 1.10 0.14     1.14
+#&gt; 68: France 2020-10-05 estimate based on partial data   1.12 1.10 0.14     1.13
+#&gt; 69: France 2020-10-06 estimate based on partial data   1.12 1.11 0.15     1.14
+#&gt; 70: France 2020-10-07 estimate based on partial data   1.13 1.12 0.18     1.15
+#&gt; 71: France 2020-10-08 estimate based on partial data   1.13 1.13 0.21     1.14
+#&gt; 72: France 2020-10-09                       forecast   1.13 1.13 0.21     1.14
+#&gt; 73: France 2020-10-10                       forecast   1.13 1.13 0.21     1.14
+#&gt; 74: France 2020-10-11                       forecast   1.13 1.13 0.21     1.14
+#&gt; 75: France 2020-10-12                       forecast   1.13 1.13 0.21     1.14
+#&gt; 76: France 2020-10-13                       forecast   1.13 1.13 0.21     1.14
+#&gt; 77: France 2020-10-14                       forecast   1.13 1.13 0.21     1.14
+#&gt; 78: France 2020-10-15                       forecast   1.13 1.13 0.21     1.14
+#&gt; 79: France 2020-10-16                       forecast   1.13 1.13 0.21     1.14
+#&gt; 80: France 2020-10-17                       forecast   1.13 1.13 0.21     1.14
+#&gt; 81: France 2020-10-18                       forecast   1.13 1.13 0.21     1.14
+#&gt; 82: France 2020-10-19                       forecast   1.13 1.13 0.21     1.14
+#&gt; 83: France 2020-10-20                       forecast   1.13 1.13 0.21     1.14
+#&gt; 84: France 2020-10-21                       forecast   1.13 1.13 0.21     1.14
+#&gt; 85: France 2020-10-22                       forecast   1.13 1.13 0.21     1.14
 #&gt;     region       date                           type median mean   sd lower_20
 #&gt;     upper_20 lower_50 upper_50 lower_90 upper_90
-#&gt;  1:     1.20     1.18     1.23     1.11     1.28
-#&gt;  2:     1.21     1.18     1.23     1.12     1.29
-#&gt;  3:     1.21     1.17     1.22     1.12     1.30
-#&gt;  4:     1.21     1.17     1.22     1.12     1.30
-#&gt;  5:     1.21     1.18     1.23     1.12     1.30
-#&gt;  6:     1.21     1.18     1.23     1.12     1.31
-#&gt;  7:     1.21     1.18     1.23     1.12     1.31
-#&gt;  8:     1.21     1.18     1.23     1.12     1.32
-#&gt;  9:     1.21     1.18     1.23     1.12     1.32
-#&gt; 10:     1.20     1.17     1.23     1.12     1.33
-#&gt; 11:     1.20     1.18     1.23     1.12     1.33
-#&gt; 12:     1.20     1.17     1.22     1.12     1.34
-#&gt; 13:     1.20     1.17     1.23     1.13     1.34
-#&gt; 14:     1.20     1.17     1.23     1.13     1.34
-#&gt; 15:     1.21     1.17     1.23     1.13     1.35
-#&gt; 16:     1.21     1.17     1.22     1.13     1.34
-#&gt; 17:     1.20     1.17     1.23     1.13     1.35
-#&gt; 18:     1.20     1.18     1.23     1.13     1.35
-#&gt; 19:     1.20     1.17     1.23     1.13     1.35
-#&gt; 20:     1.21     1.17     1.23     1.12     1.34
-#&gt; 21:     1.20     1.17     1.22     1.12     1.34
-#&gt; 22:     1.20     1.18     1.23     1.11     1.33
-#&gt; 23:     1.20     1.17     1.23     1.10     1.32
-#&gt; 24:     1.20     1.17     1.23     1.10     1.32
-#&gt; 25:     1.20     1.17     1.23     1.11     1.32
-#&gt; 26:     1.21     1.17     1.23     1.10     1.32
-#&gt; 27:     1.20     1.17     1.22     1.10     1.31
-#&gt; 28:     1.20     1.16     1.22     1.09     1.31
-#&gt; 29:     1.20     1.16     1.22     1.09     1.30
-#&gt; 30:     1.20     1.16     1.22     1.09     1.30
-#&gt; 31:     1.20     1.16     1.22     1.08     1.29
-#&gt; 32:     1.20     1.16     1.22     1.08     1.29
-#&gt; 33:     1.20     1.16     1.21     1.08     1.28
-#&gt; 34:     1.20     1.15     1.21     1.08     1.28
-#&gt; 35:     1.20     1.16     1.22     1.08     1.27
-#&gt; 36:     1.20     1.15     1.21     1.08     1.28
-#&gt; 37:     1.20     1.15     1.21     1.08     1.27
-#&gt; 38:     1.20     1.15     1.21     1.06     1.26
-#&gt; 39:     1.20     1.15     1.21     1.06     1.26
-#&gt; 40:     1.19     1.15     1.21     1.06     1.26
-#&gt; 41:     1.19     1.15     1.22     1.06     1.26
-#&gt; 42:     1.19     1.15     1.21     1.06     1.27
-#&gt; 43:     1.19     1.15     1.22     1.06     1.27
-#&gt; 44:     1.19     1.15     1.22     1.06     1.27
-#&gt; 45:     1.20     1.14     1.22     1.04     1.26
-#&gt; 46:     1.20     1.15     1.22     1.04     1.26
-#&gt; 47:     1.20     1.15     1.22     1.03     1.26
-#&gt; 48:     1.19     1.14     1.22     1.03     1.26
-#&gt; 49:     1.19     1.13     1.21     1.02     1.26
-#&gt; 50:     1.20     1.13     1.21     1.01     1.26
-#&gt; 51:     1.20     1.13     1.22     1.01     1.26
-#&gt; 52:     1.20     1.13     1.22     1.00     1.26
-#&gt; 53:     1.21     1.13     1.22     0.99     1.26
-#&gt; 54:     1.21     1.13     1.22     1.00     1.28
-#&gt; 55:     1.21     1.13     1.22     0.98     1.27
-#&gt; 56:     1.20     1.13     1.23     0.98     1.28
-#&gt; 57:     1.20     1.13     1.23     0.97     1.28
-#&gt; 58:     1.20     1.13     1.23     0.96     1.28
-#&gt; 59:     1.20     1.13     1.23     0.94     1.27
-#&gt; 60:     1.21     1.13     1.23     0.94     1.28
-#&gt; 61:     1.21     1.13     1.23     0.94     1.29
-#&gt; 62:     1.21     1.12     1.23     0.93     1.29
-#&gt; 63:     1.21     1.12     1.23     0.91     1.29
-#&gt; 64:     1.20     1.12     1.23     0.92     1.31
-#&gt; 65:     1.20     1.12     1.23     0.90     1.31
-#&gt; 66:     1.21     1.12     1.23     0.92     1.34
-#&gt; 67:     1.21     1.12     1.24     0.90     1.35
-#&gt; 68:     1.20     1.11     1.23     0.88     1.33
-#&gt; 69:     1.20     1.12     1.24     0.87     1.33
-#&gt; 70:     1.21     1.11     1.23     0.86     1.34
-#&gt; 71:     1.20     1.11     1.23     0.86     1.35
-#&gt; 72:     1.20     1.11     1.23     0.86     1.35
-#&gt; 73:     1.20     1.11     1.23     0.86     1.35
-#&gt; 74:     1.20     1.11     1.23     0.86     1.35
-#&gt; 75:     1.20     1.11     1.23     0.86     1.35
-#&gt; 76:     1.20     1.11     1.23     0.86     1.35
-#&gt; 77:     1.20     1.11     1.23     0.86     1.35
-#&gt; 78:     1.20     1.11     1.23     0.86     1.35
-#&gt; 79:     1.20     1.11     1.23     0.86     1.35
-#&gt; 80:     1.20     1.11     1.23     0.86     1.35
-#&gt; 81:     1.20     1.11     1.23     0.86     1.35
-#&gt; 82:     1.20     1.11     1.23     0.86     1.35
-#&gt; 83:     1.20     1.11     1.23     0.86     1.35
-#&gt; 84:     1.20     1.11     1.23     0.86     1.35
-#&gt; 85:     1.20     1.11     1.23     0.86     1.35
+#&gt;  1:     1.20     1.17     1.22     1.12     1.29
+#&gt;  2:     1.20     1.17     1.22     1.12     1.30
+#&gt;  3:     1.21     1.17     1.22     1.10     1.29
+#&gt;  4:     1.20     1.17     1.23     1.10     1.31
+#&gt;  5:     1.20     1.17     1.22     1.08     1.30
+#&gt;  6:     1.20     1.17     1.23     1.09     1.32
+#&gt;  7:     1.20     1.16     1.22     1.09     1.32
+#&gt;  8:     1.20     1.16     1.22     1.07     1.30
+#&gt;  9:     1.20     1.16     1.22     1.09     1.32
+#&gt; 10:     1.20     1.16     1.22     1.09     1.32
+#&gt; 11:     1.20     1.16     1.22     1.10     1.33
+#&gt; 12:     1.20     1.16     1.22     1.11     1.34
+#&gt; 13:     1.20     1.16     1.22     1.11     1.34
+#&gt; 14:     1.19     1.16     1.22     1.11     1.35
+#&gt; 15:     1.19     1.16     1.22     1.08     1.35
+#&gt; 16:     1.19     1.16     1.22     1.08     1.34
+#&gt; 17:     1.19     1.16     1.22     1.09     1.34
+#&gt; 18:     1.19     1.16     1.22     1.09     1.33
+#&gt; 19:     1.19     1.16     1.22     1.08     1.32
+#&gt; 20:     1.19     1.15     1.21     1.09     1.32
+#&gt; 21:     1.19     1.15     1.21     1.09     1.31
+#&gt; 22:     1.19     1.15     1.21     1.09     1.31
+#&gt; 23:     1.18     1.15     1.21     1.09     1.30
+#&gt; 24:     1.18     1.15     1.21     1.09     1.31
+#&gt; 25:     1.19     1.14     1.20     1.09     1.30
+#&gt; 26:     1.18     1.14     1.21     1.09     1.28
+#&gt; 27:     1.19     1.14     1.20     1.07     1.27
+#&gt; 28:     1.19     1.14     1.20     1.06     1.27
+#&gt; 29:     1.19     1.14     1.20     1.03     1.27
+#&gt; 30:     1.19     1.14     1.20     1.05     1.29
+#&gt; 31:     1.18     1.14     1.20     1.03     1.27
+#&gt; 32:     1.18     1.13     1.20     1.04     1.28
+#&gt; 33:     1.18     1.13     1.20     1.04     1.27
+#&gt; 34:     1.18     1.13     1.20     1.04     1.27
+#&gt; 35:     1.18     1.13     1.20     1.03     1.26
+#&gt; 36:     1.18     1.13     1.20     1.02     1.24
+#&gt; 37:     1.18     1.12     1.19     1.02     1.25
+#&gt; 38:     1.18     1.13     1.20     1.02     1.25
+#&gt; 39:     1.18     1.12     1.19     1.02     1.24
+#&gt; 40:     1.17     1.12     1.19     1.02     1.23
+#&gt; 41:     1.17     1.11     1.19     1.02     1.22
+#&gt; 42:     1.17     1.10     1.18     1.02     1.22
+#&gt; 43:     1.17     1.11     1.19     1.02     1.22
+#&gt; 44:     1.17     1.10     1.19     1.00     1.23
+#&gt; 45:     1.17     1.10     1.18     0.99     1.23
+#&gt; 46:     1.17     1.10     1.19     0.98     1.23
+#&gt; 47:     1.17     1.10     1.19     0.97     1.22
+#&gt; 48:     1.17     1.10     1.19     0.97     1.23
+#&gt; 49:     1.17     1.10     1.19     0.96     1.23
+#&gt; 50:     1.17     1.09     1.19     0.96     1.23
+#&gt; 51:     1.17     1.09     1.19     0.95     1.23
+#&gt; 52:     1.17     1.09     1.19     0.95     1.23
+#&gt; 53:     1.17     1.09     1.19     0.96     1.23
+#&gt; 54:     1.15     1.09     1.19     0.96     1.24
+#&gt; 55:     1.17     1.09     1.19     0.95     1.23
+#&gt; 56:     1.18     1.08     1.19     0.93     1.24
+#&gt; 57:     1.19     1.08     1.19     0.90     1.24
+#&gt; 58:     1.19     1.08     1.20     0.89     1.24
+#&gt; 59:     1.19     1.08     1.20     0.88     1.24
+#&gt; 60:     1.19     1.08     1.20     0.88     1.25
+#&gt; 61:     1.19     1.08     1.20     0.88     1.26
+#&gt; 62:     1.19     1.08     1.20     0.87     1.27
+#&gt; 63:     1.19     1.08     1.21     0.86     1.28
+#&gt; 64:     1.19     1.08     1.20     0.84     1.27
+#&gt; 65:     1.20     1.07     1.20     0.83     1.26
+#&gt; 66:     1.19     1.07     1.20     0.86     1.29
+#&gt; 67:     1.19     1.07     1.21     0.86     1.29
+#&gt; 68:     1.18     1.07     1.21     0.86     1.30
+#&gt; 69:     1.18     1.07     1.21     0.82     1.31
+#&gt; 70:     1.20     1.07     1.21     0.82     1.34
+#&gt; 71:     1.18     1.06     1.21     0.80     1.36
+#&gt; 72:     1.18     1.06     1.21     0.80     1.36
+#&gt; 73:     1.18     1.06     1.21     0.80     1.36
+#&gt; 74:     1.18     1.06     1.21     0.80     1.36
+#&gt; 75:     1.18     1.06     1.21     0.80     1.36
+#&gt; 76:     1.18     1.06     1.21     0.80     1.36
+#&gt; 77:     1.18     1.06     1.21     0.80     1.36
+#&gt; 78:     1.18     1.06     1.21     0.80     1.36
+#&gt; 79:     1.18     1.06     1.21     0.80     1.36
+#&gt; 80:     1.18     1.06     1.21     0.80     1.36
+#&gt; 81:     1.18     1.06     1.21     0.80     1.36
+#&gt; 82:     1.18     1.06     1.21     0.80     1.36
+#&gt; 83:     1.18     1.06     1.21     0.80     1.36
+#&gt; 84:     1.18     1.06     1.21     0.80     1.36
+#&gt; 85:     1.18     1.06     1.21     0.80     1.36
 #&gt;     upper_20 lower_50 upper_50 lower_90 upper_90
 #&gt; 
-#&gt; $casesInfectionData
-#&gt;     region       date                           type median   mean      sd
-#&gt;  1: France 2020-07-23                       estimate   1209   1235     280
-#&gt;  2: France 2020-07-24                       estimate   1274   1302     300
-#&gt;  3: France 2020-07-25                       estimate   1341   1374     320
-#&gt;  4: France 2020-07-26                       estimate   1413   1450     341
-#&gt;  5: France 2020-07-27                       estimate   1491   1531     363
-#&gt;  6: France 2020-07-28                       estimate   1573   1617     386
-#&gt;  7: France 2020-07-29                       estimate   1658   1708     410
-#&gt;  8: France 2020-07-30                       estimate   1747   1805     436
-#&gt;  9: France 2020-07-31                       estimate   1845   1907     463
-#&gt; 10: France 2020-08-01                       estimate   1944   2016     492
-#&gt; 11: France 2020-08-02                       estimate   2049   2132     523
-#&gt; 12: France 2020-08-03                       estimate   2165   2255     556
-#&gt; 13: France 2020-08-04                       estimate   2288   2385     592
-#&gt; 14: France 2020-08-05                       estimate   2419   2524     630
-#&gt; 15: France 2020-08-06                       estimate   2552   2670     671
-#&gt; 16: France 2020-08-07                       estimate   2694   2824     716
-#&gt; 17: France 2020-08-08                       estimate   2845   2987     763
-#&gt; 18: France 2020-08-09                       estimate   3007   3159     812
-#&gt; 19: France 2020-08-10                       estimate   3177   3341     865
-#&gt; 20: France 2020-08-11                       estimate   3360   3531     920
-#&gt; 21: France 2020-08-12                       estimate   3549   3731     980
-#&gt; 22: France 2020-08-13                       estimate   3744   3941    1044
-#&gt; 23: France 2020-08-14                       estimate   3947   4160    1112
-#&gt; 24: France 2020-08-15                       estimate   4157   4389    1185
-#&gt; 25: France 2020-08-16                       estimate   4376   4628    1264
-#&gt; 26: France 2020-08-17                       estimate   4605   4876    1346
-#&gt; 27: France 2020-08-18                       estimate   4844   5134    1433
-#&gt; 28: France 2020-08-19                       estimate   5093   5402    1522
-#&gt; 29: France 2020-08-20                       estimate   5348   5678    1613
-#&gt; 30: France 2020-08-21                       estimate   5622   5964    1704
-#&gt; 31: France 2020-08-22                       estimate   5907   6259    1797
-#&gt; 32: France 2020-08-23                       estimate   6195   6562    1889
-#&gt; 33: France 2020-08-24                       estimate   6487   6874    1980
-#&gt; 34: France 2020-08-25                       estimate   6792   7195    2072
-#&gt; 35: France 2020-08-26                       estimate   7094   7526    2164
-#&gt; 36: France 2020-08-27                       estimate   7422   7865    2257
-#&gt; 37: France 2020-08-28                       estimate   7751   8214    2350
-#&gt; 38: France 2020-08-29                       estimate   8101   8573    2445
-#&gt; 39: France 2020-08-30                       estimate   8464   8942    2543
-#&gt; 40: France 2020-08-31                       estimate   8835   9322    2643
-#&gt; 41: France 2020-09-01                       estimate   9212   9712    2746
-#&gt; 42: France 2020-09-02                       estimate   9611  10114    2855
-#&gt; 43: France 2020-09-03                       estimate  10023  10529    2970
-#&gt; 44: France 2020-09-04                       estimate  10430  10956    3093
-#&gt; 45: France 2020-09-05                       estimate  10820  11397    3226
-#&gt; 46: France 2020-09-06                       estimate  11261  11852    3371
-#&gt; 47: France 2020-09-07                       estimate  11714  12323    3532
-#&gt; 48: France 2020-09-08                       estimate  12165  12811    3712
-#&gt; 49: France 2020-09-09                       estimate  12646  13316    3913
-#&gt; 50: France 2020-09-10                       estimate  13115  13841    4140
-#&gt; 51: France 2020-09-11                       estimate  13625  14386    4394
-#&gt; 52: France 2020-09-12                       estimate  14190  14954    4678
-#&gt; 53: France 2020-09-13                       estimate  14721  15546    4996
-#&gt; 54: France 2020-09-14                       estimate  15253  16164    5350
-#&gt; 55: France 2020-09-15                       estimate  15851  16811    5743
-#&gt; 56: France 2020-09-16                       estimate  16474  17489    6179
-#&gt; 57: France 2020-09-17                       estimate  17067  18202    6663
-#&gt; 58: France 2020-09-18                       estimate  17751  18952    7202
-#&gt; 59: France 2020-09-19                       estimate  18420  19744    7805
-#&gt; 60: France 2020-09-20                       estimate  19096  20583    8481
-#&gt; 61: France 2020-09-21 estimate based on partial data  19822  21474    9244
-#&gt; 62: France 2020-09-22 estimate based on partial data  20598  22424   10112
-#&gt; 63: France 2020-09-23 estimate based on partial data  21388  23439   11105
-#&gt; 64: France 2020-09-24 estimate based on partial data  22354  24528   12252
-#&gt; 65: France 2020-09-25 estimate based on partial data  23202  25701   13589
-#&gt; 66: France 2020-09-26 estimate based on partial data  24173  26969   15165
-#&gt; 67: France 2020-09-27 estimate based on partial data  25248  28345   17054
-#&gt; 68: France 2020-09-28 estimate based on partial data  26298  29846   19360
-#&gt; 69: France 2020-09-29 estimate based on partial data  27420  31491   22240
-#&gt; 70: France 2020-09-30 estimate based on partial data  28575  33306   25929
-#&gt; 71: France 2020-10-01 estimate based on partial data  29741  35325   30805
-#&gt; 72: France 2020-10-02                       forecast  30997  37538   37063
-#&gt; 73: France 2020-10-03                       forecast  32433  40003   45429
-#&gt; 74: France 2020-10-04                       forecast  33881  42767   56798
-#&gt; 75: France 2020-10-05                       forecast  35424  45891   72496
-#&gt; 76: France 2020-10-06                       forecast  36855  49455   94484
-#&gt; 77: France 2020-10-07                       forecast  38403  53564  125665
-#&gt; 78: France 2020-10-08                       forecast  40077  58357  170326
-#&gt; 79: France 2020-10-09                       forecast  41725  64024  234794
-#&gt; 80: France 2020-10-10                       forecast  43652  70822  328395
-#&gt; 81: France 2020-10-11                       forecast  45688  79101  464871
-#&gt; 82: France 2020-10-12                       forecast  47618  89350  664473
-#&gt; 83: France 2020-10-13                       forecast  49932 102250  957039
-#&gt; 84: France 2020-10-14                       forecast  52148 118755 1386549
-#&gt; 85: France 2020-10-15                       forecast  54572 140219 2017833
-#&gt;     region       date                           type median   mean      sd
-#&gt;     lower_20 upper_20 lower_50 upper_50 lower_90 upper_90
-#&gt;  1:     1130     1223     1061     1330      745     1607
-#&gt;  2:     1184     1284     1110     1401      808     1725
-#&gt;  3:     1238     1348     1171     1483      852     1820
-#&gt;  4:     1293     1411     1238     1576      898     1925
-#&gt;  5:     1356     1486     1297     1659      948     2039
-#&gt;  6:     1424     1565     1364     1753     1009     2160
-#&gt;  7:     1589     1738     1437     1853     1077     2295
-#&gt;  8:     1625     1784     1458     1898     1156     2451
-#&gt;  9:     1713     1883     1540     2005     1213     2581
-#&gt; 10:     1769     1948     1641     2137     1289     2733
-#&gt; 11:     1852     2039     1747     2273     1338     2866
-#&gt; 12:     1968     2168     1825     2382     1427     3037
-#&gt; 13:     2100     2316     1937     2523     1489     3178
-#&gt; 14:     2147     2378     2037     2661     1618     3415
-#&gt; 15:     2284     2527     2134     2804     1717     3641
-#&gt; 16:     2414     2671     2294     3015     1786     3836
-#&gt; 17:     2562     2838     2332     3104     1915     4078
-#&gt; 18:     2765     3060     2431     3249     2009     4310
-#&gt; 19:     2820     3139     2585     3449     2128     4585
-#&gt; 20:     2949     3292     2708     3629     2206     4817
-#&gt; 21:     3070     3432     2895     3883     2345     5119
-#&gt; 22:     3260     3652     3058     4115     2441     5387
-#&gt; 23:     3451     3868     3159     4295     2561     5704
-#&gt; 24:     3744     4181     3305     4518     2727     6064
-#&gt; 25:     3998     4454     3514     4799     2885     6423
-#&gt; 26:     4184     4676     3631     4992     2908     6665
-#&gt; 27:     4478     5000     3744     5186     3111     7085
-#&gt; 28:     4536     5094     3919     5453     3252     7441
-#&gt; 29:     4785     5365     4126     5732     3392     7841
-#&gt; 30:     5079     5691     4298     5994     3531     8244
-#&gt; 31:     5125     5773     4631     6435     3698     8683
-#&gt; 32:     5303     5991     4691     6593     3877     9127
-#&gt; 33:     5576     6292     4898     6908     4158     9700
-#&gt; 34:     5897     6644     5180     7299     4224    10032
-#&gt; 35:     6270     7071     5506     7734     4555    10609
-#&gt; 36:     6499     7345     5822     8155     4736    11059
-#&gt; 37:     6652     7532     6059     8497     5017    11654
-#&gt; 38:     6922     7839     6341     8897     5105    11984
-#&gt; 39:     7322     8294     6561     9254     5273    12468
-#&gt; 40:     7861     8884     6968     9771     5472    12962
-#&gt; 41:     8186     9259     7183    10113     5662    13461
-#&gt; 42:     8002     9132     7520    10579     5979    14115
-#&gt; 43:     8331     9506     7856    11052     6186    14683
-#&gt; 44:     8958    10188     8174    11508     6406    15347
-#&gt; 45:     9406    10691     8529    12034     6669    16000
-#&gt; 46:     9600    10923     8623    12302     6806    16546
-#&gt; 47:     9759    11133     9070    12923     7012    17233
-#&gt; 48:    10342    11762     9632    13721     7002    17797
-#&gt; 49:    10583    12095    10019    14307     7366    18690
-#&gt; 50:    11137    12779    10513    15052     7672    19610
-#&gt; 51:    11774    13542    10195    14999     8015    20717
-#&gt; 52:    12097    13984    10610    15688     8166    21734
-#&gt; 53:    11871    13863    10942    16333     8473    22903
-#&gt; 54:    13063    15198    11252    17027     8644    24105
-#&gt; 55:    13049    15313    11115    17342     8458    24998
-#&gt; 56:    13549    15949    12210    18938     8820    26630
-#&gt; 57:    13899    16548    11935    19192     8737    27950
-#&gt; 58:    14031    16927    12280    20087     8629    29254
-#&gt; 59:    14252    17422    12608    21085     8192    30510
-#&gt; 60:    14239    17647    13184    22404     8394    32650
-#&gt; 61:    14793    18481    12445    22437     8507    34814
-#&gt; 62:    15559    19610    13407    24213     7945    36623
-#&gt; 63:    16548    20925    13509    25270     6864    38361
-#&gt; 64:    15411    20253    12664    25417     6599    40833
-#&gt; 65:    17648    22900    13134    26921     6383    43412
-#&gt; 66:    14987    20739    13767    28769     6069    46246
-#&gt; 67:    15359    21569    13654    30037     5625    49280
-#&gt; 68:    16235    22842    14126    31898     5431    52651
-#&gt; 69:    16129    23338    14092    33354     4814    55942
-#&gt; 70:    14953    22841    14514    35386     4303    59757
-#&gt; 71:    14942    23388    13364    35950     3431    63134
-#&gt; 72:    13606    22748    13669    37954     3721    67606
-#&gt; 73:    13960    23726    13400    39575     1703    70680
-#&gt; 74:    14243    24619    13467    41592     3012    77000
-#&gt; 75:    14183    25274    14018    44161     2507    81734
-#&gt; 76:    14091    25984    13408    45695     1127    86345
-#&gt; 77:    13971    26573    13938    48390      831    91596
-#&gt; 78:    14132    27446    12847    49725      464    97217
-#&gt; 79:    14410    28598     9056    48202      170   103424
-#&gt; 80:    13471    28562     9090    50765      273   110739
-#&gt; 81:    12905    28908     3853    47976      167   118561
-#&gt; 82:    10302    27218     3701    50131       75   126692
-#&gt; 83:    10147    27845     2262    51217       57   136301
-#&gt; 84:    10215    28916     1959    53326       43   146473
-#&gt; 85:     1803    21227     1873    55751       33   156380
-#&gt;     lower_20 upper_20 lower_50 upper_50 lower_90 upper_90
+#&gt; $casesInfectionData</div><div class='output co'>#&gt; <span class='warning'>Warning: Some columns are type 'integer64' but package bit64 is not installed. Those columns will print as strange looking floating point data. There is no need to reload the data. Simply install.packages('bit64') to obtain the integer64 print method and print the data again.</span></div><div class='output co'>#&gt;     region       date                           type median   mean     sd
+#&gt;  1: France 2020-07-30                       estimate   1728   1787    392
+#&gt;  2: France 2020-07-31                       estimate   1820   1880    410
+#&gt;  3: France 2020-08-01                       estimate   1916   1977    428
+#&gt;  4: France 2020-08-02                       estimate   2006   2080    448
+#&gt;  5: France 2020-08-03                       estimate   2112   2189    470
+#&gt;  6: France 2020-08-04                       estimate   2224   2304    495
+#&gt;  7: France 2020-08-05                       estimate   2337   2426    522
+#&gt;  8: France 2020-08-06                       estimate   2454   2556    552
+#&gt;  9: France 2020-08-07                       estimate   2581   2693    585
+#&gt; 10: France 2020-08-08                       estimate   2721   2838    621
+#&gt; 11: France 2020-08-09                       estimate   2872   2993    661
+#&gt; 12: France 2020-08-10                       estimate   3021   3157    703
+#&gt; 13: France 2020-08-11                       estimate   3192   3330    749
+#&gt; 14: France 2020-08-12                       estimate   3365   3513    799
+#&gt; 15: France 2020-08-13                       estimate   3548   3707    854
+#&gt; 16: France 2020-08-14                       estimate   3747   3912    916
+#&gt; 17: France 2020-08-15                       estimate   3948   4128    985
+#&gt; 18: France 2020-08-16                       estimate   4151   4354   1066
+#&gt; 19: France 2020-08-17                       estimate   4353   4592   1159
+#&gt; 20: France 2020-08-18                       estimate   4563   4840   1264
+#&gt; 21: France 2020-08-19                       estimate   4790   5096   1379
+#&gt; 22: France 2020-08-20                       estimate   5019   5359   1498
+#&gt; 23: France 2020-08-21                       estimate   5254   5628   1613
+#&gt; 24: France 2020-08-22                       estimate   5514   5899   1714
+#&gt; 25: France 2020-08-23                       estimate   5754   6172   1793
+#&gt; 26: France 2020-08-24                       estimate   6018   6444   1847
+#&gt; 27: France 2020-08-25                       estimate   6286   6717   1877
+#&gt; 28: France 2020-08-26                       estimate   6574   6990   1892
+#&gt; 29: France 2020-08-27                       estimate   6854   7265   1903
+#&gt; 30: France 2020-08-28                       estimate   7148   7545   1921
+#&gt; 31: France 2020-08-29                       estimate   7447   7830   1958
+#&gt; 32: France 2020-08-30                       estimate   7753   8123   2018
+#&gt; 33: France 2020-08-31                       estimate   8027   8424   2104
+#&gt; 34: France 2020-09-01                       estimate   8312   8734   2211
+#&gt; 35: France 2020-09-02                       estimate   8599   9052   2335
+#&gt; 36: France 2020-09-03                       estimate   8897   9378   2466
+#&gt; 37: France 2020-09-04                       estimate   9205   9710   2596
+#&gt; 38: France 2020-09-05                       estimate   9544  10047   2715
+#&gt; 39: France 2020-09-06                       estimate   9871  10389   2816
+#&gt; 40: France 2020-09-07                       estimate  10227  10735   2894
+#&gt; 41: France 2020-09-08                       estimate  10578  11085   2950
+#&gt; 42: France 2020-09-09                       estimate  10925  11439   2988
+#&gt; 43: France 2020-09-10                       estimate  11302  11798   3014
+#&gt; 44: France 2020-09-11                       estimate  11685  12165   3039
+#&gt; 45: France 2020-09-12                       estimate  12069  12540   3075
+#&gt; 46: France 2020-09-13                       estimate  12474  12924   3134
+#&gt; 47: France 2020-09-14                       estimate  12850  13319   3227
+#&gt; 48: France 2020-09-15                       estimate  13265  13723   3361
+#&gt; 49: France 2020-09-16                       estimate  13619  14136   3535
+#&gt; 50: France 2020-09-17                       estimate  13977  14554   3742
+#&gt; 51: France 2020-09-18                       estimate  14374  14974   3972
+#&gt; 52: France 2020-09-19                       estimate  14754  15394   4212
+#&gt; 53: France 2020-09-20                       estimate  15169  15811   4460
+#&gt; 54: France 2020-09-21                       estimate  15524  16228   4722
+#&gt; 55: France 2020-09-22                       estimate  15900  16648   5012
+#&gt; 56: France 2020-09-23                       estimate  16223  17078   5348
+#&gt; 57: France 2020-09-24                       estimate  16587  17523   5744
+#&gt; 58: France 2020-09-25                       estimate  17032  17992   6204
+#&gt; 59: France 2020-09-26                       estimate  17494  18491   6730
+#&gt; 60: France 2020-09-27                       estimate  17935  19027   7318
+#&gt; 61: France 2020-09-28 estimate based on partial data  18453  19604   7968
+#&gt; 62: France 2020-09-29 estimate based on partial data  18935  20229   8683
+#&gt; 63: France 2020-09-30 estimate based on partial data  19419  20906   9468
+#&gt; 64: France 2020-10-01 estimate based on partial data  19929  21641  10336
+#&gt; 65: France 2020-10-02 estimate based on partial data  20615  22441  11305
+#&gt; 66: France 2020-10-03 estimate based on partial data  21191  23314  12398
+#&gt; 67: France 2020-10-04 estimate based on partial data  21865  24270  13652
+#&gt; 68: France 2020-10-05 estimate based on partial data  22565  25326  15116
+#&gt; 69: France 2020-10-06 estimate based on partial data  23448  26504  16864
+#&gt; 70: France 2020-10-07 estimate based on partial data  24276  27839  19013
+#&gt; 71: France 2020-10-08 estimate based on partial data  25278  29393  21765
+#&gt; 72: France 2020-10-09                       forecast  26262  31025  25153
+#&gt; 73: France 2020-10-10                       forecast  27154  32856  29480
+#&gt; 74: France 2020-10-11                       forecast  28043  34922  35055
+#&gt; 75: France 2020-10-12                       forecast  29008  37266  42294
+#&gt; 76: France 2020-10-13                       forecast  29920  39947  51747
+#&gt; 77: France 2020-10-14                       forecast  30993  43038  64141
+#&gt; 78: France 2020-10-15                       forecast  32085  46629  80447
+#&gt; 79: France 2020-10-16                       forecast  33161  50840 101956
+#&gt; 80: France 2020-10-17                       forecast  34293  55819 130393
+#&gt; 81: France 2020-10-18                       forecast  35665  61757 168073
+#&gt; 82: France 2020-10-19                       forecast  36998  68899 218103
+#&gt; 83: France 2020-10-20                       forecast  38483  77562 284665
+#&gt; 84: France 2020-10-21                       forecast  39816  88151 373396
+#&gt; 85: France 2020-10-22                       forecast  41107 101194 491903
+#&gt;     region       date                           type median   mean     sd
+#&gt;     lower_20 upper_20 lower_50 upper_50 lower_90      upper_90
+#&gt;  1:     1585     1725     1486     1874     1144 1.154631e-320
+#&gt;  2:     1639     1787     1566     1978     1301 1.268267e-320
+#&gt;  3:     1739     1897     1652     2090     1344 1.320637e-320
+#&gt;  4:     1831     1994     1755     2222     1390 1.372020e-320
+#&gt;  5:     1872     2045     1825     2313     1492 1.449095e-320
+#&gt;  6:     1978     2161     1848     2364     1564 1.519252e-320
+#&gt;  7:     2026     2221     1988     2537     1646 1.606701e-320
+#&gt;  8:     2177     2378     2085     2667     1723 1.688716e-320
+#&gt;  9:     2277     2492     2173     2792     1804 1.774684e-320
+#&gt; 10:     2362     2591     2297     2957     1907 1.867568e-320
+#&gt; 11:     2477     2720     2415     3122     2050 1.977745e-320
+#&gt; 12:     2667     2927     2487     3239     2115 2.067171e-320
+#&gt; 13:     2799     3072     2651     3446     2281 2.219343e-320
+#&gt; 14:     3009     3308     2714     3561     2278 2.292959e-320
+#&gt; 15:     3200     3530     2956     3876     2515 2.486632e-320
+#&gt; 16:     3297     3661     3050     4047     2615 2.613113e-320
+#&gt; 17:     3468     3855     3203     4272     2794 2.825067e-320
+#&gt; 18:     3597     4001     3365     4516     2880 2.984651e-320
+#&gt; 19:     3858     4285     3468     4691     2934 3.155103e-320
+#&gt; 20:     4052     4506     3675     4973     3043 3.342848e-320
+#&gt; 21:     4182     4654     3927     5302     3280 3.567648e-320
+#&gt; 22:     4370     4862     4060     5502     3327 3.718338e-320
+#&gt; 23:     4540     5055     4231     5735     3339 3.832961e-320
+#&gt; 24:     4667     5201     4354     5920     3714 4.103709e-320
+#&gt; 25:     4959     5520     4682     6321     3924 4.290960e-320
+#&gt; 26:     5124     5718     4782     6500     4028 4.443626e-320
+#&gt; 27:     5455     6082     4930     6725     4201 4.609138e-320
+#&gt; 28:     5713     6384     5189     7063     4396 4.758840e-320
+#&gt; 29:     6133     6837     5480     7451     4711 4.985616e-320
+#&gt; 30:     6532     7282     5636     7714     4905 5.150634e-320
+#&gt; 31:     6471     7230     5825     7995     5016 5.271186e-320
+#&gt; 32:     6736     7522     6148     8352     5193 5.451026e-320
+#&gt; 33:     6873     7674     6332     8597     5430 5.650629e-320
+#&gt; 34:     7180     8008     6553     8893     5651 5.896179e-320
+#&gt; 35:     7419     8300     6738     9198     5725 6.054280e-320
+#&gt; 36:     7987     8899     7137     9702     5808 6.263764e-320
+#&gt; 37:     8085     9036     7526    10181     6011 6.502398e-320
+#&gt; 38:     8249     9231     7612    10386     6263 6.782039e-320
+#&gt; 39:     8517     9542     7888    10793     6160 6.888263e-320
+#&gt; 40:     8636     9692     8084    11075     6381 7.177292e-320
+#&gt; 41:     9030    10116     8523    11625     6688 7.432724e-320
+#&gt; 42:     9476    10641     8894    12062     7038 7.698531e-320
+#&gt; 43:     9693    10901     9196    12455     7241 7.878865e-320
+#&gt; 44:    10165    11413     9659    13038     7758 8.224217e-320
+#&gt; 45:    10446    11741     9968    13460     7861 8.430242e-320
+#&gt; 46:    10561    11916    10297    13859     7940 8.580438e-320
+#&gt; 47:    11447    12823    10509    14203     8482 9.028556e-320
+#&gt; 48:    11423    12887    10365    14224     8783 9.308691e-320
+#&gt; 49:    11981    13536    10981    15044     9120 9.694062e-320
+#&gt; 50:    12029    13635    11283    15639     9203 1.006511e-319
+#&gt; 51:    12431    14091    10927    15537     8895 1.020987e-319
+#&gt; 52:    12973    14734    11243    16107     9327 1.078150e-319
+#&gt; 53:    13531    15414    11385    16548     9102 1.104830e-319
+#&gt; 54:    13992    15935    12366    17807     9425 1.165353e-319
+#&gt; 55:    13985    16028    12466    18222     9140 1.195293e-319
+#&gt; 56:    14598    16798    11645    17717     9240 1.246775e-319
+#&gt; 57:    13576    15980    12421    19017     8957 1.291241e-319
+#&gt; 58:    13405    16100    12535    19762     8664 1.334620e-319
+#&gt; 59:    13246    16100    11858    19725     8332 1.392228e-319
+#&gt; 60:    15455    18614    12045    20536     7268 1.415992e-319
+#&gt; 61:    15549    18999    11947    21071     6879 1.484025e-319
+#&gt; 62:    15564    19326    12080    21957     6938 1.595140e-319
+#&gt; 63:    16774    20781    12111    22831     6316 1.672412e-319
+#&gt; 64:    17280    21644    11250    22775     5443 1.738123e-319
+#&gt; 65:    17898    22567    11195    23592     5501 1.849238e-319
+#&gt; 66:    18464    23561    10811    24218     5375 1.963318e-319
+#&gt; 67:    15489    20963    11500    25863     5404 2.084908e-319
+#&gt; 68:    15472    21396    11204    26525     4755 2.185549e-319
+#&gt; 69:    14423    20818    11182    27581     5260 2.360497e-319
+#&gt; 70:    15100    21723    12330    30115     3741 2.432631e-319
+#&gt; 71:    18582    25808    12783    31755     3547 2.614694e-319
+#&gt; 72:    17051    24950    11975    32373     3051 2.792657e-319
+#&gt; 73:    12406    20707    12067    33909     2843 2.989641e-319
+#&gt; 74:    12281    21012     9295    32586     2615 3.180646e-319
+#&gt; 75:    11138    20380    10066    34780     1802 3.390575e-319
+#&gt; 76:    12394    22059     9610    35904     1120 3.578320e-319
+#&gt; 77:    13644    23835     6152    33964      854 3.851143e-319
+#&gt; 78:    13522    24294     5645    34789      588 4.108255e-319
+#&gt; 79:    13691    25079     5403    35873      168 4.347778e-319
+#&gt; 80:    10555    22603     4870    36804      449 4.624356e-319
+#&gt; 81:    10575    23316     5294    38755       96 4.966298e-319
+#&gt; 82:     5244    18444     4363    39444       79 5.304635e-319
+#&gt; 83:     5003    18656     3940    40649       64 5.661103e-319
+#&gt; 84:     3698    17742     3698    42434       52 6.055516e-319
+#&gt; 85:     3608    17935     3780    44278       43 6.501410e-319
+#&gt;     lower_20 upper_20 lower_50 upper_50 lower_90      upper_90
 #&gt; 
 #&gt; $casesReportData
 #&gt;     region       date                           type median  mean     sd
-#&gt;  1: France 2020-07-23                       estimate    470   974   1390
-#&gt;  2: France 2020-07-24                       estimate    481  1055   1714
-#&gt;  3: France 2020-07-25                       estimate    527  1121   1618
-#&gt;  4: France 2020-07-26                       estimate    290   641   1047
-#&gt;  5: France 2020-07-27                       estimate    272   606    931
-#&gt;  6: France 2020-07-28                       estimate    670  1451   2085
-#&gt;  7: France 2020-07-29                       estimate    348   769   1169
-#&gt;  8: France 2020-07-30                       estimate    652  1393   2018
-#&gt;  9: France 2020-07-31                       estimate    658  1473   2252
-#&gt; 10: France 2020-08-01                       estimate    766  1634   2411
-#&gt; 11: France 2020-08-02                       estimate    406   916   1391
-#&gt; 12: France 2020-08-03                       estimate    391   870   1339
-#&gt; 13: France 2020-08-04                       estimate    998  2101   3111
-#&gt; 14: France 2020-08-05                       estimate    522  1163   1847
-#&gt; 15: France 2020-08-06                       estimate   1017  2064   2967
-#&gt; 16: France 2020-08-07                       estimate   1100  2156   3061
-#&gt; 17: France 2020-08-08                       estimate   1152  2381   3719
-#&gt; 18: France 2020-08-09                       estimate    618  1359   2164
-#&gt; 19: France 2020-08-10                       estimate    568  1253   1955
-#&gt; 20: France 2020-08-11                       estimate   1500  3213   4839
-#&gt; 21: France 2020-08-12                       estimate    770  1719   2580
-#&gt; 22: France 2020-08-13                       estimate   1400  3025   4583
-#&gt; 23: France 2020-08-14                       estimate   1516  3179   4673
-#&gt; 24: France 2020-08-15                       estimate   1684  3601   5779
-#&gt; 25: France 2020-08-16                       estimate   1002  2035   2902
-#&gt; 26: France 2020-08-17                       estimate    856  1916   2987
-#&gt; 27: France 2020-08-18                       estimate   1996  4545   7137
-#&gt; 28: France 2020-08-19                       estimate   1086  2451   3739
-#&gt; 29: France 2020-08-20                       estimate   2056  4507   6871
-#&gt; 30: France 2020-08-21                       estimate   2036  4582   6959
-#&gt; 31: France 2020-08-22                       estimate   2444  5383   8317
-#&gt; 32: France 2020-08-23                       estimate   1321  2950   4657
-#&gt; 33: France 2020-08-24                       estimate   1213  2607   3807
-#&gt; 34: France 2020-08-25                       estimate   3016  6676  10943
-#&gt; 35: France 2020-08-26                       estimate   1702  3678   5490
-#&gt; 36: France 2020-08-27                       estimate   2950  6266   9178
-#&gt; 37: France 2020-08-28                       estimate   3112  6922  11024
-#&gt; 38: France 2020-08-29                       estimate   3390  7178  10453
-#&gt; 39: France 2020-08-30                       estimate   1872  4073   5846
-#&gt; 40: France 2020-08-31                       estimate   1709  3749   5623
-#&gt; 41: France 2020-09-01                       estimate   4130  9270  15646
-#&gt; 42: France 2020-09-02                       estimate   2392  5129   7674
-#&gt; 43: France 2020-09-03                       estimate   4318  8827  12991
-#&gt; 44: France 2020-09-04                       estimate   4304  9057  13542
-#&gt; 45: France 2020-09-05                       estimate   4749 10242  15167
-#&gt; 46: France 2020-09-06                       estimate   2773  5700   8264
-#&gt; 47: France 2020-09-07                       estimate   2328  5089   7545
-#&gt; 48: France 2020-09-08                       estimate   5752 12749  19728
-#&gt; 49: France 2020-09-09                       estimate   2996  7033  11395
-#&gt; 50: France 2020-09-10                       estimate   5777 12419  18797
-#&gt; 51: France 2020-09-11                       estimate   5954 12343  18665
-#&gt; 52: France 2020-09-12                       estimate   6158 13570  19761
-#&gt; 53: France 2020-09-13                       estimate   3419  7464  11418
-#&gt; 54: France 2020-09-14                       estimate   3066  6999  10836
-#&gt; 55: France 2020-09-15                       estimate   7380 17198  28489
-#&gt; 56: France 2020-09-16                       estimate   4022  8922  13844
-#&gt; 57: France 2020-09-17                       estimate   7252 15522  22443
-#&gt; 58: France 2020-09-18                       estimate   7047 15711  24969
-#&gt; 59: France 2020-09-19                       estimate   8260 17564  26656
-#&gt; 60: France 2020-09-20                       estimate   4498  9650  15877
-#&gt; 61: France 2020-09-21 estimate based on partial data   4125  8810  13025
-#&gt; 62: France 2020-09-22 estimate based on partial data   9910 23203  38679
-#&gt; 63: France 2020-09-23 estimate based on partial data   5274 12113  19462
-#&gt; 64: France 2020-09-24 estimate based on partial data   9238 20854  32111
-#&gt; 65: France 2020-09-25 estimate based on partial data   9417 21567  34480
-#&gt; 66: France 2020-09-26 estimate based on partial data  10951 24775  39824
-#&gt; 67: France 2020-09-27 estimate based on partial data   5636 13327  21791
-#&gt; 68: France 2020-09-28 estimate based on partial data   5184 11714  19720
-#&gt; 69: France 2020-09-29 estimate based on partial data  12608 29704  49605
-#&gt; 70: France 2020-09-30 estimate based on partial data   6442 15583  28040
-#&gt; 71: France 2020-10-01 estimate based on partial data  12232 28621  46652
-#&gt; 72: France 2020-10-02                       forecast  12393 29902  46536
-#&gt; 73: France 2020-10-03                       forecast  13098 32161  57546
-#&gt; 74: France 2020-10-04                       forecast   6728 18376  38523
-#&gt; 75: France 2020-10-05                       forecast   7027 17017  28440
-#&gt; 76: France 2020-10-06                       forecast  16886 42937  93395
-#&gt; 77: France 2020-10-07                       forecast   8038 21135  39063
-#&gt; 78: France 2020-10-08                       forecast  15153 40381  85904
-#&gt; 79: France 2020-10-09                       forecast  15653 41837  89761
-#&gt; 80: France 2020-10-10                       forecast  17709 50113 129857
-#&gt; 81: France 2020-10-11                       forecast   8910 26934  70030
-#&gt; 82: France 2020-10-12                       forecast   8394 27060  96419
-#&gt; 83: France 2020-10-13                       forecast  20569 78322 611688
-#&gt; 84: France 2020-10-14                       forecast  11407 36115 115287
-#&gt; 85: France 2020-10-15                       forecast  19648 69583 344669
+#&gt;  1: France 2020-07-30                       estimate    841  1413   1741
+#&gt;  2: France 2020-07-31                       estimate    788  1453   1922
+#&gt;  3: France 2020-08-01                       estimate    891  1568   2104
+#&gt;  4: France 2020-08-02                       estimate    592  1050   1308
+#&gt;  5: France 2020-08-03                       estimate    562  1040   1437
+#&gt;  6: France 2020-08-04                       estimate   1005  1747   2159
+#&gt;  7: France 2020-08-05                       estimate    700  1249   1630
+#&gt;  8: France 2020-08-06                       estimate   1182  2143   2765
+#&gt;  9: France 2020-08-07                       estimate   1148  2016   2562
+#&gt; 10: France 2020-08-08                       estimate   1350  2338   2951
+#&gt; 11: France 2020-08-09                       estimate    872  1601   2126
+#&gt; 12: France 2020-08-10                       estimate    789  1398   1768
+#&gt; 13: France 2020-08-11                       estimate   1429  2553   3207
+#&gt; 14: France 2020-08-12                       estimate   1011  1765   2268
+#&gt; 15: France 2020-08-13                       estimate   1732  3040   3878
+#&gt; 16: France 2020-08-14                       estimate   1628  2912   3731
+#&gt; 17: France 2020-08-15                       estimate   1852  3365   4325
+#&gt; 18: France 2020-08-16                       estimate   1286  2241   2859
+#&gt; 19: France 2020-08-17                       estimate   1094  1938   2523
+#&gt; 20: France 2020-08-18                       estimate   2098  3657   4704
+#&gt; 21: France 2020-08-19                       estimate   1444  2551   3303
+#&gt; 22: France 2020-08-20                       estimate   2433  4191   5337
+#&gt; 23: France 2020-08-21                       estimate   2364  4296   5556
+#&gt; 24: France 2020-08-22                       estimate   2818  4913   6080
+#&gt; 25: France 2020-08-23                       estimate   1730  3153   4017
+#&gt; 26: France 2020-08-24                       estimate   1631  2873   3823
+#&gt; 27: France 2020-08-25                       estimate   2925  5119   6594
+#&gt; 28: France 2020-08-26                       estimate   2170  3833   4781
+#&gt; 29: France 2020-08-27                       estimate   3358  6234   9442
+#&gt; 30: France 2020-08-28                       estimate   3346  5921   7521
+#&gt; 31: France 2020-08-29                       estimate   3756  6663   8918
+#&gt; 32: France 2020-08-30                       estimate   2466  4451   5543
+#&gt; 33: France 2020-08-31                       estimate   2242  3989   5216
+#&gt; 34: France 2020-09-01                       estimate   3974  7195   9471
+#&gt; 35: France 2020-09-02                       estimate   2996  5089   6339
+#&gt; 36: France 2020-09-03                       estimate   4702  8312  10930
+#&gt; 37: France 2020-09-04                       estimate   4515  7884  10038
+#&gt; 38: France 2020-09-05                       estimate   5088  8977  11777
+#&gt; 39: France 2020-09-06                       estimate   3354  5961   7727
+#&gt; 40: France 2020-09-07                       estimate   2999  5419   7407
+#&gt; 41: France 2020-09-08                       estimate   5218  9683  13182
+#&gt; 42: France 2020-09-09                       estimate   3690  6730   8773
+#&gt; 43: France 2020-09-10                       estimate   6330 11239  14233
+#&gt; 44: France 2020-09-11                       estimate   5761 10506  14011
+#&gt; 45: France 2020-09-12                       estimate   6434 11517  14762
+#&gt; 46: France 2020-09-13                       estimate   4271  7651  10321
+#&gt; 47: France 2020-09-14                       estimate   3810  6793   8779
+#&gt; 48: France 2020-09-15                       estimate   6879 12625  16546
+#&gt; 49: France 2020-09-16                       estimate   4516  8100  10433
+#&gt; 50: France 2020-09-17                       estimate   7732 13894  18030
+#&gt; 51: France 2020-09-18                       estimate   7479 13208  17174
+#&gt; 52: France 2020-09-19                       estimate   8162 14540  18363
+#&gt; 53: France 2020-09-20                       estimate   5282  9512  12128
+#&gt; 54: France 2020-09-21                       estimate   4910  8655  11356
+#&gt; 55: France 2020-09-22                       estimate   8338 15192  20118
+#&gt; 56: France 2020-09-23                       estimate   5676 10559  14230
+#&gt; 57: France 2020-09-24                       estimate   9902 17717  23504
+#&gt; 58: France 2020-09-25                       estimate   8996 16525  21080
+#&gt; 59: France 2020-09-26                       estimate  10408 18529  25361
+#&gt; 60: France 2020-09-27                       estimate   6472 11850  15820
+#&gt; 61: France 2020-09-28 estimate based on partial data   5716 10208  13074
+#&gt; 62: France 2020-09-29 estimate based on partial data  10440 19387  26253
+#&gt; 63: France 2020-09-30 estimate based on partial data   6984 12516  16831
+#&gt; 64: France 2020-10-01 estimate based on partial data  11260 20890  28047
+#&gt; 65: France 2020-10-02 estimate based on partial data  11320 20502  28880
+#&gt; 66: France 2020-10-03 estimate based on partial data  11965 21982  29768
+#&gt; 67: France 2020-10-04 estimate based on partial data   8067 14558  19246
+#&gt; 68: France 2020-10-05 estimate based on partial data   6952 13162  18293
+#&gt; 69: France 2020-10-06 estimate based on partial data  11488 23228  32945
+#&gt; 70: France 2020-10-07 estimate based on partial data   8244 15732  22669
+#&gt; 71: France 2020-10-08 estimate based on partial data  13762 26115  38830
+#&gt; 72: France 2020-10-09                       forecast  12982 25835  42200
+#&gt; 73: France 2020-10-10                       forecast  14460 29066  44476
+#&gt; 74: France 2020-10-11                       forecast   8944 18505  29809
+#&gt; 75: France 2020-10-12                       forecast   8287 16272  26894
+#&gt; 76: France 2020-10-13                       forecast  13404 29435  49885
+#&gt; 77: France 2020-10-14                       forecast   9494 20312  32613
+#&gt; 78: France 2020-10-15                       forecast  16692 36799  68328
+#&gt; 79: France 2020-10-16                       forecast  14426 33856  61074
+#&gt; 80: France 2020-10-17                       forecast  17996 40709  89364
+#&gt; 81: France 2020-10-18                       forecast  11302 26406  47504
+#&gt; 82: France 2020-10-19                       forecast  10026 23561  47198
+#&gt; 83: France 2020-10-20                       forecast  17654 44968 117449
+#&gt; 84: France 2020-10-21                       forecast  12757 31786  61065
+#&gt; 85: France 2020-10-22                       forecast  19386 61773 230778
 #&gt;     region       date                           type median  mean     sd
 #&gt;     lower_20 upper_20 lower_50 upper_50 lower_90 upper_90
-#&gt;  1:        0       76        0      470        0     2587
-#&gt;  2:        0       83        0      481        0     2685
-#&gt;  3:        0       91        0      527        0     2896
-#&gt;  4:        0       47        0      290        0     1611
-#&gt;  5:        0       48        0      272        0     1579
-#&gt;  6:        0      118        0      670        0     3702
-#&gt;  7:        0       60        0      348        0     2010
-#&gt;  8:        0      109        0      653        0     3626
-#&gt;  9:        0      122        0      659        0     3876
-#&gt; 10:        0      149        0      768        0     4176
-#&gt; 11:        0       70        0      407        0     2408
-#&gt; 12:        0       71        0      391        0     2295
-#&gt; 13:        0      175        0      999        0     5405
-#&gt; 14:        0       91        0      522        0     3028
-#&gt; 15:        0      177        0     1018        0     5213
-#&gt; 16:        0      194        0     1102        0     5578
-#&gt; 17:        0      205        0     1153        0     6092
-#&gt; 18:        0      113        0      618        0     3557
-#&gt; 19:        0       92        0      569        0     3265
-#&gt; 20:        0      259        0     1500        0     8358
-#&gt; 21:        0      134        0      770        0     4591
-#&gt; 22:        0      233        0     1401        0     7537
-#&gt; 23:        0      249        0     1516        0     8317
-#&gt; 24:        0      284        0     1684        0     8957
-#&gt; 25:        0      166        0     1002        0     5500
-#&gt; 26:        0      150        0      857        0     4851
-#&gt; 27:        0      361        0     1997        0    11926
-#&gt; 28:        0      199        0     1086        0     6487
-#&gt; 29:        0      381        0     2057        0    11444
-#&gt; 30:        0      370        0     2036        0    12050
-#&gt; 31:        0      446        0     2446        0    13870
-#&gt; 32:        0      234        0     1324        0     7747
-#&gt; 33:        0      219        0     1213        0     6756
-#&gt; 34:        0      512        0     3016        0    16862
-#&gt; 35:        0      263        0     1702        0     9367
-#&gt; 36:        0      477        0     2954        0    16750
-#&gt; 37:        0      532        0     3118        0    17797
-#&gt; 38:        0      598        0     3391        0    18438
-#&gt; 39:        0      301        0     1873        0    11028
-#&gt; 40:        0      314        0     1710        0     9831
-#&gt; 41:        0      776        0     4135        0    23173
-#&gt; 42:        0      411        0     2393        0    13522
-#&gt; 43:        0      741        0     4318        0    22879
-#&gt; 44:        0      743        0     4305        0    23206
-#&gt; 45:        0      753        0     4749        0    26267
-#&gt; 46:        0      469        0     2774        0    14780
-#&gt; 47:        0      406        0     2329        0    13840
-#&gt; 48:        0      937        0     5754        0    33924
-#&gt; 49:        0      561        0     2998        0    18217
-#&gt; 50:        0      937        0     5779        0    32465
-#&gt; 51:        0     1020        0     5957        0    31266
-#&gt; 52:        0     1195        0     6163        0    34527
-#&gt; 53:        0      624        0     3421        0    19137
-#&gt; 54:        0      558        0     3069        0    18286
-#&gt; 55:        0     1326        0     7381        0    43590
-#&gt; 56:        0      659        0     4024        0    22969
-#&gt; 57:        0     1201        0     7253        0    40446
-#&gt; 58:        0     1230        0     7059        0    39937
-#&gt; 59:        0     1447        0     8274        0    45495
-#&gt; 60:        0      719        0     4499        0    24882
-#&gt; 61:        0      690        0     4126        0    23093
-#&gt; 62:        0     1742        0     9913        0    59099
-#&gt; 63:        0      934        0     5279        0    31536
-#&gt; 64:        0     1587        0     9254        0    52529
-#&gt; 65:        0     1594        0     9418        0    54881
-#&gt; 66:        0     1884        0    10954        0    63029
-#&gt; 67:        0      997        0     5650        0    34435
-#&gt; 68:        0      881        0     5188        0    29832
-#&gt; 69:        0     2190        0    12617        0    76828
-#&gt; 70:        0     1151        0     6442        0    37691
-#&gt; 71:        0     2156        0    12239        0    75323
-#&gt; 72:        0     1992        0    12394        0    80725
-#&gt; 73:        0     2270        0    13100        0    83438
-#&gt; 74:        0     1091        0     6729        0    46331
-#&gt; 75:        0     1141        0     7037        0    44575
-#&gt; 76:        0     2612        0    16894        0   108131
-#&gt; 77:        0     1346        0     8042        0    53411
-#&gt; 78:        0     2544        0    15158        0    99026
-#&gt; 79:        0     2650        0    15660        0   105799
-#&gt; 80:        0     2738        0    17716        0   118830
-#&gt; 81:        0     1454        0     8919        0    63241
-#&gt; 82:        0     1286        0     8401        0    61810
-#&gt; 83:        0     3148        0    20607        0   163331
-#&gt; 84:        0     1823        0    11414        0    79720
-#&gt; 85:        0     2842        0    19651        0   154204
+#&gt;  1:        0      214        0      841        0     3445
+#&gt;  2:        0      184        0      789        0     3609
+#&gt;  3:        0      220        0      891        0     3799
+#&gt;  4:        0      145        0      592        0     2571
+#&gt;  5:        0      125        0      562        0     2550
+#&gt;  6:        0      251        0     1005        0     4330
+#&gt;  7:        0      176        0      700        0     3055
+#&gt;  8:        0      299        0     1183        0     5253
+#&gt;  9:        0      284        0     1148        0     4977
+#&gt; 10:        0      295        0     1350        0     5883
+#&gt; 11:        0      210        0      872        0     3885
+#&gt; 12:        0      207        0      790        0     3363
+#&gt; 13:        0      363        0     1430        0     6245
+#&gt; 14:        0      237        0     1011        0     4278
+#&gt; 15:        0      433        0     1733        0     7464
+#&gt; 16:        0      401        0     1628        0     7076
+#&gt; 17:        0      451        0     1852        0     8252
+#&gt; 18:        0      306        0     1287        0     5480
+#&gt; 19:        0      264        0     1094        0     4729
+#&gt; 20:        0      466        0     2098        0     9154
+#&gt; 21:        0      337        0     1444        0     6305
+#&gt; 22:        0      620        0     2433        0     9928
+#&gt; 23:        0      577        0     2365        0    10630
+#&gt; 24:        0      707        0     2819        0    12107
+#&gt; 25:        0      453        0     1730        0     7833
+#&gt; 26:        0      372        0     1632        0     6886
+#&gt; 27:        0      714        0     2926        0    12647
+#&gt; 28:        0      532        0     2170        0     9597
+#&gt; 29:        0      776        0     3360        0    14798
+#&gt; 30:        0      840        0     3347        0    14574
+#&gt; 31:        0      949        0     3757        0    15785
+#&gt; 32:        0      623        0     2467        0    11251
+#&gt; 33:        0      523        0     2242        0     9824
+#&gt; 34:        0      955        0     3975        0    17782
+#&gt; 35:        0      737        0     2996        0    12469
+#&gt; 36:        0     1191        0     4704        0    20240
+#&gt; 37:        0     1060        0     4517        0    19649
+#&gt; 38:        0     1205        0     5090        0    22126
+#&gt; 39:        0      848        0     3354        0    14551
+#&gt; 40:        0      687        0     3001        0    12691
+#&gt; 41:        0     1280        0     5223        0    24183
+#&gt; 42:        0      944        0     3690        0    16650
+#&gt; 43:        0     1473        0     6333        0    27455
+#&gt; 44:        0     1421        0     5762        0    25920
+#&gt; 45:        0     1589        0     6437        0    28318
+#&gt; 46:        0     1107        0     4276        0    18901
+#&gt; 47:        0      927        0     3811        0    16754
+#&gt; 48:        0     1696        0     6890        0    30502
+#&gt; 49:        0     1117        0     4517        0    19665
+#&gt; 50:        0     1939        0     7740        0    33265
+#&gt; 51:        0     1873        0     7480        0    32381
+#&gt; 52:        0     2063        0     8170        0    35981
+#&gt; 53:        0     1241        0     5284        0    23458
+#&gt; 54:        0     1182        0     4914        0    21567
+#&gt; 55:        0     2028        0     8344        0    37445
+#&gt; 56:        0     1341        0     5676        0    26669
+#&gt; 57:        0     2332        0     9902        0    44038
+#&gt; 58:        0     2193        0     9004        0    40945
+#&gt; 59:        0     2515        0    10409        0    45955
+#&gt; 60:        0     1704        0     6479        0    27919
+#&gt; 61:        0     1341        0     5719        0    25038
+#&gt; 62:        0     2686        0    10441        0    48689
+#&gt; 63:        0     1686        0     6985        0    30519
+#&gt; 64:        0     2957        0    11261        0    51764
+#&gt; 65:        0     2711        0    11332        0    50410
+#&gt; 66:        2     3058        2    11978        2    53791
+#&gt; 67:        0     1958        0     8068        0    36403
+#&gt; 68:        0     1709        0     6952        0    32868
+#&gt; 69:        0     2785        0    11489        0    57941
+#&gt; 70:        0     1918        0     8245        0    38432
+#&gt; 71:        0     3137        0    13764        0    61575
+#&gt; 72:        0     2973        0    12982        0    62502
+#&gt; 73:        0     3222        0    14460        0    73232
+#&gt; 74:        0     2281        0     8947        0    44697
+#&gt; 75:        0     1938        0     8287        0    40310
+#&gt; 76:        0     3192        0    13405        0    73031
+#&gt; 77:        0     2214        0     9494        0    50168
+#&gt; 78:        0     3817        0    16693        0    87047
+#&gt; 79:        0     3195        0    14431        0    82211
+#&gt; 80:        0     4095        0    18000        0    96280
+#&gt; 81:        0     2571        0    11302        0    65246
+#&gt; 82:        0     2217        0    10037        0    56169
+#&gt; 83:        0     3576        0    17690        0   102692
+#&gt; 84:        0     2525        0    12776        0    80231
+#&gt; 85:        0     4178        0    19387        0   129083
 #&gt;     lower_20 upper_20 lower_50 upper_50 lower_90 upper_90
 #&gt; 
 #&gt; $obsCasesData
 #&gt;     region       date confirm
-#&gt;  1: France 2020-07-09     663
-#&gt;  2: France 2020-07-10     621
-#&gt;  3: France 2020-07-11     658
-#&gt;  4: France 2020-07-12       0
-#&gt;  5: France 2020-07-13       0
-#&gt;  6: France 2020-07-14    1625
-#&gt;  7: France 2020-07-15       0
-#&gt;  8: France 2020-07-16     927
-#&gt;  9: France 2020-07-17     534
-#&gt; 10: France 2020-07-18     836
-#&gt; 11: France 2020-07-19       0
-#&gt; 12: France 2020-07-20       0
-#&gt; 13: France 2020-07-21    2080
-#&gt; 14: France 2020-07-22     584
-#&gt; 15: France 2020-07-23     998
-#&gt; 16: France 2020-07-24    1062
-#&gt; 17: France 2020-07-25    1130
-#&gt; 18: France 2020-07-26       0
-#&gt; 19: France 2020-07-27       0
-#&gt; 20: France 2020-07-28    2551
-#&gt; 21: France 2020-07-29     725
-#&gt; 22: France 2020-07-30    1392
-#&gt; 23: France 2020-07-31    1377
-#&gt; 24: France 2020-08-01    1346
-#&gt; 25: France 2020-08-02       0
-#&gt; 26: France 2020-08-03       0
-#&gt; 27: France 2020-08-04    3376
-#&gt; 28: France 2020-08-05    1039
-#&gt; 29: France 2020-08-06    1695
-#&gt; 30: France 2020-08-07    1604
-#&gt; 31: France 2020-08-08    2288
-#&gt; 32: France 2020-08-09       0
-#&gt; 33: France 2020-08-10       0
-#&gt; 34: France 2020-08-11    4854
-#&gt; 35: France 2020-08-12    1397
-#&gt; 36: France 2020-08-13    2524
-#&gt; 37: France 2020-08-14    2669
-#&gt; 38: France 2020-08-15    2846
-#&gt; 39: France 2020-08-16    3310
-#&gt; 40: France 2020-08-17    3015
-#&gt; 41: France 2020-08-18     493
-#&gt; 42: France 2020-08-19    2238
-#&gt; 43: France 2020-08-20    3776
-#&gt; 44: France 2020-08-21    4771
-#&gt; 45: France 2020-08-22    4586
-#&gt; 46: France 2020-08-23    3602
-#&gt; 47: France 2020-08-24    4897
-#&gt; 48: France 2020-08-25    1955
-#&gt; 49: France 2020-08-26    3304
-#&gt; 50: France 2020-08-27    5429
-#&gt; 51: France 2020-08-28    6111
-#&gt; 52: France 2020-08-29    7379
-#&gt; 53: France 2020-08-30    5453
-#&gt; 54: France 2020-08-31    5413
-#&gt; 55: France 2020-09-01    3082
-#&gt; 56: France 2020-09-02    4982
-#&gt; 57: France 2020-09-03    7017
-#&gt; 58: France 2020-09-04    7157
-#&gt; 59: France 2020-09-05    8975
-#&gt; 60: France 2020-09-06    8550
-#&gt; 61: France 2020-09-07    7071
-#&gt; 62: France 2020-09-08    4203
-#&gt; 63: France 2020-09-09    6544
-#&gt; 64: France 2020-09-10    8577
-#&gt; 65: France 2020-09-11    9843
-#&gt; 66: France 2020-09-12    9406
-#&gt; 67: France 2020-09-13   10561
-#&gt; 68: France 2020-09-14    7183
-#&gt; 69: France 2020-09-15    6158
-#&gt; 70: France 2020-09-16    7852
-#&gt; 71: France 2020-09-17    9784
-#&gt; 72: France 2020-09-18   10593
-#&gt; 73: France 2020-09-19   13215
-#&gt; 74: France 2020-09-20   13498
-#&gt; 75: France 2020-09-21   11569
-#&gt; 76: France 2020-09-22    4298
-#&gt; 77: France 2020-09-23   10008
-#&gt; 78: France 2020-09-24   13072
-#&gt; 79: France 2020-09-25   16096
-#&gt; 80: France 2020-09-26   15797
-#&gt; 81: France 2020-09-27   14412
-#&gt; 82: France 2020-09-28   11123
-#&gt; 83: France 2020-09-29    4070
-#&gt; 84: France 2020-09-30    8051
-#&gt; 85: France 2020-10-01   12845
+#&gt;  1: France 2020-07-16     927
+#&gt;  2: France 2020-07-17     534
+#&gt;  3: France 2020-07-18     836
+#&gt;  4: France 2020-07-19       0
+#&gt;  5: France 2020-07-20       0
+#&gt;  6: France 2020-07-21    2080
+#&gt;  7: France 2020-07-22     584
+#&gt;  8: France 2020-07-23     998
+#&gt;  9: France 2020-07-24    1062
+#&gt; 10: France 2020-07-25    1130
+#&gt; 11: France 2020-07-26       0
+#&gt; 12: France 2020-07-27       0
+#&gt; 13: France 2020-07-28    2551
+#&gt; 14: France 2020-07-29     725
+#&gt; 15: France 2020-07-30    1392
+#&gt; 16: France 2020-07-31    1377
+#&gt; 17: France 2020-08-01    1346
+#&gt; 18: France 2020-08-02       0
+#&gt; 19: France 2020-08-03       0
+#&gt; 20: France 2020-08-04    3376
+#&gt; 21: France 2020-08-05    1039
+#&gt; 22: France 2020-08-06    1695
+#&gt; 23: France 2020-08-07    1604
+#&gt; 24: France 2020-08-08    2288
+#&gt; 25: France 2020-08-09       0
+#&gt; 26: France 2020-08-10       0
+#&gt; 27: France 2020-08-11    4854
+#&gt; 28: France 2020-08-12    1397
+#&gt; 29: France 2020-08-13    2524
+#&gt; 30: France 2020-08-14    2669
+#&gt; 31: France 2020-08-15    2846
+#&gt; 32: France 2020-08-16    3310
+#&gt; 33: France 2020-08-17    3015
+#&gt; 34: France 2020-08-18     493
+#&gt; 35: France 2020-08-19    2238
+#&gt; 36: France 2020-08-20    3776
+#&gt; 37: France 2020-08-21    4771
+#&gt; 38: France 2020-08-22    4586
+#&gt; 39: France 2020-08-23    3602
+#&gt; 40: France 2020-08-24    4897
+#&gt; 41: France 2020-08-25    1955
+#&gt; 42: France 2020-08-26    3304
+#&gt; 43: France 2020-08-27    5429
+#&gt; 44: France 2020-08-28    6111
+#&gt; 45: France 2020-08-29    7379
+#&gt; 46: France 2020-08-30    5453
+#&gt; 47: France 2020-08-31    5413
+#&gt; 48: France 2020-09-01    3082
+#&gt; 49: France 2020-09-02    4982
+#&gt; 50: France 2020-09-03    7017
+#&gt; 51: France 2020-09-04    7157
+#&gt; 52: France 2020-09-05    8975
+#&gt; 53: France 2020-09-06    8550
+#&gt; 54: France 2020-09-07    7071
+#&gt; 55: France 2020-09-08    4203
+#&gt; 56: France 2020-09-09    6544
+#&gt; 57: France 2020-09-10    8577
+#&gt; 58: France 2020-09-11    9843
+#&gt; 59: France 2020-09-12    9406
+#&gt; 60: France 2020-09-13   10561
+#&gt; 61: France 2020-09-14    7183
+#&gt; 62: France 2020-09-15    6158
+#&gt; 63: France 2020-09-16    7852
+#&gt; 64: France 2020-09-17    9784
+#&gt; 65: France 2020-09-18   10593
+#&gt; 66: France 2020-09-19   13215
+#&gt; 67: France 2020-09-20   13498
+#&gt; 68: France 2020-09-21   11569
+#&gt; 69: France 2020-09-22    4298
+#&gt; 70: France 2020-09-23   10008
+#&gt; 71: France 2020-09-24   13072
+#&gt; 72: France 2020-09-25   16096
+#&gt; 73: France 2020-09-26   15797
+#&gt; 74: France 2020-09-27   14412
+#&gt; 75: France 2020-09-28   11123
+#&gt; 76: France 2020-09-29    4070
+#&gt; 77: France 2020-09-30    8051
+#&gt; 78: France 2020-10-01   12845
+#&gt; 79: France 2020-10-02   13970
+#&gt; 80: France 2020-10-03   12148
+#&gt; 81: France 2020-10-04   16972
+#&gt; 82: France 2020-10-05   12545
+#&gt; 83: France 2020-10-06    5104
+#&gt; 84: France 2020-10-07   10489
+#&gt; 85: France 2020-10-08   18746
 #&gt;     region       date confirm
 #&gt; </div></pre>
   </div>
