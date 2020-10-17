@@ -9,3 +9,5 @@
 ^vignettes$
 .github
 ^Dockerfile$
+bump.sh
+cran-comments.md
