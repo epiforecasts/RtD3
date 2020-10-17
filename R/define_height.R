@@ -1,4 +1,5 @@
-
+# Function to define the default height of the output widget (in pixels)
+# given different data inputs
 
 define_height <- function(geoData, rtData, map_only = F){
 
