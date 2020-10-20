@@ -1,6 +1,6 @@
 Package: RtD3
 Title: Rt Visualization in D3
-Version: 0.1.0
+Version: 0.0.1
 Authors@R: c(
     person(given = "Hamish",
            family = "Gibbs",
