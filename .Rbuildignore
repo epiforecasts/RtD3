@@ -11,3 +11,4 @@
 ^Dockerfile$
 bump.sh
 cran-comments.md
+^CRAN-RELEASE$
