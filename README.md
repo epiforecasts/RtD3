@@ -19,7 +19,7 @@ install.packages("RtD3")
 Install the development version of this package with:
 
 ``` r
-remotes::install_github("hamishgibbs/RtD3")
+remotes::install_github("epiforecasts/RtD3")
 ```
 
 ## Quickstart
