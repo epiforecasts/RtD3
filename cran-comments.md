@@ -1,3 +1,10 @@
+## Resubmisison
+This is a resubmission. In this version I have:
+
+* resolved issues with links and doi formatting in the Readme.md and DESCRIPTION files.
+
+* Resolved the note on unknown spelling in the previous release.
+
 ## Test environments
 * local OS X install, R 3.6.3
 * Ubuntu Linux 16.04 LTS, R-release, GCC
