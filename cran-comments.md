@@ -13,12 +13,6 @@ There was 1 NOTE:
   Maintainer: 'Hamish Gibbs <lshhg2@lshtm.ac.uk>'
   
   New submission
-  
-  Possibly mis-spelled words in DESCRIPTION:
-    al (18:13)
-    et (18:10)
-    
-  These spellings are intentional. 
 
 ## Downstream dependencies
 
