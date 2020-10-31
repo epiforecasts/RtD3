@@ -35,7 +35,7 @@ summaryWidget <- function(geoData = NULL,
     ts_bar_color = ts_bar_color,
     projection = projection,
     map_legend_ref = map_legend_ref,
-    credible_threshold = credible_threshold,
+    credible_threshold = credible_threshold
   )
 
   if (!dryRun) {
