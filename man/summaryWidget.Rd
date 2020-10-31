@@ -7,15 +7,13 @@
 summaryWidget(
   geoData = NULL,
   rtData = NULL,
-  activeArea = NULL,
-  activeTime = "all",
-  runDate = NULL,
   subregional_ref = NULL,
-  width = 900,
-  elementId = NULL,
-  dryRun = FALSE,
-  downloadUrl = NULL,
-  ts_color_ref = NULL
+  ts_color_ref = NULL,
+  ts_bar_color = "lightgrey",
+  projection = "geoEquirectangular",
+  map_legend_ref = NULL,
+  credible_threshold = 10,
+  dryRun = FALSE
 )
 }
 \arguments{
@@ -23,25 +21,21 @@ summaryWidget(
 
 \item{rtData}{data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}}
 
-\item{activeArea}{character, the default area to plot.}
-
-\item{activeTime}{character, the default time window (defaults to 'all')}
-
-\item{runDate}{character, date of estimate run in the format ('YYYY-MM-DD')}
-
 \item{subregional_ref}{list, reference to subnational estimates in the format {'country_name':'url', ...}.}
 
-\item{width}{integer, width in pixels}
+\item{ts_color_ref}{list, reference for colors for timeseries plots.}
 
-\item{elementId}{string, id of element}
+\item{ts_bar_color}{string, color of observed cases bars in timeseries plots.}
 
-\item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.}
+\item{projection}{string, map projection, must be names in d3-projection.}
 
-\item{downloadUrl}{string, optional URL to download datasets}
+\item{map_legend_ref}{list, reference for map legend variables}
 
-\item{ts_color_ref}{list, default reference for time series plots. See default_ts_colors for format.
+\item{credible_threshold}{integer, Threshold for credible intervals, maximum observed cases * this value will be removed.}
+
+\item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.
 Useful for checking the integrity of input data.}
 }
 \description{
-Create an Rt visualisation using D3
+Create an Rt visualisation using D3. Need convenience functions to define defaults
 }

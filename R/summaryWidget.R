@@ -1,6 +1,6 @@
 #' @title summaryWidget
 #'
-#' @description Create an Rt visualisation using D3
+#' @description Create an Rt visualisation using D3. Need convenience functions to define defaults
 #'
 #' @param geoData sf object, map data
 #' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}
@@ -26,34 +26,16 @@ summaryWidget <- function(geoData = NULL,
                           credible_threshold=10,
                           dryRun = FALSE) {
 
-  #arg_types <- sapply(ls(), function(x){return(class(get(x)))})
-
-  #invisible(check_input_data(arg_types = arg_types, geoData = geoData, rtData = rtData))
-
-  #warn for geoData name intersection issues
-  #if (!is.null(geoData)){
-  #  check_geoData_names(geoData = geoData, rtData = rtData)
-  #}
-
-  #define height, which is fixed based on dataset availability
-  #height <- define_height(geoData = geoData, rtData = rtData)
-
-  #if ts color ref is null, use default colors
-  #if (is.null(ts_color_ref)){
-  #  ts_color_ref <- default_ts_colors()
-  #}
-
   # forward options using x
   x = list(
-    activeArea = activeArea,
-    activeTime = activeTime,
-    runDate = runDate,
     geoData = geojsonNull(geoData),
     rtData = jsonNull(rtData),
     subregional_ref = subregional_ref,
-    fullWidth = width,
-    downloadUrl = downloadUrl,
-    ts_color_ref = ts_color_ref
+    ts_color_ref = ts_color_ref,
+    ts_bar_color = ts_bar_color,
+    projection = projection,
+    map_legend_ref = map_legend_ref,
+    credible_threshold = credible_threshold,
   )
 
   if (!dryRun) {
@@ -61,10 +43,10 @@ summaryWidget <- function(geoData = NULL,
     htmlwidgets::createWidget(
       name = 'RtD3',
       x,
-      width = width,
-      height = height,
+      width = 1000,
+      height = 1000,
       package = 'RtD3',
-      elementId = elementId
+      elementId = NULL
     )
   }else{
     return(TRUE)
