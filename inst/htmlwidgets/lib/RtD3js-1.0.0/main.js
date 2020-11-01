@@ -448,11 +448,11 @@ var Map = /*#__PURE__*/function (_React$Component) {
       }).attr('stroke', '#333').on('mousemove', function (e) {
         var hovered_name = Map_d3.select(this).attr('region-name');
         var hovered_data = data.filter(function (d) {
-          return d.Country == hovered_name;
+          return d.region == hovered_name;
         })[0];
 
         function format_tooltip_string(hovered_data, legend_ref) {
-          return '<b>' + hovered_data['Country'] + '</b></br><b>' + legend_ref['variable_name'] + ': </b>' + hovered_data[legend_ref['variable_name']];
+          return '<b>' + hovered_data['region'] + '</b></br><b>' + legend_ref['variable_name'] + ': </b>' + hovered_data[legend_ref['variable_name']];
         }
 
         try {
@@ -477,7 +477,7 @@ var Map = /*#__PURE__*/function (_React$Component) {
     key: "sequential_fill",
     value: function sequential_fill(feature_name, summaryData, legend_scale, legend_ref) {
       var summary_data = summaryData.filter(function (d) {
-        if (d.Country == feature_name) {
+        if (d.region == feature_name) {
           return d;
         }
       });
@@ -493,11 +493,10 @@ var Map = /*#__PURE__*/function (_React$Component) {
     key: "qualitative_fill",
     value: function qualitative_fill(feature_name, summaryData, legend_ref) {
       var summary_data = summaryData.filter(function (d) {
-        if (d.Country == feature_name) {
+        if (d.region == feature_name) {
           return d;
         }
       });
-      console.log(summary_data);
 
       try {
         return legend_ref['legend_values'][summary_data[0][legend_ref['variable_name']]];
