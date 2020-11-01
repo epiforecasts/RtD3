@@ -4,14 +4,18 @@ dependencies:
     src: "htmlwidgets/lib/RtD3js-1.0.0"
     script: main.js
   - name: React
-    version: 1.0.0
+    version: 15.7.0
     src: "htmlwidgets/lib/React-15.7.0"
     script: react.js
   - name: ReactDOM
-    version: 1.0.0
+    version: 15.7.0
     src: "htmlwidgets/lib/ReactDOM-15.7.0"
     script: react-dom.js
   - name: d3
     version: 6.2.0
     src: "htmlwidgets/lib/d3-6.2.0"
     script: d3.v6.min.js
+  - name: Bootstrap
+    version: 4.5.3
+    src: "htmlwidgets/lib/Bootstrap-4.5.3"
+    stylesheet: bootstrap.min.css
