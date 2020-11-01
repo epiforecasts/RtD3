@@ -26,6 +26,15 @@ summaryWidget <- function(geoData = NULL,
                           credible_threshold=10,
                           dryRun = FALSE) {
 
+
+  if (is.null(ts_color_ref)){
+    ts_color_ref <- default_ts_color_ref()
+  }
+
+  if (is.null(map_legend_ref)){
+    map_legend_ref <- default_map_legend_ref()
+  }
+
   # forward options using x
   x = list(
     geoData = geojsonNull(geoData),

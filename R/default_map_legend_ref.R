@@ -18,8 +18,7 @@ default_map_legend_ref <- function(){
       'legend_scale'='scaleLinear',
       'legend_values'=list('low'='white',
                            'high'='green',
-                           'No Data'='grey')
-    )
+                           'No Data'='grey'))
   )
   
   return(map_legend_ref)

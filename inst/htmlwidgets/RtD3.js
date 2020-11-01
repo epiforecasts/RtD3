@@ -12,13 +12,11 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        console.log(x);
-
         window.onload = function()
           {
             ReactDOM.render(
                 React.createElement(RtD3js.default, {widget: 'summaryWidget', x: x}),
-                document.getElementById('root')
+                el
             );
           };
 

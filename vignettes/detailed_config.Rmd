@@ -64,8 +64,6 @@ The data and config are then passed to `RtD3::summaryWidget`.
 ``` {r}
 RtD3::summaryWidget(
   geoData = geoData,
-  rtData = rtData,
-  subregional_ref = subnational_ref,
-  downloadUrl = 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates'
+  rtData = rtData
 )
 ```

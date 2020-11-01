@@ -1,5 +1,5 @@
- dependencies:
-   - name: RtD3js
+dependencies:
+  - name: RtD3js
     version: 1.0.0
     src: "htmlwidgets/lib/RtD3js-1.0.0"
     script: main.js
@@ -13,5 +13,5 @@
     script: react-dom.js
   - name: d3
     version: 6.2.0
-    src: "htmlwidgets/lib/d3-5.16.0"
-    script: d3.v5.min.js
+    src: "htmlwidgets/lib/d3-6.2.0"
+    script: d3.v6.min.js
