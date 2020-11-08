@@ -32,23 +32,20 @@ remotes::install_github("epiforecasts/RtD3")
 ```
 
 ## Quickstart
+Spatial data is passed to RtD3 as an `sf` object. Use the `rnaturalearth` package for quick access to global and national spatial data.
 
 Estimates are available from [epiforecasts](https://epiforecasts.io/covid/) [covid-rt-estimates](https://github.com/epiforecasts/covid-rt-estimates/) in the format expected by this package. Use the helper function `readInEpiNow2` to generate the summary widget with existing estimates.
-
-``` r
-rtData <- list("Cases" = readInEpiNow2(
-    path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
-    region_var = "country"))
-
-summaryWidget(rtData = rtData)
-```
-
-Optionally, a map can be included using data from the `rnaturalearth` package.
 
 ``` r
 geoData = rnaturalearth::ne_countries(returnclass = 'sf')
 
 summaryWidget(geoData = geoData, rtData = rtData)
+
+rtData <- list("Cases" = readInEpiNow2(
+    path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary",
+    region_var = "country"))
+
+summaryWidget(rtData = rtData)
 ```
 
 ## Development
