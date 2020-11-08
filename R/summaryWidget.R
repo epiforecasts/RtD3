@@ -4,12 +4,15 @@
 #'
 #' @param geoData sf object, map data
 #' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}
+#' @param data_ref list, reference for input data column names. Specify the column holding geometry to be symbolised {'rtData':{'geometry_name':'region'}, ...}
 #' @param subregional_ref list, reference to subnational estimates in the format {'country_name':'url', ...}.
 #' @param ts_color_ref list, reference for colors for timeseries plots.
 #' @param ts_bar_color string, color of observed cases bars in timeseries plots.
 #' @param projection string, map projection, must be names in d3-projection.
 #' @param map_legend_ref list, reference for map legend variables
 #' @param credible_threshold integer, Threshold for credible intervals, maximum observed cases * this value will be removed.
+#' @param width integer, Width of widget (px).
+#' @param activeArea string, Area to symbolise first.
 #' @param dryRun Logical, defaults to FALSE. Should the function be tested without the widget being created.
 #' Useful for checking the integrity of input data.
 #' @importFrom htmlwidgets createWidget
@@ -25,6 +28,8 @@ summaryWidget <- function(geoData = NULL,
                           projection='geoEquirectangular',
                           map_legend_ref=NULL,
                           credible_threshold=10,
+                          width = NULL,
+                          activeArea = 'United Kingdom',
                           dryRun = FALSE) {
 
 
@@ -40,6 +45,10 @@ summaryWidget <- function(geoData = NULL,
     map_legend_ref <- default_map_legend_ref()
   }
 
+  if (is.null(width)){
+    width <- 900
+  }
+
   # forward options using x
   x = list(
     geoData = geojsonNull(geoData),
@@ -50,7 +59,8 @@ summaryWidget <- function(geoData = NULL,
     ts_bar_color = ts_bar_color,
     projection = projection,
     map_legend_ref = map_legend_ref,
-    credible_threshold = credible_threshold
+    credible_threshold = credible_threshold,
+    activeArea = activeArea
   )
 
   if (!dryRun) {
@@ -58,8 +68,8 @@ summaryWidget <- function(geoData = NULL,
     htmlwidgets::createWidget(
       name = 'RtD3',
       x,
-      width = 1000,
-      height = 1000,
+      width = width,
+      height = define_height(geoData, rtData),
       package = 'RtD3',
       elementId = NULL
     )

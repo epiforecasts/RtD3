@@ -7,6 +7,7 @@
 summaryWidget(
   geoData = NULL,
   rtData = NULL,
+  data_ref = NULL,
   subregional_ref = NULL,
   ts_color_ref = NULL,
   ts_bar_color = "lightgrey",
@@ -20,6 +21,8 @@ summaryWidget(
 \item{geoData}{sf object, map data}
 
 \item{rtData}{data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}}
+
+\item{data_ref}{list, reference for input data column names. Specify the column holding geometry to be symbolised {'rtData':{'geometry_name':'region'}, ...}}
 
 \item{subregional_ref}{list, reference to subnational estimates in the format {'country_name':'url', ...}.}
 
