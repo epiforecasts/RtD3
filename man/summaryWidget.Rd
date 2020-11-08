@@ -24,13 +24,13 @@ summaryWidget(
 
 \item{rtData}{data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}}
 
-\item{data_ref}{list, reference for input data column names. Specify the column holding geometry to be symbolised {'rtData':{'geometry_name':'region'}, ...}}
+\item{data_ref}{list, reference for input data column names. Specify the column holding geometry to be symbolized {'rtData':{'geometry_name':'region'}, ...}}
 
 \item{subregional_ref}{list, reference to subnational estimates in the format {'country_name':'url', ...}.}
 
-\item{ts_color_ref}{list, reference for colors for timeseries plots.}
+\item{ts_color_ref}{list, reference for colors for time series plots.}
 
-\item{ts_bar_color}{string, color of observed cases bars in timeseries plots.}
+\item{ts_bar_color}{string, color of observed cases bars in time series plots.}
 
 \item{projection}{string, map projection, must be names in d3-projection.}
 
@@ -38,9 +38,9 @@ summaryWidget(
 
 \item{credible_threshold}{integer, Threshold for credible intervals, maximum observed cases * this value will be removed.}
 
-\item{width}{integer, Width of widget (px).}
+\item{width}{integer, Width of widget in pixels.}
 
-\item{activeArea}{string, Area to symbolise first.}
+\item{activeArea}{string, Area to symbolize first.}
 
 \item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.
 Useful for checking the integrity of input data.}

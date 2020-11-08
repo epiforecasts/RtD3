@@ -7,5 +7,5 @@
 default_ts_color_ref()
 }
 \description{
-Create a default reference for timeseries colors. Also useful as a template when defining your own.
+Create a default reference for time series colors. Also useful as a template when defining your own.
 }

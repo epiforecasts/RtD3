@@ -4,15 +4,15 @@
 #'
 #' @param geoData sf object, map data
 #' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}
-#' @param data_ref list, reference for input data column names. Specify the column holding geometry to be symbolised {'rtData':{'geometry_name':'region'}, ...}
+#' @param data_ref list, reference for input data column names. Specify the column holding geometry to be symbolized {'rtData':{'geometry_name':'region'}, ...}
 #' @param subregional_ref list, reference to subnational estimates in the format {'country_name':'url', ...}.
-#' @param ts_color_ref list, reference for colors for timeseries plots.
-#' @param ts_bar_color string, color of observed cases bars in timeseries plots.
+#' @param ts_color_ref list, reference for colors for time series plots.
+#' @param ts_bar_color string, color of observed cases bars in time series plots.
 #' @param projection string, map projection, must be names in d3-projection.
 #' @param map_legend_ref list, reference for map legend variables
 #' @param credible_threshold integer, Threshold for credible intervals, maximum observed cases * this value will be removed.
-#' @param width integer, Width of widget (px).
-#' @param activeArea string, Area to symbolise first.
+#' @param width integer, Width of widget in pixels.
+#' @param activeArea string, Area to symbolize first.
 #' @param dryRun Logical, defaults to FALSE. Should the function be tested without the widget being created.
 #' Useful for checking the integrity of input data.
 #' @importFrom htmlwidgets createWidget

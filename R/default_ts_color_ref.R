@@ -1,9 +1,9 @@
 #' @title default_ts_color_ref
 #'
-#' @description Create a default reference for timeseries colors. Also useful as a template when defining your own.
+#' @description Create a default reference for time series colors. Also useful as a template when defining your own.
 
 default_ts_color_ref <- function(){
-  
+
   color_ref = list(
     list('value'=90, 'type'='estimate', 'color'='#d1ebe3'),
     list('value'=90, 'type'='estimate based on partial data', 'color'='#f7dfcc'),
@@ -15,7 +15,7 @@ default_ts_color_ref <- function(){
     list('value'=20, 'type'='estimate based on partial data', 'color'='#e69e65'),
     list('value'=20, 'type'='forecast', 'color'='#aba8d0')
   )
-  
+
   return(color_ref)
-  
+
 }
