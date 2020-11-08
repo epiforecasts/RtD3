@@ -15,11 +15,11 @@ library(RtD3)
 
 ## Overview
 
-RtD3 supports visualizations for subnational estimates using the same interface. Data must have the same structure and columns as global data. 
+RtD3 supports visualizations for subnational estimates using the `summaryWidget` interface. Data must have the same structure and columns as global data. 
 
 ## India
 
-Plotting subnational estimates requires that column names are identical to the columns required from global estimates. 
+Plotting subnational estimates requires that column names are identical to the columns required by global estimates. 
 
 ```{r }
 geoData <- rnaturalearth::ne_states('India', returnclass = 'sf') %>% 
@@ -30,7 +30,6 @@ rtData <- list("Cases" =
 RtD3::readInEpiNow2(path = "https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/subnational/india/cases/summary",
                     region_var = "region"))
 ```
-
 
 This data is then passed to `RtD3::summaryWidget`.
 

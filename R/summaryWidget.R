@@ -1,18 +1,19 @@
 #' @title summaryWidget
 #'
-#' @description Create an Rt visualisation using D3
+#' @description Create an Rt visualisation using D3. Need convenience functions to define defaults
 #'
 #' @param geoData sf object, map data
 #' @param rtData data.frame, rt estimates in the format {'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}
+#' @param data_ref list, reference for input data column names. Specify the column holding geometry to be symbolized {'rtData':{'geometry_name':'region'}, ...}
 #' @param subregional_ref list, reference to subnational estimates in the format {'country_name':'url', ...}.
-#' @param activeArea character, the default area to plot.
-#' @param activeTime character, the default time window (defaults to 'all')
-#' @param runDate character, date of estimate run in the format ('YYYY-MM-DD')
-#' @param width integer, width in pixels
-#' @param elementId string, id of element
+#' @param ts_color_ref list, reference for colors for time series plots.
+#' @param ts_bar_color string, color of observed cases bars in time series plots.
+#' @param projection string, map projection, must be named in [d3-geo-projection](https://github.com/d3/d3-geo-projection#projections).
+#' @param map_legend_ref list, reference for map legend variables
+#' @param credible_threshold integer, Threshold for credible intervals, maximum observed cases * this value will be removed.
+#' @param width integer, Width of widget in pixels.
+#' @param activeArea string, Area to symbolize first.
 #' @param dryRun Logical, defaults to FALSE. Should the function be tested without the widget being created.
-#' @param downloadUrl string, optional URL to download datasets
-#' @param ts_color_ref list, default reference for time series plots. See default_ts_colors for format.
 #' Useful for checking the integrity of input data.
 #' @importFrom htmlwidgets createWidget
 #'
@@ -20,44 +21,46 @@
 
 summaryWidget <- function(geoData = NULL,
                           rtData = NULL,
-                          activeArea = NULL,
-                          activeTime = 'all',
-                          runDate = NULL,
+                          data_ref = NULL,
                           subregional_ref = NULL,
-                          width = 900,
-                          elementId = NULL,
-                          dryRun = FALSE,
-                          downloadUrl = NULL,
-                          ts_color_ref = NULL) {
+                          ts_color_ref=NULL,
+                          ts_bar_color='lightgrey',
+                          projection='geoEquirectangular',
+                          map_legend_ref=NULL,
+                          credible_threshold=10,
+                          width = NULL,
+                          activeArea = 'United Kingdom',
+                          dryRun = FALSE) {
 
-  arg_types <- sapply(ls(), function(x){return(class(get(x)))})
 
-  invisible(check_input_data(arg_types = arg_types, geoData = geoData, rtData = rtData))
-
-  #warn for geoData name intersection issues
-  if (!is.null(geoData)){
-    check_geoData_names(geoData = geoData, rtData = rtData)
+  if (is.null(data_ref)){
+    data_ref <- default_data_ref()
   }
 
-  #define height, which is fixed based on dataset availability
-  height <- define_height(geoData = geoData, rtData = rtData)
-
-  #if ts color ref is null, use default colors
   if (is.null(ts_color_ref)){
-    ts_color_ref <- default_ts_colors()
+    ts_color_ref <- default_ts_color_ref()
+  }
+
+  if (is.null(map_legend_ref)){
+    map_legend_ref <- default_map_legend_ref()
+  }
+
+  if (is.null(width)){
+    width <- 900
   }
 
   # forward options using x
   x = list(
-    activeArea = activeArea,
-    activeTime = activeTime,
-    runDate = runDate,
     geoData = geojsonNull(geoData),
     rtData = jsonNull(rtData),
+    data_ref = data_ref,
     subregional_ref = subregional_ref,
-    fullWidth = width,
-    downloadUrl = downloadUrl,
-    ts_color_ref = ts_color_ref
+    ts_color_ref = ts_color_ref,
+    ts_bar_color = ts_bar_color,
+    projection = projection,
+    map_legend_ref = map_legend_ref,
+    credible_threshold = credible_threshold,
+    activeArea = activeArea
   )
 
   if (!dryRun) {
@@ -66,9 +69,9 @@ summaryWidget <- function(geoData = NULL,
       name = 'RtD3',
       x,
       width = width,
-      height = height,
+      height = define_height(geoData, rtData),
       package = 'RtD3',
-      elementId = elementId
+      elementId = NULL
     )
   }else{
     return(TRUE)

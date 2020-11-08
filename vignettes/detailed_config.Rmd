@@ -21,16 +21,17 @@ RtD3 has a number of features that are not required, but can improve the output 
 These features include:
 
 * Toggling multiple data sources
-* Linking to more detailed estimates
-* Plotting flexible geographies
+* Custom timeseries legends
+* Custom map legend variables
+
+To get started using RtD3 please see the documentation in "Creating an RtD3 visualization." 
 
 ## Detailed visualization
 
-We will prepare the geoData by resolving the USA name conflict between the geoData and estimates.
+Ensure that countries (or regions) have identical names in the goedata and summary data so that they will appear in the map and time series plots. We will prepare the geoData by resolving a name conflict between the geoData and estimates for the USA.
 
 ``` {r}
 geoData <- rnaturalearth::ne_countries(returnclass = 'sf')
-
 
 geoData <- geoData %>% 
   mutate(sovereignt = ifelse(sovereignt == 'United States of America', 'United States', sovereignt))
@@ -50,22 +51,11 @@ rtData <- list("Cases" = RtD3::readInEpiNow2(path = paste0(base_url, "cases/summ
                                               region_var = "country"))
 ```
 
-We can also configure a list of URLs to link more detailed estimates (using the `RtD3::getSubregionalUrls` helper function).
-
-``` {r}
-subnational_ref <- RtD3::getSubregionalUrls(path = "https://epiforecasts.io/covid/posts/national/",
-                                            areas = c('Afghanistan', 'Brazil', 'Colombia', 'India', 
-                                                      'Italy', 'Germany', 'Russia', 'United Kingdom',
-                                                      'United States'))
-```
-
 The data and config are then passed to `RtD3::summaryWidget`.
 
 ``` {r}
 RtD3::summaryWidget(
   geoData = geoData,
-  rtData = rtData,
-  subregional_ref = subnational_ref,
-  downloadUrl = 'https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates'
+  rtData = rtData
 )
 ```

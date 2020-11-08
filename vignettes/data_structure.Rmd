@@ -9,31 +9,18 @@ vignette: >
 
 ## Overview  
 
-RtD3 has strict requirements for the format of input data. Below, The structure of each input dataset is described in detail.  
-
+RtD3 accepts data with flexible column names. Below, we describe the default data structure of each input in detail. For more information on passing data with custom column names, see the `default_data_ref` and `summaryWidget` documentation.
 
 ## geoData  
 Geodata should be an `sf` object that must contain the columns:  
   
 `"sovereignt", "geometry"`  
   
-## summaryData  
-  
-summaryData should be a `data.frame` that must contain the columns:  
-  
-`"Country", "New confirmed cases by infection date", "Expected change in daily cases", "Effective reproduction no.", "Rate of growth", "Doubling/halving time (days)"`  
-  
 ## rtData
   
-rtData should be a JSON-like list object, containing either `data.frame` values or `NULL` values.  
-  
-rtData can have an arbitrary number of entries, allowing for the visualization of rts from multiple data sources.   
-  
-All `data.frame` values in rtData must contain the columns:  
-  
-`"country","date","type","median","lower_90","upper_90","lower_50","upper_50", "lower_20", "upper_20"` 
+rtData should be a JSON-like list object. rtData can have an arbitrary number of entries, allowing for the visualization of rts from multiple data sources.   
 
-All entries in the rtData list must contain the values (either `data.frame` values or `NULL` values):  
+All entries in the rtData list must contain the values:  
    
 `"rtData", "casesInfectionData", "casesReportData", "obsCasesData"`  
   
@@ -41,6 +28,23 @@ All entries in the rtData list must contain the values (either `data.frame` valu
 `"casesInfectionData"` - Cases by date of infection estimates  
 `"casesReportData"` - Cases by date of report estimates  
 `"obsCasesData"` - Observed case data  
+`"summaryData"` - Summary data for each area
+
+Each entry of the rtData list must contain `data.frame` objects
+
+All `rtData`, `casesInfectionData`, `casesReportData` values in rtData must contain the columns:  
+  
+`"country","date","type","median","lower_XX","upper_XX"` where `XX` specifies an arbitrary credible interval. 
+
+You can use any number of credible intervales. The default structure supports `90%`, `50%`, and `20%`.
+
+`summaryData` in rtData must contain the columns:  
+  
+`"region", "New confirmed cases by infection date", "Expected change in daily cases", "Effective reproduction no.", "Rate of growth", "Doubling/halving time (days)"`  
+
+`obsCasesData` in rtData must contain the columns: 
+
+`"region", "confirm"`
 
 An example of the overall structure of an rtData list from two data sources ("Cases" and "Deaths"):
 
@@ -59,17 +63,6 @@ rtData = list('Cases' = list('summaryData' = summaryData,
 
 ```
 
-An example of the overall structure of an rtData list with some `NULL` values:
+## Custom data inputs
 
-``` {r eval = F}
-
-rtData = list('Cases' = list(
-                             'summaryData' = summaryData,
-                             'rtData' = rtData, 
-                             'casesInfectionData' = NULL, 
-                             'casesReportData' = casesReportData, 
-                             'obsCasesData' = NULL))
-
-```
-
-
+For more information on using custom dataset columns, legend variables, and legend colors, see the documentation for the relevant generator functions (`default_data_ref`, `default_map_legend_ref`, `default_ts_color_ref`, `legend_qualitative`, `legend_sequential`).
