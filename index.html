@@ -117,16 +117,14 @@
 <div id="quickstart" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quickstart" class="anchor"></a>Quickstart</h2>
-<p>Estimates are available from <a href="https://epiforecasts.io/covid/">epiforecasts</a> <a href="https://github.com/epiforecasts/covid-rt-estimates/">covid-rt-estimates</a> in the format expected by this package. Use the helper function <code>readInEpiNow2</code> to generate the summary widget with existing estimates.</p>
+<p>Spatial data is passed to RtD3 as an <code>sf</code> object. Use the <code>rnaturalearth</code> package for quick access to global and national spatial data.</p>
+<p>Rt estimates are available from <a href="https://epiforecasts.io/covid/">epiforecasts</a> <a href="https://github.com/epiforecasts/covid-rt-estimates/">covid-rt-estimates</a> in the format expected by this package. Use the helper function <code>readInEpiNow2</code> to generate the summary widget with existing estimates.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rtData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Cases"</span> <span class="op">=</span> <span class="fu"><a href="reference/readInEpiNow2.html">readInEpiNow2</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="va">geoData</span> <span class="op">=</span> <span class="fu">rnaturalearth</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rnaturalearth/man/ne_countries.html">ne_countries</a></span><span class="op">(</span>returnclass <span class="op">=</span> <span class="st">'sf'</span><span class="op">)</span>
+
+<span class="va">rtData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"Cases"</span> <span class="op">=</span> <span class="fu"><a href="reference/readInEpiNow2.html">readInEpiNow2</a></span><span class="op">(</span>
     path <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/epiforecasts/covid-rt-estimates/master/national/cases/summary"</span>,
     region_var <span class="op">=</span> <span class="st">"country"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu"><a href="reference/summaryWidget.html">summaryWidget</a></span><span class="op">(</span>rtData <span class="op">=</span> <span class="va">rtData</span><span class="op">)</span></code></pre></div>
-<p>Optionally, a map can be included using data from the <code>rnaturalearth</code> package.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">geoData</span> <span class="op">=</span> <span class="fu">rnaturalearth</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rnaturalearth/man/ne_countries.html">ne_countries</a></span><span class="op">(</span>returnclass <span class="op">=</span> <span class="st">'sf'</span><span class="op">)</span>
 
 <span class="fu"><a href="reference/summaryWidget.html">summaryWidget</a></span><span class="op">(</span>geoData <span class="op">=</span> <span class="va">geoData</span>, rtData <span class="op">=</span> <span class="va">rtData</span><span class="op">)</span></code></pre></div>
 </div>
