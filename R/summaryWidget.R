@@ -13,6 +13,7 @@
 #' @param credible_threshold integer, Threshold for credible intervals, maximum observed cases * this value will be removed.
 #' @param width integer, Width of widget in pixels.
 #' @param activeArea string, Area to symbolize first.
+#' @param downloadUrl string, URL to download data.
 #' @param dryRun Logical, defaults to FALSE. Should the function be tested without the widget being created.
 #' Useful for checking the integrity of input data.
 #' @importFrom htmlwidgets createWidget
@@ -30,6 +31,7 @@ summaryWidget <- function(geoData = NULL,
                           credible_threshold=10,
                           width = NULL,
                           activeArea = 'United Kingdom',
+                          downloadUrl = NULL,
                           dryRun = FALSE) {
 
 

@@ -16,6 +16,7 @@ summaryWidget(
   credible_threshold = 10,
   width = NULL,
   activeArea = "United Kingdom",
+  downloadUrl = NULL,
   dryRun = FALSE
 )
 }
@@ -41,6 +42,8 @@ summaryWidget(
 \item{width}{integer, Width of widget in pixels.}
 
 \item{activeArea}{string, Area to symbolize first.}
+
+\item{downloadUrl}{string, URL to download data.}
 
 \item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.
 Useful for checking the integrity of input data.}
