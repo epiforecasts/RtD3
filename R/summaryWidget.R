@@ -18,6 +18,7 @@
 
 summaryWidget <- function(geoData = NULL,
                           rtData = NULL,
+                          data_ref = NULL,
                           subregional_ref = NULL,
                           ts_color_ref=NULL,
                           ts_bar_color='lightgrey',
@@ -26,6 +27,10 @@ summaryWidget <- function(geoData = NULL,
                           credible_threshold=10,
                           dryRun = FALSE) {
 
+
+  if (is.null(data_ref)){
+    data_ref <- default_data_ref()
+  }
 
   if (is.null(ts_color_ref)){
     ts_color_ref <- default_ts_color_ref()
@@ -39,6 +44,7 @@ summaryWidget <- function(geoData = NULL,
   x = list(
     geoData = geojsonNull(geoData),
     rtData = jsonNull(rtData),
+    data_ref = data_ref,
     subregional_ref = subregional_ref,
     ts_color_ref = ts_color_ref,
     ts_bar_color = ts_bar_color,
