@@ -105,7 +105,7 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>RtD3 has strict requirements for the format of input data. Below, The structure of each input dataset is described in detail.</p>
+<p>RtD3 accepts data with flexible column names. Below, we describe the default data structure of each input in detail. For more information on passing data with custom column names, see the <code>default_data_ref</code> and <code>summaryWidget</code> documentation.</p>
 </div>
 <div id="geodata" class="section level2">
 <h2 class="hasAnchor">
@@ -113,25 +113,24 @@
 <p>Geodata should be an <code>sf</code> object that must contain the columns:</p>
 <p><code>"sovereignt", "geometry"</code></p>
 </div>
-<div id="summarydata" class="section level2">
-<h2 class="hasAnchor">
-<a href="#summarydata" class="anchor"></a>summaryData</h2>
-<p>summaryData should be a <code>data.frame</code> that must contain the columns:</p>
-<p><code>"Country", "New confirmed cases by infection date", "Expected change in daily cases", "Effective reproduction no.", "Rate of growth", "Doubling/halving time (days)"</code></p>
-</div>
 <div id="rtdata" class="section level2">
 <h2 class="hasAnchor">
 <a href="#rtdata" class="anchor"></a>rtData</h2>
-<p>rtData should be a JSON-like list object, containing either <code>data.frame</code> values or <code>NULL</code> values.</p>
-<p>rtData can have an arbitrary number of entries, allowing for the visualization of rts from multiple data sources.</p>
-<p>All <code>data.frame</code> values in rtData must contain the columns:</p>
-<p><code>"country","date","type","median","lower_90","upper_90","lower_50","upper_50", "lower_20", "upper_20"</code></p>
-<p>All entries in the rtData list must contain the values (either <code>data.frame</code> values or <code>NULL</code> values):</p>
+<p>rtData should be a JSON-like list object. rtData can have an arbitrary number of entries, allowing for the visualization of rts from multiple data sources.</p>
+<p>All entries in the rtData list must contain the values:</p>
 <p><code>"rtData", "casesInfectionData", "casesReportData", "obsCasesData"</code></p>
-<p><code>"rtData"</code> - R estimates<br><code>"casesInfectionData"</code> - Cases by date of infection estimates<br><code>"casesReportData"</code> - Cases by date of report estimates<br><code>"obsCasesData"</code> - Observed case data</p>
+<p><code>"rtData"</code> - R estimates<br><code>"casesInfectionData"</code> - Cases by date of infection estimates<br><code>"casesReportData"</code> - Cases by date of report estimates<br><code>"obsCasesData"</code> - Observed case data<br><code>"summaryData"</code> - Summary data for each area</p>
+<p>Each entry of the rtData list must contain <code>data.frame</code> objects</p>
+<p>All <code>rtData</code>, <code>casesInfectionData</code>, <code>casesReportData</code> values in rtData must contain the columns:</p>
+<p><code>"country","date","type","median","lower_XX","upper_XX"</code> where <code>XX</code> specifies an arbitrary credible interval.</p>
+<p>You can use any number of credible intervales. The default structure supports <code>90%</code>, <code>50%</code>, and <code>20%</code>.</p>
+<p><code>summaryData</code> in rtData must contain the columns:</p>
+<p><code>"region", "New confirmed cases by infection date", "Expected change in daily cases", "Effective reproduction no.", "Rate of growth", "Doubling/halving time (days)"</code></p>
+<p><code>obsCasesData</code> in rtData must contain the columns:</p>
+<p><code>"region", "confirm"</code></p>
 <p>An example of the overall structure of an rtData list from two data sources (“Cases” and “Deaths”):</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="va">rtData</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'Cases'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'summaryData'</span> <span class="op">=</span> <span class="va">summaryData</span>,
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rtData</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'Cases'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'summaryData'</span> <span class="op">=</span> <span class="va">summaryData</span>,
                              <span class="st">'rtData'</span> <span class="op">=</span> <span class="va">rtData</span>, 
                              <span class="st">'casesInfectionData'</span> <span class="op">=</span> <span class="va">casesInfectionData</span>, 
                              <span class="st">'casesReportData'</span> <span class="op">=</span> <span class="va">casesReportData</span>, 
@@ -140,15 +139,12 @@
                              <span class="st">'rtData'</span> <span class="op">=</span> <span class="va">rtData_death</span>, 
                              <span class="st">'casesInfectionData'</span> <span class="op">=</span> <span class="va">casesInfectionData_death</span>, 
                              <span class="st">'casesReportData'</span> <span class="op">=</span> <span class="va">casesReportData_death</span>, 
-                             <span class="st">'obsCasesData'</span> <span class="op">=</span> <span class="va">obsCasesData_death</span><span class="op">)</span><span class="op">)</span></pre></div>
-<p>An example of the overall structure of an rtData list with some <code>NULL</code> values:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">rtData</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'Cases'</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-                             <span class="st">'summaryData'</span> <span class="op">=</span> <span class="va">summaryData</span>,
-                             <span class="st">'rtData'</span> <span class="op">=</span> <span class="va">rtData</span>, 
-                             <span class="st">'casesInfectionData'</span> <span class="op">=</span> <span class="cn">NULL</span>, 
-                             <span class="st">'casesReportData'</span> <span class="op">=</span> <span class="va">casesReportData</span>, 
-                             <span class="st">'obsCasesData'</span> <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span><span class="op">)</span></pre></div>
+                             <span class="st">'obsCasesData'</span> <span class="op">=</span> <span class="va">obsCasesData_death</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="custom-data-inputs" class="section level2">
+<h2 class="hasAnchor">
+<a href="#custom-data-inputs" class="anchor"></a>Custom data inputs</h2>
+<p>For more information on using custom dataset columns, legend variables, and legend colors, see the documentation for the relevant generator functions (<code>default_data_ref</code>, <code>default_map_legend_ref</code>, <code>default_ts_color_ref</code>, <code>legend_qualitative</code>, <code>legend_sequential</code>).</p>
 </div>
   </div>
 

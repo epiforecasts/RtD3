@@ -4,7 +4,13 @@
     <loc>http:/epiforecasts.io/RtD3/index.html</loc>
   </url>
   <url>
-    <loc>http:/epiforecasts.io/RtD3/reference/check_input_data.html</loc>
+    <loc>http:/epiforecasts.io/RtD3/reference/default_data_ref.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/reference/default_map_legend_ref.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/reference/default_ts_color_ref.html</loc>
   </url>
   <url>
     <loc>http:/epiforecasts.io/RtD3/reference/default_ts_colors.html</loc>
@@ -16,7 +22,10 @@
     <loc>http:/epiforecasts.io/RtD3/reference/joinRtData.html</loc>
   </url>
   <url>
-    <loc>http:/epiforecasts.io/RtD3/reference/mapWidget.html</loc>
+    <loc>http:/epiforecasts.io/RtD3/reference/legend_qualitative.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/reference/legend_sequential.html</loc>
   </url>
   <url>
     <loc>http:/epiforecasts.io/RtD3/reference/readInEpiNow2.html</loc>
@@ -26,9 +35,6 @@
   </url>
   <url>
     <loc>http:/epiforecasts.io/RtD3/reference/summaryWidget.html</loc>
-  </url>
-  <url>
-    <loc>http:/epiforecasts.io/RtD3/reference/tsWidget.html</loc>
   </url>
   <url>
     <loc>http:/epiforecasts.io/RtD3/articles/RtD3.html</loc>

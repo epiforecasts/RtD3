@@ -12,9 +12,13 @@ HTMLWidgets.widget({
 
       renderValue: function(x) {
 
-        var vis = new rtVis(x, 100, 100);
-
-        vis.summaryWidget(el)
+        window.onload = function()
+          {
+            ReactDOM.render(
+                React.createElement(RtD3js.default, {widget: 'summaryWidget', x: x}),
+                el
+            );
+          };
 
       },
 
