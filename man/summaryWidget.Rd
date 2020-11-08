@@ -14,6 +14,8 @@ summaryWidget(
   projection = "geoEquirectangular",
   map_legend_ref = NULL,
   credible_threshold = 10,
+  width = NULL,
+  activeArea = "United Kingdom",
   dryRun = FALSE
 )
 }
@@ -35,6 +37,10 @@ summaryWidget(
 \item{map_legend_ref}{list, reference for map legend variables}
 
 \item{credible_threshold}{integer, Threshold for credible intervals, maximum observed cases * this value will be removed.}
+
+\item{width}{integer, Width of widget (px).}
+
+\item{activeArea}{string, Area to symbolise first.}
 
 \item{dryRun}{Logical, defaults to FALSE. Should the function be tested without the widget being created.
 Useful for checking the integrity of input data.}
