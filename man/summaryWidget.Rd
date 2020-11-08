@@ -32,7 +32,7 @@ summaryWidget(
 
 \item{ts_bar_color}{string, color of observed cases bars in time series plots.}
 
-\item{projection}{string, map projection, must be names in d3-projection.}
+\item{projection}{string, map projection, must be named in \href{https://github.com/d3/d3-geo-projection#projections}{d3-geo-projection}.}
 
 \item{map_legend_ref}{list, reference for map legend variables}
 

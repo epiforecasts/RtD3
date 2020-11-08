@@ -24,5 +24,5 @@ legend_sequential(
 \item{color_no_data}{string, color for no data entries.}
 }
 \description{
-Create a qualitative legend
+Create a qualitative legend. `legend_scale`` accepts scales listed in \href{https://github.com/d3/d3-scale#continuous-scales}{d3-scale}.
 }

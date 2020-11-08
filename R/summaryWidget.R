@@ -8,7 +8,7 @@
 #' @param subregional_ref list, reference to subnational estimates in the format {'country_name':'url', ...}.
 #' @param ts_color_ref list, reference for colors for time series plots.
 #' @param ts_bar_color string, color of observed cases bars in time series plots.
-#' @param projection string, map projection, must be names in d3-projection.
+#' @param projection string, map projection, must be named in [d3-geo-projection](https://github.com/d3/d3-geo-projection#projections).
 #' @param map_legend_ref list, reference for map legend variables
 #' @param credible_threshold integer, Threshold for credible intervals, maximum observed cases * this value will be removed.
 #' @param width integer, Width of widget in pixels.

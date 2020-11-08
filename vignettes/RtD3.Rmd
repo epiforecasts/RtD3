@@ -15,13 +15,13 @@ library(RtD3)
 
 ## Overview
 
-RtD3 creates interactive visualizations of rt estimates using JavaScript and D3. RtD3 provides an interface to these JavaScript visualizations from R. Plots can be added to the RStudio Viewer, included in R Markdown documents, or embedded in a Shiny app.
+RtD3 creates interactive visualizations of rt estimates using JavaScript, React, and D3. Plots can be added to the RStudio Viewer, included in R Markdown documents, or embedded in a Shiny app.
 
 This package is closely linked to the estimates produced by the [EpiNow2](https://epiforecasts.io/EpiNow2/) package, an open source resource for creating rt estimates.
 
 ## Basic visualization
 
-RtD3 is flexible, and will attempt to generate an interactive visualization with whatever data sets it receives. Columns must be in a standard format (detailed in the documentation). 
+RtD3 is flexible and will attempt to generate an interactive visualization with whatever data set it receives. Columns must be in a standard format (detailed in the "Data Structure" documentation). 
 
 This example relies on estimates from [epiforecasts covid-rt-estimates](https://github.com/epiforecasts/covid-rt-estimates).
 
@@ -36,7 +36,7 @@ rtData <- list("Cases" = RtD3::readInEpiNow2(
   ))
 ```
 
-Rt data is passed to the visualization function in a JSON-like list of lists to allow for visualization of different data training data sources. Rt data should be prepared in the format `{'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x}, ...}`. All required datasets are then passed to the visualization function. Note: missing datasets in `rtData` should be `NULL`, not absent.
+Rt data is passed to the visualization function in a JSON-like list of lists to allow for visualization of estimates from different data sources. Rt data should be prepared in the format `{'Source':{'rtData':x, 'casesInfectionData':x, 'casesReportData':x, 'obsCasesData':x, 'summaryData':x}, ...}`. All required datasets are then passed to the visualization function.
 
 
 ``` {r}
@@ -46,4 +46,3 @@ RtD3::summaryWidget(
 )
 ```
 
-Notice the warning that some names in the estimates are not present in the geoData. Estimates for these areas will still be accessible using the dropdown. The disagreement between geographic names can be addressed before calling `RtD3::summaryWidget`.

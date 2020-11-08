@@ -12,5 +12,5 @@ legend_qualitative(variable_name, legend_values)
 \item{legend_values}{list, reference for legend colors in the format: {'value':'color', ...}.}
 }
 \description{
-Create a qualitative legend
+Create a qualitative legend.
 }
