@@ -16,16 +16,18 @@ Install from CRAN with:
 install.packages("RtD3")
 ```
 
-Install the stable development version of the package using
-[`{drat}`](https://epiforecasts.io/drat/):
+Install the stable development version of the package from our 
+[r-universe](https://epiforecasts.r-universe.dev):
 
 ``` r
-install.packages("drat")
-drat:::add("epiforecasts")
-install.packages("RtD3")
+install.packages(
+  "RtD3",
+  repos = c(ropensci = 'https://epiforecasts.r-universe.dev',
+            CRAN = 'https://cloud.r-project.org')
+)
 ```
 
-Install the unstable development version of the package with:
+Or from Github:
 
 ``` r
 remotes::install_github("epiforecasts/RtD3")
