@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http:/epiforecasts.io/RtD3/404.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/articles/RtD3.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/articles/data_structure.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/articles/detailed_config.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/articles/subnational.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/authors.html</loc>
+  </url>
+  <url>
     <loc>http:/epiforecasts.io/RtD3/index.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/news/index.html</loc>
   </url>
   <url>
     <loc>http:/epiforecasts.io/RtD3/reference/default_data_ref.html</loc>
@@ -17,6 +47,9 @@
   </url>
   <url>
     <loc>http:/epiforecasts.io/RtD3/reference/getSubregionalUrls.html</loc>
+  </url>
+  <url>
+    <loc>http:/epiforecasts.io/RtD3/reference/index.html</loc>
   </url>
   <url>
     <loc>http:/epiforecasts.io/RtD3/reference/joinRtData.html</loc>
@@ -35,17 +68,5 @@
   </url>
   <url>
     <loc>http:/epiforecasts.io/RtD3/reference/summaryWidget.html</loc>
-  </url>
-  <url>
-    <loc>http:/epiforecasts.io/RtD3/articles/RtD3.html</loc>
-  </url>
-  <url>
-    <loc>http:/epiforecasts.io/RtD3/articles/data_structure.html</loc>
-  </url>
-  <url>
-    <loc>http:/epiforecasts.io/RtD3/articles/detailed_config.html</loc>
-  </url>
-  <url>
-    <loc>http:/epiforecasts.io/RtD3/articles/subnational.html</loc>
   </url>
 </urlset>
