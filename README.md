@@ -1,7 +1,11 @@
 # Rt visualization in D3
 
-[![Travis build status](https://travis-ci.com/epiforecasts/RtD3.svg?branch=master)](https://travis-ci.com/hamishgibbs/RtD3)
-[![Codecov test coverage](https://codecov.io/gh/epiforecasts/RtD3/branch/master/graph/badge.svg)](https://codecov.io/gh/hamishgibbs/RtD3?branch=master)
+> **⚠️ This package is archived and no longer maintained.**
+>
+> RtD3 has not seen active development since 2022. It has outdated dependencies
+> (React 15, Bootstrap 4) and relies on `rgeos`, which was removed from CRAN in 2023.
+> The repository is preserved for reference only.
+
 [![Documentation](https://img.shields.io/badge/Package-documentation-lightgrey.svg?style=flat)](https://epiforecasts.io/RtD3/)
 [![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.4011842.svg)](https://zenodo.org/record/4011842)
 
@@ -48,7 +52,7 @@ rtData <- list("Cases" = readInEpiNow2(
 summaryWidget(geoData = geoData, rtData = rtData)
 ```
 
-## Development
+## Citation
 
-Comments and contributions to this package are welcome. To record a problem with the package, please [create an issue](https://github.com/epiforecasts/RtD3/issues/new/) on [Github](https://github.com/epiforecasts/RtD3/). 
+If you used this package in your work, please cite it using the Zenodo DOI above. 
 
